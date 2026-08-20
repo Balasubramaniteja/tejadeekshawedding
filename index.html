@@ -1198,6 +1198,23 @@ const music = (function(){
   if(!gate) return;
   document.body.classList.add('locked');
 
+  // The invitation must always open at the top. Two things fight that:
+  // a leftover "#rsvp" in the address bar (left there by the hero button, and
+  // carried along if the link is copied and shared), and the browser restoring
+  // the previous scroll position on reload. Both would drop the guest into the
+  // middle of the page the moment the gate is dismissed.
+  const toTop = () => {
+    const html = document.documentElement;
+    const prev = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';   // never animate this one
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = prev;
+  };
+  if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if(location.hash) history.replaceState(null, '', location.pathname + location.search);
+  toTop();
+  window.addEventListener('load', toTop);
+
   document.getElementById('gate-petals').innerHTML =
     Array.from({length:16}, (_,i) =>
       `<path d="M60 45 q 7 -12 0 -22 q -7 10 0 22Z" transform="rotate(${i*22.5} 60 60)"/>`).join('');
@@ -1207,8 +1224,10 @@ const music = (function(){
     if(opened) return;
     opened = true;
     if(withMusic) music.play().catch(()=>{});
-    gate.classList.add('hidden');
     document.body.classList.remove('locked');
+    toTop();
+    requestAnimationFrame(toTop);          // after the scroll lock is released
+    gate.classList.add('hidden');
     setTimeout(() => gate.remove(), 800);
   }
   document.getElementById('openBtn').addEventListener('click', () => open(true));
