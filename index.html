@@ -274,7 +274,9 @@ body.locked .music-btn{display:none}
 <iframe name="gformSink" title="RSVP submission target" style="display:none" aria-hidden="true"></iframe>
 
 <!-- ==================== MUSIC ==================== -->
-<audio id="bgm" loop preload="auto" src="assets/mangala-vadyam.mp3"></audio>
+<!-- preload="none": nothing is fetched until a guest actually taps play, so the
+     visitors who choose "open without music" never pay for the download -->
+<audio id="bgm" loop preload="none" src="assets/wedding-music.mp3"></audio>
 <button class="music-btn paused" id="musicBtn" type="button" aria-label="Play wedding music" title="Wedding music">
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <g class="bars" fill="currentColor">
@@ -1345,7 +1347,7 @@ document.getElementById('icsBtn').addEventListener('click', function(){
 const music = (function(){
   const audio = document.getElementById('bgm');
   const btn   = document.getElementById('musicBtn');
-  audio.volume = 0.45;
+  audio.volume = 0.40;
 
   const setUI = playing => {
     btn.classList.toggle('paused', !playing);
