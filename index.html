@@ -78,8 +78,8 @@ section{padding:70px 0;position:relative}
 .hero{padding:0;background:linear-gradient(180deg,#fffdf8,var(--cream));border-bottom:1px solid rgba(201,162,39,.35);overflow:hidden}
 .hero-inner{max-width:900px;margin:0 auto;padding:0 22px 56px;text-align:center}
 .toran{width:100vw;height:74px;margin-left:calc(50% - 50vw);display:block}
-.mandala{width:96px;height:96px;display:block;margin:22px auto 4px;animation:spin 120s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+.deities{display:block;width:min(560px,94%);height:auto;margin:24px auto 6px}
 .invocation{color:var(--maroon);font-size:1.05rem;margin:8px 0 0}
 .invocation small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-family:'Marcellus',serif}
 .shubha{font-family:'Noto Serif Telugu',serif;color:var(--gold);font-size:1.05rem;margin:16px 0 0}
@@ -245,6 +245,24 @@ body.locked .music-btn{display:none}
 .music-btn .slash{display:none}
 .music-btn.paused .slash{display:block}
 
+/* ================= THALAMBRALU =================
+   Turmeric-stained rice falling across the page, as the couple pour over
+   each other at the muhurtham. Purely decorative: it never takes a click. */
+.thalambralu{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.grain{position:absolute;top:0;animation-name:tfall;animation-timing-function:linear;
+  animation-iteration-count:infinite;will-change:transform}
+.grain i{display:block;border-radius:50%;animation-name:tspin;
+  animation-timing-function:ease-in-out;animation-iteration-count:infinite;
+  animation-direction:alternate;will-change:transform}
+@keyframes tfall{
+  0%{transform:translate3d(0,-14vh,0);opacity:0}
+  7%{opacity:var(--o,.8)}
+  88%{opacity:var(--o,.8)}
+  100%{transform:translate3d(var(--dx,24px),114vh,0);opacity:0}
+}
+@keyframes tspin{from{transform:rotate(var(--r0,0deg))}to{transform:rotate(var(--r1,180deg))}}
+@media (prefers-reduced-motion:reduce){.thalambralu{display:none}}
+
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
@@ -311,6 +329,8 @@ body.locked .music-btn{display:none}
   </div>
 </div>
 
+<div class="thalambralu" id="thalambralu" aria-hidden="true"></div>
+
 <!-- ==================== HERO ==================== -->
 <header class="hero">
   <svg class="toran" id="toran" viewBox="0 0 800 74" preserveAspectRatio="none" aria-hidden="true">
@@ -319,15 +339,8 @@ body.locked .music-btn{display:none}
   </svg>
 
   <div class="hero-inner">
-    <svg class="mandala" viewBox="0 0 120 120" aria-hidden="true">
-      <g fill="none" stroke="#c9a227" stroke-width="1">
-        <circle cx="60" cy="60" r="47" opacity=".45"/>
-        <circle cx="60" cy="60" r="39" opacity=".8"/>
-        <circle cx="60" cy="60" r="15"/>
-        <g id="petals-ring"></g>
-      </g>
-      <circle cx="60" cy="60" r="5" fill="#6d0f24"/>
-    </svg>
+    <img class="deities" src="assets/img/deities.png" width="880" height="658"
+         alt="Lord Venkateswara, Padmavathi, Shiva, Parvathi, Brahma, Hanuman, Ganesha, Murugan and Sai Baba">
 
     <p class="invocation">
       <span class="te">॥ శ్రీ గణేశాయ నమః ॥</span>
@@ -1114,18 +1127,6 @@ function drawToran(){
 drawToran();
 let toranT; window.addEventListener('resize', ()=>{ clearTimeout(toranT); toranT = setTimeout(drawToran, 180); });
 
-/* ================= MANDALA PETALS ================= */
-(function(){
-  const p = document.getElementById('petals-ring');
-  let out='';
-  for(let i=0;i<16;i++){
-    const a = i*22.5;
-    out += `<path d="M60 45 q 7 -12 0 -22 q -7 10 0 22Z" transform="rotate(${a} 60 60)"/>`;
-    out += `<path d="M60 22 l0 -4" transform="rotate(${a+11.25} 60 60)" opacity=".6"/>`;
-  }
-  p.innerHTML = out;
-})();
-
 /* ================= CANOPY LEAVES + FLOOR MUGGU + JAIMALA + PETALS ================= */
 (function(){
   // hanging leaves along the canopy arch
@@ -1403,6 +1404,42 @@ const music = (function(){
   }
   document.getElementById('openBtn').addEventListener('click', () => open(true));
   document.getElementById('openSilentBtn').addEventListener('click', () => open(false));
+})();
+
+/* ================= THALAMBRALU ================= */
+(function(){
+  const layer = document.getElementById('thalambralu');
+  if(!layer || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // turmeric-stained rice, a few marigold petals among it
+  const COLOURS = ['#f3d24e','#e9b93c','#fff4d2','#ffe9a8','#f3d24e','#fff8e4','#f0a52a'];
+  const count = window.innerWidth < 640 ? 18 : 32;
+  const rnd = (a,b) => a + Math.random()*(b-a);
+  const frag = document.createDocumentFragment();
+
+  for(let i=0;i<count;i++){
+    const g = document.createElement('span');
+    g.className = 'grain';
+    g.style.left = rnd(-2,100).toFixed(2) + '%';
+    g.style.setProperty('--dx', rnd(-70,70).toFixed(0) + 'px');
+    g.style.setProperty('--o', rnd(.45,.85).toFixed(2));
+    g.style.animationDuration = rnd(9,19).toFixed(1) + 's';
+    g.style.animationDelay = (-rnd(0,19)).toFixed(1) + 's';   // negative: already mid-fall on load
+
+    const w = rnd(2.6,4.4);
+    const bit = document.createElement('i');
+    bit.style.width  = w.toFixed(1) + 'px';
+    bit.style.height = (w*rnd(1.9,2.6)).toFixed(1) + 'px';
+    bit.style.background = COLOURS[(Math.random()*COLOURS.length)|0];
+    bit.style.setProperty('--r0', rnd(-60,60).toFixed(0) + 'deg');
+    bit.style.setProperty('--r1', rnd(120,300).toFixed(0) + 'deg');
+    bit.style.animationDuration = rnd(2.5,6).toFixed(1) + 's';
+    bit.style.animationDelay = (-rnd(0,6)).toFixed(1) + 's';
+
+    g.appendChild(bit);
+    frag.appendChild(g);
+  }
+  layer.appendChild(frag);
 })();
 
 /* ================= SUPPLIED EVENT PHOTOS =================

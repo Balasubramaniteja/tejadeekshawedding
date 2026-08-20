@@ -26,6 +26,9 @@ up blank.
   file is only fetched when a guest actually taps play. 2:54 long; it fades out at the end and
   begins quietly, so the loop joins without a click.
   Replace this file to change the music — the filename is referenced once in `index.html`.
+- `assets/img/deities.png` — the artwork that opens the invitation, supplied by the couple. The flat
+  white around the marigold frame was made transparent and the panel inside it recoloured to the page
+  cream, so it sits on the background rather than in a white box (880 px wide, 165 KB).
 - `assets/fonts/*.woff2` — self-hosted webfonts. Telugu text needs a real Telugu font to shape
   conjuncts correctly, so the fonts ship with the site rather than loading from Google Fonts.
 - `assets/events/` — drop your own event photos here (see **Event images** below).
@@ -37,6 +40,16 @@ The invitation opens behind a centred play button. Phones and desktop browsers b
 start audio without a real tap, so rather than failing silently the site asks the guest to open
 it — with music, or via the "Open without music" link. Once opened, a small toggle sits in the
 bottom-right corner for the rest of the visit.
+
+## Thalambralu
+
+Turmeric-stained rice drifts down the page, as the couple pour over each other at the muhurtham.
+It is a fixed layer of small CSS-animated grains — 32 on desktop, 18 on a phone — sitting above the
+content but with `pointer-events:none`, so it never intercepts a tap. Grains start mid-fall
+(negative animation delays) so the page never looks like it is waiting to begin, and the whole
+layer is switched off for visitors who ask for reduced motion.
+
+To change the density or colours, see the `THALAMBRALU` block near the bottom of `index.html`.
 
 ## Event images
 
@@ -64,8 +77,8 @@ images (Freepik, Shutterstock, Adobe Stock and the like) need a licence that cov
 website, and some free tiers additionally require visible attribution.
 
 The five event illustrations and the background music were supplied by the couple. Everything else
-on the page — the mandala, the mandapam couple, the toran, the muggu dividers and the fallback
-scenes — is drawn in SVG specifically for this invitation, so there is nothing to licence or
+on the page — the mandapam couple, the toran, the opening-screen mandala, the muggu dividers
+and the fallback scenes — is drawn in SVG specifically for this invitation, so there is nothing to licence or
 attribute for those.
 
 ## Language
