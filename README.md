@@ -41,8 +41,9 @@ bottom-right corner for the rest of the visit.
 
 ## Event images
 
-Each event card draws its own illustrated scene, and will swap in a real image the moment one
-exists. Add files with these exact names:
+Each event card shows a supplied image, and falls back to its drawn SVG scene if the file is ever
+missing. The five in use are the couple's own illustrations, resized to 880 px wide and saved as
+progressive JPEG (~135 KB each, 675 KB total). File names:
 
 ```
 assets/events/haldi.jpg
@@ -52,9 +53,12 @@ assets/events/pellikoduku-pellikuthuru.jpg
 assets/events/muhurtham.jpg
 ```
 
-Roughly **960 × 495 px** (a little under 2:1) works best; anything wider is cropped to fit from the
-centre. Keep each file under about 300 KB so the page stays quick on a phone. A missing file is not
-an error — that card simply keeps its drawn scene, so you can add images one at a time.
+To replace one, drop in a file with the same name. Roughly **880 × 455 px** (about 1.94:1) fits the
+card exactly; anything wider or taller is cropped from the centre. Keep each under ~200 KB so the
+page stays quick on a phone. Images load lazily, so they cost nothing until the guest scrolls down.
+
+The haldi and nalugu illustrations arrived on a flat white field, which would have shown as a bright
+rectangle against the cream card, so the white was recoloured to the page background.
 
 Only use images you own or are licensed to use — this page is public once deployed. Stock-library
 images (Freepik, Shutterstock, Adobe Stock and the like) need a licence that covers use on a public
