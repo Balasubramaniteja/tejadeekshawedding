@@ -86,7 +86,6 @@ section{padding:70px 0;position:relative}
 .blessing{max-width:560px;margin:20px auto 0;font-style:italic;color:var(--muted)}
 .te-line{font-family:'Noto Serif Telugu',serif;font-style:normal;color:var(--maroon);font-size:1rem;line-height:2;margin-top:22px}
 
-.couple-art{max-width:620px;margin:14px auto -6px;display:block}
 
 .names{margin:12px 0 0}
 .name{display:block;font-family:'Marcellus',serif;font-size:clamp(2.3rem,10vw,4.2rem);color:var(--maroon);line-height:1.06}
@@ -351,112 +350,6 @@ body.locked .music-btn{display:none}
 
     <p class="blessing te-line">పెద్దల ఆశీస్సులతో, మా వివాహ వేడుకకు<br>మిమ్మల్ని సాదరంగా ఆహ్వానిస్తున్నాము.</p>
     <p class="blessing">With the blessings of the Almighty and our elders,<br>we joyfully invite you to share in the celebration of our wedding.</p>
-
-    <!-- ---------- illustrated couple ---------- -->
-    <svg class="couple-art" viewBox="0 0 600 400" role="img" aria-label="Illustration of a bride and groom exchanging garlands beneath a mandapam">
-      <defs>
-        <linearGradient id="sareeG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#a3122f"/><stop offset="1" stop-color="#7d0e24"/>
-        </linearGradient>
-        <linearGradient id="dhotiG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#fffdf6"/><stop offset="1" stop-color="#f2e6cf"/>
-        </linearGradient>
-        <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#c9a227" stop-opacity=".22"/><stop offset="1" stop-color="#c9a227" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-
-      <!-- halo -->
-      <ellipse cx="300" cy="250" rx="220" ry="150" fill="url(#glow)"/>
-
-      <!-- mandapam pillars -->
-      <g fill="#e8d9b6" stroke="#c9a227" stroke-width="1.5">
-        <rect x="74" y="120" width="34" height="230" rx="3"/>
-        <rect x="66" y="342" width="50" height="14" rx="2"/>
-        <rect x="66" y="108" width="50" height="14" rx="2"/>
-        <rect x="492" y="120" width="34" height="230" rx="3"/>
-        <rect x="484" y="342" width="50" height="14" rx="2"/>
-        <rect x="484" y="108" width="50" height="14" rx="2"/>
-      </g>
-      <g stroke="#c9a227" stroke-width="1" opacity=".7" fill="none">
-        <path d="M80 150h22M80 180h22M80 210h22M80 240h22M80 270h22M80 300h22"/>
-        <path d="M498 150h22M498 180h22M498 210h22M498 240h22M498 270h22M498 300h22"/>
-      </g>
-
-      <!-- canopy arch -->
-      <path d="M66 112 Q300 20 534 112" fill="none" stroke="#c9a227" stroke-width="2.5"/>
-      <path d="M66 122 Q300 34 534 122" fill="none" stroke="#a3122f" stroke-width="6" opacity=".85"/>
-      <g id="canopy-leaves"></g>
-
-      <!-- floor -->
-      <path d="M40 356h520" stroke="#c9a227" stroke-width="2"/>
-      <ellipse cx="300" cy="356" rx="180" ry="10" fill="#c9a227" opacity=".12"/>
-      <!-- muggu on floor -->
-      <g stroke="#c9a227" stroke-width="1" fill="none" opacity=".55" transform="translate(300,356) scale(1,0.32)">
-        <circle r="52"/><circle r="38"/>
-        <g id="floor-muggu"></g>
-      </g>
-
-      <!-- ===== GROOM (left, facing right) ===== -->
-      <g>
-        <!-- dhoti -->
-        <path d="M212 262 h54 l20 92 h-94 Z" fill="url(#dhotiG)" stroke="#d9c9a5" stroke-width="1"/>
-        <path d="M198 342 h94 l3 12 h-100 Z" fill="#c9a227" opacity=".85"/>
-        <!-- kurta -->
-        <path d="M214 200 q25 -10 50 0 l6 66 h-62 Z" fill="#fffdf6" stroke="#d9c9a5"/>
-        <!-- angavastram -->
-        <path d="M232 200 l30 0 l-22 66 h-14 Z" fill="#c9a227" opacity=".55"/>
-        <!-- neck + head -->
-        <rect x="231" y="186" width="16" height="16" rx="6" fill="#e0a97c"/>
-        <circle cx="239" cy="170" r="25" fill="#e9b78a"/>
-        <path d="M214 168 a25 25 0 0 1 50 0 a25 17 0 0 0 -50 0 Z" fill="#2b1b12"/>
-        <!-- ear + tilak -->
-        <ellipse cx="216" cy="174" rx="3" ry="4.5" fill="#e0a97c"/>
-        <path d="M247 156 q3 8 0 14" fill="none" stroke="#a3122f" stroke-width="2.2" stroke-linecap="round"/>
-        <!-- garland on neck -->
-        <path d="M224 198 q15 26 30 0" fill="none" stroke="#e08a1e" stroke-width="5" stroke-linecap="round"/>
-        <path d="M226 200 q13 22 26 0" fill="none" stroke="#f2e6cf" stroke-width="3" stroke-linecap="round"/>
-        <!-- arm offering garland -->
-        <path d="M264 214 q30 6 44 22" fill="none" stroke="#e9b78a" stroke-width="10" stroke-linecap="round"/>
-      </g>
-
-      <!-- ===== BRIDE (right, facing left) ===== -->
-      <g>
-        <!-- saree -->
-        <path d="M334 258 h56 l26 96 h-108 Z" fill="url(#sareeG)"/>
-        <path d="M308 342 h108 l3 12 h-114 Z" fill="#c9a227" opacity=".9"/>
-        <!-- blouse -->
-        <path d="M336 200 q26 -10 52 0 l4 60 h-60 Z" fill="#8d0f27"/>
-        <!-- pallu -->
-        <path d="M386 202 q26 40 12 100 q-8 26 -22 30 l-6 -20 q16 -34 4 -76 Z" fill="#c4173b" opacity=".95"/>
-        <path d="M386 202 q26 40 12 100" fill="none" stroke="#c9a227" stroke-width="2.5"/>
-        <!-- neck + head -->
-        <rect x="354" y="186" width="16" height="16" rx="6" fill="#dfa87c"/>
-        <circle cx="362" cy="170" r="24" fill="#eab98d"/>
-        <!-- hair + bun + braid -->
-        <path d="M338 170 a24 24 0 0 1 48 0 a24 16 0 0 0 -48 0 Z" fill="#241510"/>
-        <circle cx="389" cy="180" r="15" fill="#241510"/>
-        <path d="M394 192 q12 40 2 78" fill="none" stroke="#241510" stroke-width="9" stroke-linecap="round"/>
-        <g fill="#fffdf6"><circle cx="396" cy="204" r="2.6"/><circle cx="398" cy="218" r="2.6"/><circle cx="399" cy="232" r="2.6"/><circle cx="398" cy="246" r="2.6"/><circle cx="396" cy="260" r="2.6"/></g>
-        <!-- jewellery -->
-        <path d="M346 156 q16 -12 32 0" fill="none" stroke="#c9a227" stroke-width="2"/>
-        <path d="M362 148 v-9" stroke="#c9a227" stroke-width="2"/>
-        <circle cx="362" cy="137" r="4" fill="#c9a227"/>
-        <ellipse cx="340" cy="176" rx="3" ry="4" fill="#c9a227"/>
-        <circle cx="340" cy="183" r="2.4" fill="#c9a227"/>
-        <path d="M344 200 q18 20 36 0" fill="none" stroke="#c9a227" stroke-width="3"/>
-        <!-- garland on neck -->
-        <path d="M346 202 q16 26 32 0" fill="none" stroke="#e08a1e" stroke-width="5" stroke-linecap="round"/>
-        <!-- arm offering garland -->
-        <path d="M336 216 q-30 6 -44 22" fill="none" stroke="#eab98d" stroke-width="10" stroke-linecap="round"/>
-      </g>
-
-      <!-- ===== exchanged garland between them ===== -->
-      <g id="jaimala"></g>
-
-      <!-- falling petals -->
-      <g id="petals-fall"></g>
-    </svg>
 
     <div class="names">
       <span class="name">Teja</span>
@@ -1127,60 +1020,13 @@ function drawToran(){
 drawToran();
 let toranT; window.addEventListener('resize', ()=>{ clearTimeout(toranT); toranT = setTimeout(drawToran, 180); });
 
-/* ================= CANOPY LEAVES + FLOOR MUGGU + JAIMALA + PETALS ================= */
+/* ================= MUGGU DIVIDER ================= */
 (function(){
-  // hanging leaves along the canopy arch
-  const c = document.getElementById('canopy-leaves');
-  let out = '';
-  for(let i=0;i<=22;i++){
-    const t = i/22;
-    const x = 66 + t*468;
-    const y = 122 + (-88)*(4*t*(1-t));   // parabola matching the arch
-    const h = 16 + (i%3)*5;
-    out += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q 4 ${h/2} 0 ${h} q -4 ${-h/2} 0 ${-h}Z" fill="#2e6b3a" opacity=".9"/>`;
-    if(i%4===0) out += `<circle cx="${x.toFixed(1)}" cy="${(y+h+5).toFixed(1)}" r="3.4" fill="#e08a1e"/>`;
-  }
-  c.innerHTML = out;
-
-  // radiating floor muggu
-  const m = document.getElementById('floor-muggu');
-  let mo = '';
-  for(let i=0;i<12;i++){
-    const a = i*30;
-    mo += `<path d="M0 -38 q 8 -8 0 -14 q -8 6 0 14Z" transform="rotate(${a})" fill="#c9a227" opacity=".5" stroke="none"/>`;
-  }
-  m.innerHTML = mo;
-
-  // exchanged garland arcs between the couple
-  const j = document.getElementById('jaimala');
-  let jo = '<path d="M308 236 q-8 34 -8 46" fill="none" stroke="#e08a1e" stroke-width="4" stroke-linecap="round" opacity=".95"/>';
-  jo += '<path d="M292 238 q6 32 8 44" fill="none" stroke="#e08a1e" stroke-width="4" stroke-linecap="round" opacity=".95"/>';
-  for(let i=0;i<9;i++){
-    const t=i/8, y=238+t*46, x1=308-8*t*t*1.2, x2=292+8*t*t*1.2;
-    jo += `<circle cx="${x1.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6" fill="#f0a52a"/>`;
-    jo += `<circle cx="${x2.toFixed(1)}" cy="${y.toFixed(1)}" r="3.6" fill="#fff4e0"/>`;
-  }
-  jo += '<circle cx="300" cy="288" r="5" fill="#c9a227"/>';
-  j.innerHTML = jo;
-
-  // falling petals, gently animated
-  const f = document.getElementById('petals-fall');
-  let fo = '';
-  const seeds = [[120,.0],[180,1.9],[240,3.4],[300,2.2],[360,.8],[420,4.1],[480,2.7],[150,5.2],[450,1.2],[270,4.6]];
-  seeds.forEach(([x,delay],i)=>{
-    const dur = 9 + (i%4)*2.5;
-    const col = i%3===0 ? '#f0a52a' : (i%3===1 ? '#e8607f' : '#fff0d4');
-    fo += `<g class="petal"><path d="M0 0 q5 -7 0 -12 q-5 5 0 12Z" fill="${col}" opacity=".85">
-      <animateTransform attributeName="transform" type="translate" dur="${dur}s" begin="-${delay}s" repeatCount="indefinite"
-        values="${x} 40; ${x-16} 200; ${x+12} 348" calcMode="linear"/>
-    </path></g>`;
-  });
-  f.innerHTML = fo;
-
-  // muggu dots
   const md = document.getElementById('muggu-dots');
-  let ds='';
-  for(let x=20;x<=140;x+=20) for(let y=10;y<=50;y+=20) ds+=`<circle cx="${x}" cy="${y}" r="1.6" fill="currentColor" stroke="none"/>`;
+  if(!md) return;
+  let ds = '';
+  for(let x=20;x<=140;x+=20) for(let y=10;y<=50;y+=20)
+    ds += `<circle cx="${x}" cy="${y}" r="1.6" fill="currentColor" stroke="none"/>`;
   md.innerHTML = ds;
 })();
 

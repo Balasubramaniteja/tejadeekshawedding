@@ -77,8 +77,8 @@ images (Freepik, Shutterstock, Adobe Stock and the like) need a licence that cov
 website, and some free tiers additionally require visible attribution.
 
 The five event illustrations and the background music were supplied by the couple. Everything else
-on the page — the mandapam couple, the toran, the opening-screen mandala, the muggu dividers
-and the fallback scenes — is drawn in SVG specifically for this invitation, so there is nothing to licence or
+on the page — the toran, the opening-screen mandala, the muggu dividers and the per-event
+fallback scenes — is drawn in SVG specifically for this invitation, so there is nothing to licence or
 attribute for those.
 
 ## Language
