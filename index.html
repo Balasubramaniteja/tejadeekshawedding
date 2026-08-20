@@ -128,9 +128,11 @@ section{padding:70px 0;position:relative}
 /* ================= EVENTS ================= */
 .events{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
 .event{padding:26px 22px 28px;text-align:center;display:flex;flex-direction:column}
-.event .scene{width:100%;height:auto;display:block;margin:0 0 18px;
+.scene-wrap{position:relative;width:100%;margin:0 0 18px;overflow:hidden;line-height:0;
   border:1px solid rgba(201,162,39,.45);box-shadow:0 4px 14px rgba(74,10,24,.10)}
-.event.featured .scene{border-color:var(--gold)}
+.event.featured .scene-wrap{border-color:var(--gold)}
+.event .scene{width:100%;height:auto;display:block}
+.event .photo{width:100%;display:block;aspect-ratio:320/165;object-fit:cover}
 .event .sub{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Marcellus',serif;margin:0}
 .event h3{font-size:1.55rem;color:var(--maroon);margin:6px 0 0}
 .event h3 .te{display:block;font-size:.62em;color:var(--gold);margin-top:2px}
@@ -188,16 +190,50 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
 .muggu{display:block;width:150px;height:auto;margin:0 auto;color:var(--gold);opacity:.75}
 
-/* ================= MUSIC TOGGLE ================= */
+/* ================= OPENING GATE ================= */
+.opening{
+  position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(201,162,39,.20), transparent 62%),
+    linear-gradient(180deg,#fffdf8,var(--cream));
+  text-align:center;padding:26px;transition:opacity .7s ease,visibility .7s ease;
+}
+.opening.hidden{opacity:0;visibility:hidden}
+body.locked{overflow:hidden}
+body.locked .music-btn{display:none}
+.opening-inner{max-width:430px;width:100%}
+.opening .ring{width:84px;height:84px;display:block;margin:0 auto 18px;animation:spin 110s linear infinite}
+.opening-eyebrow{font-family:'Noto Serif Telugu',serif;color:var(--gold);font-size:1.02rem;margin:0}
+.opening-names{font-family:'Marcellus',serif;color:var(--maroon);font-size:clamp(1.9rem,8.5vw,2.9rem);margin:12px 0 8px;line-height:1.18}
+.opening-names span{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;display:inline-block;margin:0 .18em}
+.opening-date{font-family:'Marcellus',serif;letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;color:var(--muted);margin:0}
+.open-btn{
+  width:84px;height:84px;border-radius:50%;margin:32px auto 0;
+  display:flex;align-items:center;justify-content:center;position:relative;
+  background:var(--maroon);border:1px solid var(--gold);color:var(--gold-lt);cursor:pointer;
+  box-shadow:0 10px 30px rgba(74,10,24,.28);transition:transform .25s;
+}
+.open-btn:hover{transform:scale(1.06)}
+.open-btn svg{width:30px;height:30px;margin-left:5px}
+.open-btn::after{content:"";position:absolute;inset:-11px;border-radius:50%;border:1px solid var(--gold);
+  opacity:.65;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.3);opacity:0}}
+.opening-hint{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:22px 0 0}
+.opening-silent{background:none;border:0;color:var(--muted);font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:.95rem;margin-top:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px}
+.opening-silent:hover{color:var(--maroon)}
+@media (prefers-reduced-motion:reduce){.open-btn::after{animation:none}.opening .ring{animation:none}}
+
+/* ================= MUSIC TOGGLE (persistent, after the gate) ================= */
 .music-btn{
   position:fixed;right:18px;bottom:18px;z-index:50;
-  width:52px;height:52px;border-radius:50%;cursor:pointer;
+  width:48px;height:48px;border-radius:50%;cursor:pointer;
   background:var(--maroon);border:1px solid var(--gold);color:var(--gold-lt);
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 8px 22px rgba(74,10,24,.3);transition:transform .25s,background .25s;
 }
 .music-btn:hover{transform:scale(1.07)}
-.music-btn svg{width:22px;height:22px}
+.music-btn svg{width:20px;height:20px}
 .music-btn .bars rect{transform-origin:bottom;animation:bar 1s ease-in-out infinite}
 .music-btn .bars rect:nth-child(2){animation-delay:.18s}
 .music-btn .bars rect:nth-child(3){animation-delay:.36s}
@@ -206,17 +242,6 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 .music-btn.paused .bars rect{animation-play-state:paused;transform:scaleY(.4)}
 .music-btn .slash{display:none}
 .music-btn.paused .slash{display:block}
-.music-hint{
-  position:fixed;right:80px;bottom:31px;z-index:50;background:#fffdf8;color:var(--maroon);
-  border:1px solid var(--gold);padding:7px 14px;font-size:.78rem;font-family:'Marcellus',serif;
-  letter-spacing:.08em;white-space:nowrap;box-shadow:0 6px 18px var(--shadow);
-  opacity:0;transform:translateX(8px);transition:.4s;pointer-events:none;
-}
-.music-hint.show{opacity:1;transform:none}
-@media(max-width:560px){
-  .music-hint{right:18px;bottom:80px;transform:translateY(8px);font-size:.72rem;padding:6px 11px}
-  .music-hint.show{transform:none}
-}
 
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
@@ -244,9 +269,10 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
   <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4.5"/></filter>
 </defs></svg>
 
+<iframe name="gformSink" title="RSVP submission target" style="display:none" aria-hidden="true"></iframe>
+
 <!-- ==================== MUSIC ==================== -->
 <audio id="bgm" loop preload="auto" src="assets/mangala-vadyam.mp3"></audio>
-<span class="music-hint" id="musicHint">Tap for wedding music</span>
 <button class="music-btn paused" id="musicBtn" type="button" aria-label="Play wedding music" title="Wedding music">
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <g class="bars" fill="currentColor">
@@ -258,6 +284,28 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
     <path class="slash" d="M3 21 L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
   </svg>
 </button>
+
+<!-- ==================== OPENING ==================== -->
+<div class="opening" id="opening" role="dialog" aria-label="Open the wedding invitation">
+  <div class="opening-inner">
+    <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+      <g fill="none" stroke="#c9a227" stroke-width="1">
+        <circle cx="60" cy="60" r="47" opacity=".45"/><circle cx="60" cy="60" r="39" opacity=".8"/>
+        <circle cx="60" cy="60" r="15"/><g id="gate-petals"></g>
+      </g>
+      <circle cx="60" cy="60" r="5" fill="#6d0f24"/>
+    </svg>
+    <p class="opening-eyebrow te">శుభ వివాహం</p>
+    <p class="opening-names">Teja<span>weds</span>Deeksha</p>
+    <p class="opening-date">21 October 2026 &middot; Shawnee, Kansas</p>
+
+    <button class="open-btn" id="openBtn" type="button" aria-label="Open the invitation with music">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5 19 12 8 18.5Z" fill="currentColor"/></svg>
+    </button>
+    <p class="opening-hint">Tap to open &middot; with music</p>
+    <button class="opening-silent" id="openSilentBtn" type="button">Open without music</button>
+  </div>
+</div>
 
 <!-- ==================== HERO ==================== -->
 <header class="hero">
@@ -476,7 +524,7 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
       <!-- ============ 1. HALDI ============ -->
       <article class="event card reveal">
-        <svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Morning haldi ceremony: turmeric in a brass plate beneath marigold garlands">
+        <div class="scene-wrap"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Morning haldi ceremony: turmeric in a brass plate beneath marigold garlands">
           <defs>
             <linearGradient id="haldiSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#fdf3d2"/><stop offset=".5" stop-color="#f9e5ac"/><stop offset="1" stop-color="#f1d386"/>
@@ -540,6 +588,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
             <circle cx="266" cy="100" r="2.1"><animate attributeName="cy" values="100;88;100" dur="8s" repeatCount="indefinite"/></circle>
           </g>
         </svg>
+        <img class="photo" data-src="assets/events/haldi.jpg" alt="Haldi" hidden>
+        </div>
         <p class="sub">Turmeric Ceremony</p>
         <h3>Haldi<span class="te">పసుపు</span></h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
@@ -549,7 +599,7 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
       <!-- ============ 2. NALUGU ============ -->
       <article class="event card reveal">
-        <svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Nalugu ceremony: a brass kalash with coconut and mango leaves beside lit oil lamps on a kolam">
+        <div class="scene-wrap"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Nalugu ceremony: a brass kalash with coconut and mango leaves beside lit oil lamps on a kolam">
           <defs>
             <linearGradient id="nalSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#fbeed6"/><stop offset=".6" stop-color="#f4dcb6"/><stop offset="1" stop-color="#e8c795"/>
@@ -626,6 +676,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
             <circle cx="176" cy="139" r="3"/><circle cx="132" cy="146" r="2.6"/><circle cx="214" cy="152" r="2.4"/>
           </g>
         </svg>
+        <img class="photo" data-src="assets/events/nalugu.jpg" alt="Nalugu" hidden>
+        </div>
         <p class="sub">Ritual Bath &amp; Blessings</p>
         <h3>Nalugu<span class="te">నలుగు</span></h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Afternoon &middot; 4:00 PM onwards</span></p>
@@ -635,7 +687,7 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
       <!-- ============ 3. WELCOME DINNER ============ -->
       <article class="event card reveal">
-        <svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Evening welcome dinner: lanterns and string lights over a banana-leaf feast under a starry sky">
+        <div class="scene-wrap"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Evening welcome dinner: lanterns and string lights over a banana-leaf feast under a starry sky">
           <defs>
             <linearGradient id="dinSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#2b2a55"/><stop offset=".45" stop-color="#5b3f63"/>
@@ -703,6 +755,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
             </path>
           </g>
         </svg>
+        <img class="photo" data-src="assets/events/welcome-dinner.jpg" alt="Welcome Dinner" hidden>
+        </div>
         <p class="sub">Family &amp; Friends</p>
         <h3>Welcome Dinner<span class="te">విందు</span></h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Evening &middot; 7:00 PM onwards</span></p>
@@ -712,7 +766,7 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
       <!-- ============ 4. PELLIKODUKU & PELLIKUTHURU ============ -->
       <article class="event card reveal">
-        <svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Pellikoduku and Pellikuthuru: the groom with a parasol and the bride with jasmine, seated beneath a coconut-leaf pandal">
+        <div class="scene-wrap"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Pellikoduku and Pellikuthuru: the groom with a parasol and the bride with jasmine, seated beneath a coconut-leaf pandal">
           <defs>
             <linearGradient id="pkSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#e8f0d8"/><stop offset=".55" stop-color="#f6ecc9"/><stop offset="1" stop-color="#f0dda8"/>
@@ -783,6 +837,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
             <circle cx="172" cy="80" r="2"><animate attributeName="cy" values="80;112;80" dur="13s" repeatCount="indefinite"/></circle>
           </g>
         </svg>
+        <img class="photo" data-src="assets/events/pellikoduku-pellikuthuru.jpg" alt="Pellikoduku and Pellikuthuru" hidden>
+        </div>
         <p class="sub">Morning Rituals</p>
         <h3>Pellikoduku &amp; Pellikuthuru<span class="te">పెళ్ళికొడుకు &amp; పెళ్ళికూతురు</span></h3>
         <p class="when"><strong>Wednesday, 21 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
@@ -793,7 +849,7 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
       <!-- ============ 5. MUHURTHAM ============ -->
       <article class="event card featured reveal">
         <span class="ribbon">The Wedding</span>
-        <svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Muhurtham: the sacred fire in a mandapam hung with marigold garlands">
+        <div class="scene-wrap"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Muhurtham: the sacred fire in a mandapam hung with marigold garlands">
           <defs>
             <linearGradient id="muhSky" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#fdf6e6"/><stop offset=".55" stop-color="#f6e3c4"/><stop offset="1" stop-color="#ecd0a4"/>
@@ -853,6 +909,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
             <circle cx="160" cy="78" r="1.3"><animate attributeName="cy" values="78;40;78" dur="7s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="7s" repeatCount="indefinite"/></circle>
           </g>
         </svg>
+        <img class="photo" data-src="assets/events/muhurtham.jpg" alt="Muhurtham" hidden>
+        </div>
         <p class="sub">Sacred Vows</p>
         <h3>Muhurtham<span class="te">ముహూర్తం</span></h3>
         <p class="when"><strong>Wednesday, 21 October 2026</strong><span>11:30 AM</span></p>
@@ -996,7 +1054,22 @@ const W = {
     { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T113000", end:"20261021T133000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" }
   ],
-  icsDesc: "The wedding of Ganaparti Teja and Enukonda Sai Deeksha."
+  icsDesc: "The wedding of Ganaparti Teja and Enukonda Sai Deeksha.",
+
+  // ---- RSVP -> Google Form ------------------------------------------------
+  // Fill these in and every RSVP lands in your Google Sheet automatically.
+  // action  : the form's POST url — take the "viewform" link and replace the
+  //           trailing /viewform with /formResponse
+  // entries : the entry.NNNNNNN id of each question (see README for how to find them)
+  // Leave `action` empty and the form falls back to sending the reply over WhatsApp.
+  googleForm: {
+    action:    "",
+    name:      "",   // e.g. "entry.1234567890"
+    attending: "",
+    guests:    "",
+    events:    "",
+    message:   ""
+  }
 };
 
 /* ================= COUNTDOWN ================= */
@@ -1106,34 +1179,68 @@ let toranT; window.addEventListener('resize', ()=>{ clearTimeout(toranT); toranT
   md.innerHTML = ds;
 })();
 
-/* ================= RSVP → WhatsApp ================= */
+/* ================= RSVP ================= */
 document.getElementById('rsvpForm').addEventListener('submit', function(e){
   e.preventDefault();
   const fd = new FormData(this);
-  const name = (fd.get('name')||'').toString().trim();
   const status = document.getElementById('rsvpStatus');
+  const name = (fd.get('name')||'').toString().trim();
+
   if(!name){
     status.textContent = 'Please add your name so we know who is replying.';
     status.classList.add('show');
     document.getElementById('rName').focus();
     return;
   }
-  const events = fd.getAll('events');
+
+  const data = {
+    name,
+    attending: fd.get('attending'),
+    guests:    fd.get('guests'),
+    events:    fd.getAll('events'),
+    message:   (fd.get('message')||'').toString().trim()
+  };
+  const safe = name.replace(/[<>&]/g,'');
+  const g = W.googleForm || {};
+
+  if(g.action){
+    // Post straight into the couple's Google Form (and therefore their Sheet).
+    // Submitting into a hidden iframe avoids the cross-origin response entirely.
+    const f = document.createElement('form');
+    f.action = g.action; f.method = 'POST'; f.target = 'gformSink'; f.style.display = 'none';
+    const add = (k, v) => {
+      if(!k) return;
+      const i = document.createElement('input');
+      i.type = 'hidden'; i.name = k; i.value = v;
+      f.appendChild(i);
+    };
+    add(g.name, data.name);
+    add(g.attending, data.attending);
+    add(g.guests, data.guests);
+    data.events.forEach(v => add(g.events, v));
+    if(data.message) add(g.message, data.message);
+    document.body.appendChild(f);
+    f.submit();
+    setTimeout(() => f.remove(), 3000);
+
+    this.reset();
+    status.innerHTML = 'Thank you, ' + safe + '. Your RSVP has been received &mdash; we are so glad you wrote back.';
+    status.classList.add('show');
+    return;
+  }
+
+  // Fallback while the Google Form is not configured: hand the reply to WhatsApp.
   const lines = [
     'RSVP — Teja weds Deeksha',
-    'Name: ' + name,
-    'Response: ' + fd.get('attending'),
-    'Guests: ' + fd.get('guests'),
-    'Events: ' + (events.length ? events.join(', ') : '—')
+    'Name: ' + data.name,
+    'Response: ' + data.attending,
+    'Guests: ' + data.guests,
+    'Events: ' + (data.events.length ? data.events.join(', ') : '—')
   ];
-  const msg = (fd.get('message')||'').toString().trim();
-  if(msg) lines.push('Wishes: ' + msg);
-
+  if(data.message) lines.push('Wishes: ' + data.message);
   const text = encodeURIComponent(lines.join('\n'));
-  const wa = 'https://wa.me/' + W.phone.replace(/[^0-9]/g,'') + '?text=' + text;
-  window.open(wa, '_blank', 'noopener');
-
-  status.innerHTML = 'Thank you, ' + name.replace(/[<>&]/g,'') + '. Your RSVP is ready in WhatsApp — press send there to confirm.<br>' +
+  window.open('https://wa.me/' + W.phone.replace(/[^0-9]/g,'') + '?text=' + text, '_blank', 'noopener');
+  status.innerHTML = 'Thank you, ' + safe + '. Your RSVP is ready in WhatsApp — press send there to confirm.<br>' +
     'If WhatsApp did not open, <a href="sms:' + W.phone + '?&body=' + text + '">send it as a text message</a> instead.';
   status.classList.add('show');
 });
@@ -1233,42 +1340,63 @@ document.getElementById('icsBtn').addEventListener('click', function(){
 })();
 
 /* ================= BACKGROUND MUSIC ================= */
-(function(){
+const music = (function(){
   const audio = document.getElementById('bgm');
   const btn   = document.getElementById('musicBtn');
-  const hint  = document.getElementById('musicHint');
   audio.volume = 0.45;
-  let started = false;
 
-  function setUI(playing){
+  const setUI = playing => {
     btn.classList.toggle('paused', !playing);
     btn.setAttribute('aria-label', playing ? 'Pause wedding music' : 'Play wedding music');
-  }
-
-  function play(){
-    return audio.play().then(()=>{ started = true; setUI(true); hint.classList.remove('show'); });
-  }
-
-  btn.addEventListener('click', ()=>{
-    if(audio.paused) play().catch(()=>{}); else { audio.pause(); setUI(false); }
-  });
-
-  // Browsers block sound until the visitor interacts — start on their first gesture.
-  const kick = () => {
-    if(started) return;
-    play().catch(()=>{}).finally(()=>{
-      ['pointerdown','keydown','touchstart','scroll'].forEach(e=>window.removeEventListener(e, kick));
-    });
   };
-  ['pointerdown','keydown','touchstart','scroll'].forEach(e=>window.addEventListener(e, kick, {once:false, passive:true}));
+  const play  = () => audio.play().then(() => setUI(true));
+  const pause = () => { audio.pause(); setUI(false); };
 
-  // If autoplay never got permission, nudge once.
-  setTimeout(()=>{ if(!started) hint.classList.add('show'); }, 2200);
-  setTimeout(()=>hint.classList.remove('show'), 9000);
-
-  // Try immediately in case the browser allows it.
-  play().catch(()=>setUI(false));
+  btn.addEventListener('click', () => { audio.paused ? play().catch(()=>{}) : pause(); });
+  setUI(false);
+  return { play, pause };
 })();
+
+/* ================= OPENING GATE =================
+   Phones refuse to start audio without a real tap, so the invitation opens
+   behind a play button rather than failing silently on load. */
+(function(){
+  const gate = document.getElementById('opening');
+  if(!gate) return;
+  document.body.classList.add('locked');
+
+  document.getElementById('gate-petals').innerHTML =
+    Array.from({length:16}, (_,i) =>
+      `<path d="M60 45 q 7 -12 0 -22 q -7 10 0 22Z" transform="rotate(${i*22.5} 60 60)"/>`).join('');
+
+  let opened = false;
+  function open(withMusic){
+    if(opened) return;
+    opened = true;
+    if(withMusic) music.play().catch(()=>{});
+    gate.classList.add('hidden');
+    document.body.classList.remove('locked');
+    setTimeout(() => gate.remove(), 800);
+  }
+  document.getElementById('openBtn').addEventListener('click', () => open(true));
+  document.getElementById('openSilentBtn').addEventListener('click', () => open(false));
+})();
+
+/* ================= SUPPLIED EVENT PHOTOS =================
+   Each card falls back to its drawn scene until a real image is dropped into
+   assets/events/, so a missing file never shows a broken image. */
+document.querySelectorAll('.event .photo').forEach(img => {
+  const src = img.dataset.src;
+  if(!src) return;
+  const probe = new Image();
+  probe.onload = () => {
+    img.src = src;
+    img.hidden = false;
+    const drawn = img.parentNode.querySelector('svg.scene');
+    if(drawn) drawn.style.display = 'none';
+  };
+  probe.src = src;
+});
 
 /* ================= REVEAL ON SCROLL ================= */
 const io = new IntersectionObserver(es=>{
