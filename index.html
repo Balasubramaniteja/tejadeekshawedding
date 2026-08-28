@@ -222,129 +222,141 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 .story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* --- the timeline, all of it gated behind .playing --- */
-.story.playing .sc-open{animation:sceneShowLong 9s ease both}
-@keyframes sceneShowLong{0%{opacity:0}8%{opacity:1}93%{opacity:1}100%{opacity:0}}
-.story.playing .sc-cafe{animation:sceneShow 5.8s ease 8.6s both}
-.story.playing .sc-selfie{animation:sceneShow 3.8s ease 14s both}
+.story.playing .sc-open{animation:sceneShowLong 13.2s ease both}
+@keyframes sceneShowLong{0%{opacity:0}4%{opacity:1}96%{opacity:1}100%{opacity:0}}
+.story.playing .sc-cafe{animation:sceneShow 5s ease 12.8s both}
+.story.playing .sc-selfie{animation:sceneShow 3.6s ease 17.4s both}
 @keyframes sceneShow{0%{opacity:0}9%{opacity:1}86%{opacity:1}100%{opacity:0}}
 
-.story.playing .cap-1a{animation:capShow 3.2s ease .5s both}
-.story.playing .cap-1b{animation:capShow 3.6s ease 5s both}
-.story.playing .cap-2{animation:capShow 5s ease 9.2s both}
-.story.playing .cap-3{animation:capShow 3s ease 14.8s both}
+.story.playing .cap-1a{animation:capShow 2.6s ease .6s both}
+.story.playing .cap-2{animation:capShow 4.2s ease 13.2s both}
+.story.playing .cap-3{animation:capShow 2.8s ease 18.2s both}
 @keyframes capShow{0%{opacity:0;transform:translateY(8px)}16%{opacity:.95;transform:none}
   84%{opacity:.95;transform:none}100%{opacity:0}}
 
-/* ---- scene 1a: the two panels ---- */
-.s1-panels{transform-origin:550px 400px}
-.figure{opacity:0}
-.story.playing .fig-g{animation:figRise 1s cubic-bezier(.2,.7,.3,1) .35s both}
-.story.playing .fig-b{animation:figRise 1s cubic-bezier(.2,.7,.3,1) .6s both}
-@keyframes figRise{from{opacity:0;transform:translateY(26px) scale(.99)}to{opacity:1;transform:none}}
-.shade{opacity:0}
-.story.playing .shade{animation:shadeIn 1s ease .55s both}
-@keyframes shadeIn{to{opacity:1}}
-.story.playing .s1-panels{animation:panelsIn .9s ease both, panUp 1.5s ease-in 3.5s both}
-@keyframes panelsIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
-@keyframes panUp{0%{transform:translateY(0) scale(1)}100%{transform:translateY(72%) scale(1.3);opacity:0}}
-.panel-l{transform-origin:275px 300px}
-.panel-r{transform-origin:825px 300px}
-.story.playing .panel-l{animation:slideL .9s cubic-bezier(.2,.7,.3,1) both}
-.story.playing .panel-r{animation:slideR .9s cubic-bezier(.2,.7,.3,1) both}
-@keyframes slideL{from{transform:translateX(-90px)}to{transform:none}}
-@keyframes slideR{from{transform:translate(640px,0)}to{transform:translate(550px,0)}}
-.seam{opacity:0}
-.story.playing .seam{animation:seamIn .5s ease .5s both}
-@keyframes seamIn{to{opacity:1}}
-.tiny-plane{opacity:0}
-.story.playing .tiny-plane{animation:tinyFly 2.6s linear 1.2s both}
-@keyframes tinyFly{
-  0%{opacity:0;transform:translate(20px,132px) rotate(-9deg)}
-  12%{opacity:.95}
-  88%{opacity:.95}
-  100%{opacity:0;transform:translate(500px,50px) rotate(-9deg)}
+/* ---- scene 1 · one unbroken camera move ---- */
+.s1-cam{transform-origin:752px 292px}
+.story.playing .s1-cam{animation:camPush 13.2s cubic-bezier(.35,0,.25,1) both}
+@keyframes camPush{
+  0%{transform:scale(1)}
+  19%{transform:scale(1.06)}
+  33%{transform:scale(2.9)}                 /* dive into the Kansas City light */
+  40%{transform:scale(1.12) translate(2%,1%)}
+  62%{transform:scale(1.06) translate(-3%,0)}
+  100%{transform:scale(1) translate(-5%,0)}
 }
-.field{transform-origin:275px 580px}
-.story.playing .field{animation:sway 4s ease-in-out infinite alternate}
-@keyframes sway{from{transform:skewX(-1.6deg)}to{transform:skewX(1.6deg)}}
-
-/* ---- scene 1b: up into the sky ---- */
-.s1-sky{opacity:0;transform-origin:550px 300px}
-.story.playing .s1-sky{animation:skyIn 5.4s ease 3.6s both}
-@keyframes skyIn{
-  0%{opacity:0;transform:translateY(-34%) scale(1.22)}
-  20%{opacity:1;transform:translateY(0) scale(1.1)}
-  100%{opacity:1;transform:translateY(0) scale(1)}
-}
-.goldwash{transform:translateX(640px)}
-.story.playing .goldwash{animation:warmUp 3.4s ease-in-out 4.8s both}
-@keyframes warmUp{from{transform:translateX(640px)}to{transform:translateX(-360px)}}
-.story.playing .clouds > g:nth-child(1){animation:drift1 9s linear 3.6s both}
-.story.playing .clouds > g:nth-child(2){animation:drift2 9s linear 3.6s both}
-.story.playing .clouds > g:nth-child(3){animation:drift1 11s linear 3.6s both}
-.story.playing .clouds > g:nth-child(4){animation:drift3 8s linear 3.6s both}
-.story.playing .clouds > g:nth-child(5){animation:drift2 10s linear 3.6s both}
-@keyframes drift1{from{transform:translateX(90px)}to{transform:translateX(-190px)}}
-@keyframes drift2{from{transform:translateX(140px)}to{transform:translateX(-150px)}}
-@keyframes drift3{from{transform:translateX(-60px)}to{transform:translateX(-300px)}}
-.trail{stroke-dasharray:1322;stroke-dashoffset:1322}
-.story.playing .trail{animation:drawTrail 4s ease-out 4.46s both}
-.story.playing .trail-thin{animation:drawTrail 4s ease-out 4.5s both}
-@keyframes drawTrail{to{stroke-dashoffset:0}}
-.sky-plane{opacity:0;transform:translate(-100px,392px) rotate(-20.4deg)}
-.story.playing .sky-plane{animation:skyFly 4s ease-out 4.4s both, planeIn .4s ease 4.4s both}
-@keyframes planeIn{from{opacity:0}to{opacity:1}}
-@keyframes skyFly{
-  0%{transform:translate(-100.0px,392.0px) rotate(-20.4deg)}
-  7.143%{transform:translate(-10.7px,360.4px) rotate(-18.5deg)}
-  14.29%{transform:translate(79.4px,331.9px) rotate(-16.5deg)}
-  21.43%{transform:translate(170.4px,306.6px) rotate(-14.5deg)}
-  28.57%{transform:translate(262.3px,284.6px) rotate(-12.4deg)}
-  35.71%{transform:translate(354.6px,266.0px) rotate(-10.3deg)}
-  42.86%{transform:translate(447.7px,250.9px) rotate(-8.1deg)}
-  50%{transform:translate(541.8px,239.3px) rotate(-5.9deg)}
-  57.14%{transform:translate(635.8px,231.5px) rotate(-3.7deg)}
-  64.29%{transform:translate(730.3px,227.3px) rotate(-1.4deg)}
-  71.43%{transform:translate(824.3px,226.8px) rotate(0.9deg)}
-  78.57%{transform:translate(918.8px,230.1px) rotate(3.1deg)}
-  85.71%{transform:translate(1013.2px,237.1px) rotate(5.4deg)}
-  92.86%{transform:translate(1106.8px,247.8px) rotate(7.6deg)}
-  100%{transform:translate(1200.0px,262.0px) rotate(9.8deg)}
-}
-}
-}
+/* 1 · the map */
+.s1-void{opacity:0}
+.story.playing .s1-void{animation:voidHold 5s ease both}
+@keyframes voidHold{0%{opacity:0}6%{opacity:1}78%{opacity:1}100%{opacity:0}}
+.ks-line{opacity:0}
+.story.playing .ks-line{animation:drawKs 2.2s ease-in-out .35s both}
+@keyframes drawKs{0%{stroke-dashoffset:var(--len);opacity:0}8%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+.ks-fill{opacity:0}
+.story.playing .ks-fill{animation:ksWarm 2.4s ease 2.3s both}
+@keyframes ksWarm{0%{opacity:0}60%{opacity:.10}100%{opacity:.06}}
+.ks-label{opacity:0}
+.story.playing .ks-label{animation:capShow 2.4s ease 2.5s both}
+.ks-hot{opacity:0;transform-origin:752px 292px}
+.story.playing .ks-hot{animation:hotUp 2.6s ease 2.6s both}
+@keyframes hotUp{0%{opacity:0;transform:scale(.5)}55%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.5)}}
+.ks-dot{opacity:0}
+.story.playing .ks-dot{animation:dotIn 1.4s ease both}
+@keyframes dotIn{0%{opacity:0;transform:scale(.3)}60%{opacity:.95;transform:scale(1)}100%{opacity:.7;transform:scale(1)}}
 .mote{opacity:0}
-.story.playing .mote{animation:moteUp 2.4s ease-out both}
-@keyframes moteUp{0%{opacity:0;transform:translateY(0) scale(.5)}
-  20%{opacity:.95}100%{opacity:0;transform:translateY(-46px) scale(1.4)}}
+.story.playing .mote{animation:moteDrift 7s ease-in-out both}
+@keyframes moteDrift{0%{opacity:0;transform:translate(0,0)}
+  18%{opacity:.85}70%{opacity:.7}100%{opacity:0;transform:translate(var(--dx,10px),-46px)}}
+
+/* 2 · Kansas City */
+.s1-city{opacity:0}
+.story.playing .s1-city{animation:cityIn 9.9s ease 3.9s both}
+@keyframes cityIn{0%{opacity:0}9%{opacity:1}84%{opacity:1}100%{opacity:0}}
+.win,.lamp-glow,.bok{opacity:0}
+.story.playing .win{animation:winOn 1.6s ease both}
+@keyframes winOn{to{opacity:.9}}
+.story.playing .lamp-glow{animation:winOn 1.8s ease 4.4s both}
+.story.playing .bok{animation:bokIn 2.2s ease both}
+@keyframes bokIn{to{opacity:.5}}
+
+/* 3 · the couple */
+.s1-pair{opacity:0;transform-origin:570px 520px}
+.story.playing .s1-pair{animation:pairIn 8.4s ease 4.7s both}
+@keyframes pairIn{
+  0%{opacity:0;transform:scale(1.02) translateY(10px)}
+  10%{opacity:1;transform:scale(1) translateY(0)}
+  62%{opacity:1;transform:scale(.92) translate(-4%,-2%)}   /* they walk on */
+  92%{opacity:1;transform:scale(.82) translate(-9%,-3%)}
+  100%{opacity:.9;transform:scale(.8) translate(-10%,-3%)}
+}
+.pair-wed{opacity:0}
+.story.playing .pair-wed{animation:becoming 1.1s ease 9.5s both}
+@keyframes becoming{0%{opacity:0}100%{opacity:1}}
+.story.playing .pair-now{animation:leaving 1.1s ease 9.5s both}
+@keyframes leaving{0%{opacity:1}100%{opacity:0}}
+.thread-pair{stroke-dasharray:60;stroke-dashoffset:60}
+.story.playing .thread-pair{animation:drawIn 1.4s ease 5.8s both}
+@keyframes drawIn{to{stroke-dashoffset:0}}
+
+/* 4 · the mandap */
+.s1-mandap{opacity:0;transform-origin:866px 470px}
+.story.playing .s1-mandap{animation:mandapIn 5.4s ease 8.2s both}
+@keyframes mandapIn{0%{opacity:0;transform:scale(.9)}30%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.04)}}
+.thread-long{stroke-dasharray:var(--tlen);stroke-dashoffset:var(--tlen)}
+.story.playing .thread-long{animation:drawIn 2.4s ease-out 8.8s both}
+.ks-echo{opacity:0}
+.story.playing .ks-echo{animation:echoIn 3s ease 9.2s both}
+@keyframes echoIn{0%{opacity:0}60%{opacity:.16}100%{opacity:.12}}
+.diya{opacity:0}
+.story.playing .diya{animation:diyaOn 1.6s ease both}
+@keyframes diyaOn{to{opacity:1}}
+.fairy{opacity:0}
+.story.playing .fairy{animation:twinkle 2.4s ease-in-out infinite alternate both}
+@keyframes twinkle{0%{opacity:.25}100%{opacity:1}}
+
+/* the words */
+.w-met{opacity:0}
+.story.playing .w-met{animation:wordsIn 3s ease 7.2s both}
+@keyframes wordsIn{0%{opacity:0;transform:translateY(14px)}20%{opacity:1;transform:none}
+  76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
+.s1-final{opacity:0}
+.story.playing .s1-final{animation:finalIn 1.8s ease 10.2s both}
+@keyframes finalIn{to{opacity:1}}
+.f-1,.f-2,.f-3,.f-rule{opacity:0}
+.story.playing .f-1{animation:riseIn 1.3s ease 10.5s both}
+.story.playing .f-rule{animation:ruleIn 1s ease 11.3s both}
+.story.playing .f-2{animation:riseIn 1.1s ease 11.5s both}
+.story.playing .f-3{animation:riseIn 1.1s ease 11.9s both}
+@keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes ruleIn{from{opacity:0;transform:scaleX(.2)}to{opacity:.8;transform:none}}
 
 /* ---- scene 2 ---- */
-.story.playing .sc-cafe svg{animation:cafePush 5.8s ease-in-out 8.6s both;transform-origin:50% 56%}
+.story.playing .sc-cafe svg{animation:cafePush 5s ease-in-out 12.8s both;transform-origin:50% 56%}
 @keyframes cafePush{0%{transform:scale(1.03)}55%{transform:scale(1.09)}100%{transform:scale(1.22)}}
-.focuspull{opacity:0}
-.story.playing .focuspull{animation:pullFocus 2.2s ease 11.6s both}
-@keyframes pullFocus{to{opacity:1}}
 .clock{opacity:0}
-.story.playing .clock{animation:clockShow 3s ease 9s both}
+.story.playing .clock{animation:clockShow 2.6s ease 13.1s both}
 @keyframes clockShow{0%{opacity:0;transform:translateY(-14px)}18%{opacity:1;transform:none}
   76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
+.focuspull{opacity:0}
+.story.playing .focuspull{animation:pullFocus 1.8s ease 15s both}
+@keyframes pullFocus{to{opacity:1}}
 .spark{opacity:0;transform-origin:550px 300px}
-.story.playing .spark{animation:sparkle 1.8s ease 12.4s both}
+.story.playing .spark{animation:sparkle 1.7s ease 15.5s both}
 @keyframes sparkle{0%{opacity:0;transform:scale(.4) rotate(0)}
   40%{opacity:1;transform:scale(1.5) rotate(90deg)}100%{opacity:0;transform:scale(2.2) rotate(180deg)}}
 
 /* ---- scene 3 ---- */
 .finder-img{transform-origin:550px 300px}
-.story.playing .finder-img{animation:finderIn 3.6s ease-out 14.1s both}
+.story.playing .finder-img{animation:finderIn 3.4s ease-out 17.5s both}
 @keyframes finderIn{from{transform:scale(1.1)}to{transform:scale(1)}}
 .finder{opacity:0}
-.story.playing .finder{animation:hudIn .6s ease 14.5s both}
+.story.playing .finder{animation:hudIn .6s ease 17.9s both}
 @keyframes hudIn{from{opacity:0}to{opacity:1}}
 .shutter{opacity:0}
-.story.playing .shutter{animation:shutterIn .5s ease 15.2s both, shutterTap .35s ease 16.4s}
+.story.playing .shutter{animation:shutterIn .5s ease 18.4s both, shutterTap .35s ease 19.6s}
 @keyframes shutterIn{from{opacity:0}to{opacity:1}}
 @keyframes shutterTap{50%{transform:scale(.82)}}
-.story.playing .story-flash{animation:flashNow .9s ease 16.9s both}
+.story.playing .story-flash{animation:flashNow .9s ease 20.1s both}
 @keyframes flashNow{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
 
 @media (prefers-reduced-motion:reduce){
@@ -498,174 +510,159 @@ body.locked .music-btn{display:none}
 <div class="story" id="story" role="dialog" aria-label="How Teja and Deeksha met">
   <button class="story-skip" id="storySkip" type="button">Skip &rsaquo;</button>
 
-  <!-- ---------- Scene 1 · two places, one sky ---------- -->
+  <!-- ---------- Scene 1 · Where our story began ---------- -->
   <section class="story-scene sc-open">
-    <svg viewBox="0 0 1100 600" role="img" aria-label="The groom on the California coast and the bride in a Kansas field, joined by a flight across the sky">
+    <svg viewBox="0 0 1100 600" role="img" aria-label="A golden outline of Kansas becomes a Kansas City evening, where Teja and Deeksha met, and leads to their wedding mandap">
       <defs>
-        <linearGradient id="caSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#6fbfe6"/><stop offset=".52" stop-color="#bde2f2"/><stop offset="1" stop-color="#f3e8cc"/>
+        <linearGradient id="voidBg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#080d20"/><stop offset=".55" stop-color="#101636"/><stop offset="1" stop-color="#161d42"/>
         </linearGradient>
-        <linearGradient id="ksSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f2bd63"/><stop offset=".48" stop-color="#f9dfa4"/><stop offset="1" stop-color="#f7ecc4"/>
+        <linearGradient id="duskSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1b2148"/><stop offset=".42" stop-color="#4b3560"/>
+          <stop offset=".72" stop-color="#a85a4a"/><stop offset="1" stop-color="#e79a52"/>
         </linearGradient>
-        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4f9fc4"/><stop offset="1" stop-color="#2d7699"/>
+        <linearGradient id="skylineFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1a1836"/><stop offset="1" stop-color="#2a1f3e"/>
         </linearGradient>
-        <linearGradient id="skyBlue" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4e9fd4"/><stop offset=".55" stop-color="#9fd2ec"/><stop offset="1" stop-color="#d8eef8"/>
+        <linearGradient id="groundFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2b2038"/><stop offset="1" stop-color="#150f22"/>
         </linearGradient>
-        <linearGradient id="skyGold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#e8894a"/><stop offset=".45" stop-color="#f6bf63"/><stop offset="1" stop-color="#fbe6ac"/>
-        </linearGradient>
-        <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#fff6cf" stop-opacity=".95"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
+        <radialGradient id="hotSpot" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#ffe9a8" stop-opacity=".95"/><stop offset="1" stop-color="#ffb648" stop-opacity="0"/>
         </radialGradient>
-        <filter id="bgSoft" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="2.6"/></filter>
-        <radialGradient id="shadeGrad" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#4a3a20" stop-opacity=".42"/><stop offset="1" stop-color="#4a3a20" stop-opacity="0"/>
+        <radialGradient id="horizonGlow" cx=".5" cy="1" r=".7">
+          <stop offset="0" stop-color="#ffcf7a" stop-opacity=".85"/><stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/>
         </radialGradient>
-        <linearGradient id="goldRamp" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#000"/><stop offset=".2" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>
-        </linearGradient>
-        <mask id="goldSweep"><rect width="2200" height="600" fill="url(#goldRamp)"/></mask>
-        <linearGradient id="trailGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#ffe9a8" stop-opacity="0"/><stop offset=".25" stop-color="#ffd77a"/>
+        <linearGradient id="threadGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ffd77a" stop-opacity="0"/><stop offset=".3" stop-color="#ffe9a8"/>
           <stop offset="1" stop-color="#fff3c4"/>
         </linearGradient>
+        <filter id="glowSoft" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="glowTight" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4"/></filter>
       </defs>
 
-      <!-- ============ the two places ============ -->
-      <g class="s1-panels">
-        <!-- ---- California ---- -->
-        <g class="panel-l">
-          <g filter="url(#bgSoft)">
-          <rect width="550" height="600" fill="url(#caSky)"/>
-          <circle cx="112" cy="104" r="80" fill="url(#sunGlow)"/>
-          <circle cx="112" cy="104" r="27" fill="#fffbe2" opacity=".92"/>
-          <g fill="#fffdf8" opacity=".7">
-            <ellipse cx="360" cy="92" rx="62" ry="23"/><ellipse cx="408" cy="82" rx="42" ry="18"/>
-            <ellipse cx="316" cy="84" rx="36" ry="15"/>
+      <!-- one camera for the whole scene, so the move never cuts -->
+      <g class="s1-cam">
+
+        <!-- ===== 1 · the map draws itself ===== -->
+        <g class="s1-void">
+          <rect width="1100" height="600" fill="url(#voidBg)"/>
+          <g class="motes"></g>
+          <path class="ks-line" d="M380 220 H648 L662 236 L678 242 L688 254 L712 262 L724 276 L748 284 L760 296 L764 306 V400 H380 Z"
+                fill="none" stroke="#ffd77a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+          <path class="ks-fill" d="M380 220 H648 L662 236 L678 242 L688 254 L712 262 L724 276 L748 284 L760 296 L764 306 V400 H380 Z"
+                fill="#ffd77a" opacity="0"/>
+          <g class="ks-lights"></g>
+          <g class="ks-hot">
+            <circle cx="752" cy="292" r="46" fill="url(#hotSpot)"/>
+            <circle cx="752" cy="292" r="4.5" fill="#fff6d8"/>
           </g>
-          <!-- ocean and shore -->
-          <rect y="330" width="550" height="96" fill="url(#sea)"/>
-          <g stroke="#fffdf8" stroke-width="3" fill="none" opacity=".45">
-            <path d="M24 366q24-10 48 0t48 0M170 388q24-10 48 0t48 0M330 360q24-10 48 0t48 0M448 392q24-10 48 0t48 0"/>
-          </g>
-          <path d="M0 426q140-30 275-16t275-12v202H0Z" fill="#dcc79a"/>
-          <path d="M0 470q150-24 275-10t275-8v148H0Z" fill="#cbb27e"/>
-          <!-- palms -->
-          <g stroke="#6b5330" stroke-width="7" fill="none" stroke-linecap="round">
-            <path d="M56 444q-10-72 6-116"/><path d="M508 452q12-64-4-104"/>
-          </g>
-          <g fill="#3f7a3d">
-            <path d="M62 328q-48-18-64 10 46 14 64-10ZM62 328q48-18 64 10-46 14-64-10ZM62 326q-10-46 16-62 8 42-16 62ZM62 328q38-30 66-18-24 28-66 18Z"/>
-            <path d="M504 348q-40-16-54 8 38 12 54-8ZM504 348q40-16 54 8-38 12-54-8ZM504 346q-8-38 14-52 6 36-14 52Z"/>
-          </g>
-          </g>
-          <!-- signpost -->
-          <g transform="translate(486,470)">
-            <rect x="-4" y="-46" width="9" height="84" fill="#8a6a3a"/>
-            <g transform="rotate(-4)">
-              <rect x="-78" y="-62" width="156" height="34" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
-              <text y="-38" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="1.5">CALIFORNIA</text>
-            </g>
-          </g>
-          <!-- the groom, standing in the light -->
-          <ellipse class="shade" cx="272" cy="596" rx="196" ry="30" fill="url(#shadeGrad)"/>
-          <image class="figure fig-g" href="assets/img/story-groom.png" x="82" y="178" width="380" height="421"/>
-          <!-- the aeroplane he notices, high overhead -->
-          <g class="tiny-plane">
-            <path d="M0 5 L15 3 L20 5 L15 7 Z" fill="#fdf7ec" stroke="#5a6b74" stroke-width="1"/>
-            <path d="M8 4 L11 0 L13 0 L11 4 Z" fill="#e8c05a"/>
-            <path d="M8 6 L11 10 L13 10 L11 6 Z" fill="#e8c05a"/>
-          </g>
+          <text class="ks-label" x="500" y="330" font-family="Marcellus,serif" font-size="26"
+                fill="#ffd77a" letter-spacing="10" opacity=".75">KANSAS</text>
         </g>
 
-        <!-- ---- Kansas ---- -->
-        <g class="panel-r" transform="translate(550,0)">
-          <g filter="url(#bgSoft)">
-          <rect width="550" height="600" fill="url(#ksSky)"/>
-          <circle cx="418" cy="122" r="104" fill="url(#sunGlow)"/>
-          <circle cx="418" cy="122" r="41" fill="#fff3b4" opacity=".95"/>
-          <path d="M0 356q132-56 275-26t275-18v288H0Z" fill="#cfc37c"/>
-          <path d="M0 404q144-42 275-14t275-22v232H0Z" fill="#bcb265" opacity=".85"/>
-          <path d="M0 452q154-32 275-8t275-18v174H0Z" fill="#a1a552"/>
-          <!-- a lone tree -->
-          <g transform="translate(78,408)">
-            <path d="M0 64V0" stroke="#6b5330" stroke-width="8"/>
-            <circle cx="0" cy="-16" r="33" fill="#7d9a4a"/><circle cx="-24" cy="0" r="22" fill="#8fae5a"/>
-            <circle cx="24" cy="-3" r="19" fill="#8fae5a"/>
+        <!-- ===== 2 · a Kansas City evening ===== -->
+        <g class="s1-city">
+          <rect width="1100" height="600" fill="url(#duskSky)"/>
+          <ellipse cx="700" cy="430" rx="520" ry="180" fill="url(#horizonGlow)"/>
+          <g class="city-stars"></g>
+          <!-- distant skyline -->
+          <g fill="url(#skylineFill)">
+            <path d="M0 430V352h44v-34h30v34h40v48h56v-72h34v72h48V330h26v100h58v-56h40v56h52v-88h22v88h44v-40h38v40h60v-64h30v64h54v-30h46v30h60v-52h34v52h56v-78h28v78h60v96H0Z"/>
           </g>
-          </g>
-          <!-- signpost -->
-          <g transform="translate(84,506)">
-            <rect x="-4" y="-42" width="9" height="76" fill="#8a6a3a"/>
-            <g transform="rotate(3)">
-              <rect x="-66" y="-58" width="132" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
-              <text y="-35" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="2">KANSAS</text>
-            </g>
-          </g>
-          <!-- the bride, and the wildflowers around her -->
-          <ellipse class="shade" cx="300" cy="598" rx="168" ry="28" fill="url(#shadeGrad)"/>
-          <image class="figure fig-b" href="assets/img/story-bride.png" x="148" y="146" width="304" height="463"/>
-          <g class="field">
-            <g stroke="#7d8c40" stroke-width="3">
-              <path d="M30 600v-52M84 600v-44M140 600v-56M470 600v-50M516 600v-42
-                       M58 600v-36M112 600v-32M446 600v-34M492 600v-30"/>
-            </g>
-            <g>
-              <circle cx="30" cy="546" r="9" fill="#e8607f"/><circle cx="84" cy="554" r="8" fill="#f0a52a"/>
-              <circle cx="140" cy="542" r="9" fill="#fff4d2"/><circle cx="470" cy="548" r="9" fill="#e8607f"/>
-              <circle cx="516" cy="556" r="8" fill="#f0a52a"/>
-            </g>
-          </g>
+          <!-- lit windows -->
+          <g class="windows" fill="#ffd77a"></g>
+          <!-- street and lamps -->
+          <path d="M0 430h1100v170H0Z" fill="url(#groundFill)"/>
+          <path d="M0 434h1100" stroke="#4a3a58" stroke-width="2"/>
+          <g class="lamps"></g>
+          <g class="bokeh"></g>
         </g>
 
-        <rect class="seam" x="546" width="8" height="600" fill="#fdf7ec"/>
-      </g>
+        <!-- ===== 3 · the two of them ===== -->
+        <g class="s1-pair">
+         <g transform="translate(570,536) scale(1.62) translate(-570,-536)">
+          <!-- casual silhouettes, as in the photograph -->
+          <g class="pair-now">
+            <ellipse cx="556" cy="536" rx="66" ry="9" fill="#0d0a18" opacity=".5"/>
+            <!-- him, a step behind -->
+            <g fill="#191330">
+              <path d="M516 534V452q0-26 22-30 22 4 22 30v82Z"/>
+              <circle cx="538" cy="404" r="19"/>
+              <path d="M521 398a17 17 0 0 1 34 0 17 11 0 0 0-34 0Z" fill="#100c22"/>
+            </g>
+            <!-- her, slightly closer to us -->
+            <g fill="#14102a">
+              <path d="M560 536V462q0-28 24-32 24 4 24 32v74Z"/>
+              <circle cx="584" cy="412" r="21"/>
+              <path d="M563 410a21 21 0 0 1 42 0q2 30-8 44-6-30-13-32-7 2-13 32-10-14-8-44Z" fill="#0d0a1e"/>
+            </g>
+          </g>
+          <!-- and how they will look ahead -->
+          <g class="pair-wed">
+            <ellipse cx="556" cy="536" rx="70" ry="9" fill="#0d0a18" opacity=".5"/>
+            <g fill="#191330">
+              <path d="M512 534V450q0-28 26-32 26 4 26 32v84Z"/>
+              <path d="M538 418q-12 6-14 20h28q-2-14-14-20Z"/>
+              <circle cx="538" cy="402" r="19"/>
+              <path d="M517 396q10-16 21-16t21 16q-21-9-42 0Z" fill="#100c22"/>
+              <path d="M519 384q19-12 38 0l-4-9q-15-8-30 0Z" fill="#0d0a1e"/>
+            </g>
+            <g fill="#14102a">
+              <path d="M558 536V462q0-28 26-32 26 4 26 32l6 74Z"/>
+              <circle cx="584" cy="412" r="21"/>
+              <path d="M563 408a21 21 0 0 1 42 0q6 44-4 62-8-40-17-42-9 2-17 42-10-18-4-62Z" fill="#0d0a1e"/>
+              <path d="M584 391q-14 6-16 18 16-8 32 0-2-12-16-18Z" fill="#0d0a1e"/>
+            </g>
+          </g>
+          <!-- the thread between them -->
+          <path class="thread-pair" d="M552 470 q16 -18 34 -2" fill="none" stroke="#ffe9a8"
+                stroke-width="1.9" stroke-linecap="round" filter="url(#glowTight)"/>
+         </g>
+          <g class="pair-motes"></g>
+        </g>
 
-      <!-- ============ the sky ============ -->
-      <g class="s1-sky">
-        <rect width="1100" height="600" fill="url(#skyBlue)"/>
-        <g class="goldwash" mask="url(#goldSweep)"><rect width="2200" height="600" fill="url(#skyGold)"/></g>
-        <g class="clouds" fill="#fffdf8">
-          <g opacity=".95">
-            <ellipse cx="176" cy="150" rx="104" ry="44"/><ellipse cx="255" cy="132" rx="72" ry="35"/>
-            <ellipse cx="106" cy="166" rx="62" ry="29"/>
+        <!-- ===== 4 · the mandap, waiting ===== -->
+        <g class="s1-mandap">
+          <g class="mandap-glow"><ellipse cx="866" cy="470" rx="150" ry="80" fill="url(#horizonGlow)"/></g>
+          <g fill="#171128">
+            <rect x="792" y="366" width="15" height="128" rx="3"/>
+            <rect x="926" y="366" width="15" height="128" rx="3"/>
+            <rect x="784" y="488" width="31" height="10" rx="3"/>
+            <rect x="918" y="488" width="31" height="10" rx="3"/>
+            <path d="M792 372q74-46 149 0v13q-74-42-149 0Z"/>
           </g>
-          <g opacity=".8">
-            <ellipse cx="682" cy="104" rx="88" ry="35"/><ellipse cx="748" cy="92" rx="60" ry="27"/>
-          </g>
-          <g opacity=".9">
-            <ellipse cx="946" cy="196" rx="112" ry="46"/><ellipse cx="1022" cy="180" rx="70" ry="33"/>
-          </g>
-          <g opacity=".75">
-            <ellipse cx="396" cy="452" rx="138" ry="48"/><ellipse cx="495" cy="436" rx="92" ry="35"/>
-            <ellipse cx="297" cy="466" rx="82" ry="31"/>
-          </g>
-          <g opacity=".7">
-            <ellipse cx="880" cy="500" rx="132" ry="46"/><ellipse cx="968" cy="486" rx="86" ry="33"/>
-          </g>
+          <path d="M799 376q68-40 135 0" fill="none" stroke="#c9702a" stroke-width="4" opacity=".9"/>
+          <g class="mandap-garland"></g>
+          <g class="mandap-diyas"></g>
+          <g class="mandap-fairy"></g>
+          <!-- Kansas, faint, behind it all -->
+          <path class="ks-echo" d="M380 220 H648 L662 236 L678 242 L688 254 L712 262 L724 276 L748 284 L760 296 L764 306 V400 H380 Z"
+                fill="none" stroke="#ffd77a" stroke-width="2" opacity="0"/>
+          <!-- the thread that joins where they met to where they marry -->
+          <path class="thread-long" d="M584 496 q140 34 282 -16" fill="none" stroke="url(#threadGrad)"
+                stroke-width="3" stroke-linecap="round"/>
         </g>
-        <path class="trail" d="M-100 392 Q550 150 1200 262" fill="none" stroke="url(#trailGrad)"
-              stroke-width="10" stroke-linecap="round" opacity=".95"/>
-        <path class="trail trail-thin" d="M-100 392 Q550 150 1200 262" fill="none" stroke="#fff8e0"
-              stroke-width="3" stroke-linecap="round" opacity=".9"/>
-        <g class="dust"></g>
-        <g class="sky-plane">
-          <g transform="translate(-34,-22) scale(1.9)">
-            <path d="M2 12 L26 9 L33 12 L26 15 Z" fill="#fdf7ec" stroke="#7a4a22" stroke-width="1.4" stroke-linejoin="round"/>
-            <path d="M12 10 L19 0 L23 0 L19 10 Z" fill="#e8c05a" stroke="#7a4a22" stroke-width="1.2"/>
-            <path d="M12 14 L19 24 L23 24 L19 14 Z" fill="#e8c05a" stroke="#7a4a22" stroke-width="1.2"/>
-            <path d="M3 12 L8 6 L10 7 L8 12 Z" fill="#a3122f" stroke="#7a4a22" stroke-width="1"/>
-            <circle cx="27" cy="12" r="1.8" fill="#7a4a22"/>
-            <path d="M18 12h6" stroke="#7a4a22" stroke-width="1"/>
-          </g>
+
+        <!-- ===== the words ===== -->
+        <g class="s1-words">
+          <text class="w-met" x="550" y="196" text-anchor="middle" font-family="Cormorant Garamond,serif"
+                font-style="italic" font-size="52" fill="#ffe9a8">We met in Kansas&#8230;</text>
         </g>
+        <g class="s1-final">
+          <rect x="-500" y="-400" width="2100" height="1400" fill="#0b0716" opacity=".52"/>
+          <text class="f-1" x="550" y="228" text-anchor="middle" font-family="Cormorant Garamond,serif"
+                font-style="italic" font-size="54" fill="#ffe9a8">&#8230;and in Kansas, our forever begins.</text>
+          <text class="f-2" x="550" y="322" text-anchor="middle" font-family="Marcellus,serif"
+                font-size="40" fill="#fff3c4" letter-spacing="4">Teja &#9829; Deeksha</text>
+          <text class="f-3" x="550" y="368" text-anchor="middle" font-family="Marcellus,serif"
+                font-size="21" fill="#e8cd7c" letter-spacing="7">OCTOBER 21, 2026 &middot; KANSAS CITY</text>
+          <path class="f-rule" d="M410 278h280" stroke="#c9a227" stroke-width="1"/>
+        </g>
+
       </g>
     </svg>
-    <p class="caption cap-1a">a coast, a prairie, and 1,600 miles between them</p>
-    <p class="caption cap-1b">one flight, and everything after</p>
+    <p class="caption cap-1a">where our story began</p>
   </section>
 
   <!-- ---------- Scene 2 · first sight ---------- -->
@@ -1599,7 +1596,7 @@ const story = (function(){
   const el    = document.getElementById('story');
   const skip  = document.getElementById('storySkip');
   const clock = document.getElementById('storyClock');
-  const RUN   = 17300;   // hand over while the shutter flash is still bright
+  const RUN   = 20500;   // hand over while the shutter flash is still bright
   const calm  = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null, ticker = null, done = null;
 
@@ -1614,7 +1611,7 @@ const story = (function(){
   function play(onDone){
     if(calm || !el){ onDone && onDone(); return; }
     done = onDone;
-    seedDust();
+    seedScene();
     el.classList.add('on');
     void el.offsetWidth;                                // commit before animating
     el.classList.add('playing');
@@ -1630,32 +1627,102 @@ const story = (function(){
           if(sec >= 36){ clock.textContent = '2:45:36'; clearInterval(ticker); return; }
           clock.textContent = '2:45:' + String(sec).padStart(2,'0');
         }, 78);
-      }, 9200);
+      }, 13300);
     }
 
     timer = setTimeout(finish, RUN);
   }
 
-  // shimmering dust left hanging in the aeroplane's wake
-  function seedDust(){
-    const g = el.querySelector('.dust');
-    if(!g || g.childElementCount) return;
-    const P0=[-100,392], P1=[550,150], P2=[1200,262];
-    const at = t => { const u=1-t; return [
-      u*u*P0[0] + 2*u*t*P1[0] + t*t*P2[0],
-      u*u*P0[1] + 2*u*t*P1[1] + t*t*P2[1] ]; };
-    let out = '';
-    for(let i=0;i<26;i++){
-      const t = (i+0.5)/26;
-      const [x,y] = at(t);
-      const jx = x + (Math.random()*30-15), jy = y + (Math.random()*26-13);
-      const r  = (1.6 + Math.random()*2.6).toFixed(1);
-      // fire just after the plane reaches that point
-      const delay = (4.5 + 4.0*Math.pow(t,0.82)).toFixed(2);
-      out += `<circle class="mote" cx="${jx.toFixed(1)}" cy="${jy.toFixed(1)}" r="${r}" `
-           + `fill="${Math.random()<0.4 ? '#fff6d8' : '#ffd77a'}" style="animation-delay:${delay}s"/>`;
+  // everything in scene 1 that is easier generated than hand-placed
+  function seedScene(){
+    const q = sel => el.querySelector(sel);
+    if(!q('.motes') || q('.motes').childElementCount) return;
+    const rnd = (a,b) => a + Math.random()*(b-a);
+
+    // the outline draws itself: measure the real path so the dash matches exactly
+    ['.ks-line','.ks-echo'].forEach(sel => {
+      const p = q(sel);
+      if(!p) return;
+      const len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.setProperty('--len', len);
+      if(sel === '.ks-line') p.style.strokeDashoffset = len;
+    });
+    const tl = q('.thread-long');
+    if(tl){ const L = tl.getTotalLength(); tl.style.setProperty('--tlen', L); tl.style.strokeDasharray = L; tl.style.strokeDashoffset = L; }
+
+    // golden motes drifting through the dark
+    let m = '';
+    for(let i=0;i<44;i++){
+      m += `<circle class="mote" cx="${rnd(20,1080).toFixed(0)}" cy="${rnd(60,580).toFixed(0)}" `
+        +  `r="${rnd(1,2.6).toFixed(1)}" fill="${Math.random()<.3 ? '#fff3c4' : '#ffd77a'}" `
+        +  `style="animation-delay:${rnd(0,4).toFixed(2)}s;--dx:${rnd(-24,24).toFixed(0)}px"/>`;
     }
-    g.innerHTML = out;
+    q('.motes').innerHTML = m;
+
+    // towns lighting up across the state, Kansas City last and brightest
+    const towns = [[430,272],[492,246],[470,340],[540,300],[558,368],[604,262],[620,330],
+                   [660,296],[688,356],[706,318],[726,268],[600,382],[510,392],[416,352]];
+    q('.ks-lights').innerHTML = towns.map(([x,y],i) =>
+      `<circle class="ks-dot" cx="${x}" cy="${y}" r="${(1.6+Math.random()*1.6).toFixed(1)}" fill="#ffd77a" `
+      + `style="animation-delay:${(2.05 + i*0.055).toFixed(2)}s"/>`).join('');
+
+    // lit windows in the skyline, street lamps, and the bokeh beyond them
+    let w = '';
+    for(let i=0;i<120;i++){
+      const x = rnd(10,1090), y = rnd(336,424);
+      w += `<rect class="win" x="${x.toFixed(0)}" y="${y.toFixed(0)}" width="3" height="4" `
+        +  `style="animation-delay:${(4.1+Math.random()*2.4).toFixed(2)}s"/>`;
+    }
+    q('.windows').innerHTML = w;
+
+    let L = '';
+    for(let x=70; x<1100; x+=168){
+      L += `<g><path d="M${x} 434v-58" stroke="#3d3050" stroke-width="3"/>`
+        +  `<circle class="lamp-glow" cx="${x}" cy="374" r="20" fill="url(#hotSpot)"/>`
+        +  `<circle class="lamp-glow" cx="${x}" cy="374" r="4" fill="#ffe9a8"/></g>`;
+    }
+    q('.lamps').innerHTML = L;
+
+    let bo = '';
+    for(let i=0;i<26;i++){
+      bo += `<circle class="bok" cx="${rnd(0,1100).toFixed(0)}" cy="${rnd(360,560).toFixed(0)}" `
+        +  `r="${rnd(3,11).toFixed(1)}" fill="${['#ffd77a','#ffb0a0','#fff3c4'][i%3]}" `
+        +  `style="animation-delay:${(4.3+Math.random()*2.6).toFixed(2)}s"/>`;
+    }
+    q('.bokeh').innerHTML = bo;
+
+    // warm air around the two of them
+    let pm = '';
+    for(let i=0;i<16;i++){
+      pm += `<circle class="mote" cx="${rnd(470,700).toFixed(0)}" cy="${rnd(400,540).toFixed(0)}" `
+        +  `r="${rnd(1,2.2).toFixed(1)}" fill="#ffe9a8" `
+        +  `style="animation-delay:${(4.9+Math.random()*3).toFixed(2)}s;--dx:${rnd(-14,14).toFixed(0)}px"/>`;
+    }
+    q('.pair-motes').innerHTML = pm;
+
+    // marigolds along the mandap arch, diyas at its feet, fairy lights above
+    let g = '', d = '', fy = '';
+    for(let i=0;i<=18;i++){
+      const t=i/18, x=799+t*135, y=376-40*(4*t*(1-t));
+      g += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6-0.6*Math.abs(2*t-1)).toFixed(1)}" `
+        +  `fill="${i%2?'#e0801e':'#c9611a'}"/>`;
+      if(i%3===0) g += `<path d="M${x.toFixed(1)} ${(y+4).toFixed(1)} q2 7 0 13 q-2-6 0-13Z" fill="#2f5c34"/>`;
+    }
+    q('.mandap-garland').innerHTML = g;
+    [810,846,886,922].forEach((x,i) => {
+      d += `<g class="diya" style="animation-delay:${(8.7+i*0.22).toFixed(2)}s">`
+        +  `<circle cx="${x}" cy="490" r="13" fill="url(#hotSpot)"/>`
+        +  `<ellipse cx="${x}" cy="492" rx="7" ry="2.6" fill="#8a4a1a"/>`
+        +  `<path d="M${x} 489 q2.4-6 0-9 q-2.4 3 0 9Z" fill="#ffe9a8"/></g>`;
+    });
+    q('.mandap-diyas').innerHTML = d;
+    for(let i=0;i<=22;i++){
+      const t=i/22, x=786+t*160, y=352-26*(4*t*(1-t));
+      fy += `<circle class="fairy" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.9" fill="#fff3c4" `
+        +  `style="animation-delay:${(Math.random()*2.4).toFixed(2)}s"/>`;
+    }
+    q('.mandap-fairy').innerHTML = fy;
   }
 
   skip && skip.addEventListener('click', finish);
