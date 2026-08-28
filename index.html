@@ -191,6 +191,117 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 
 .muggu{display:block;width:150px;height:auto;margin:0 auto;color:var(--gold);opacity:.75}
 
+/* ================= HOW THEY MET =================
+   Three scenes that play once the guest taps open, then hand over to the
+   invitation. Every animation is paused until .playing is set, so the timeline
+   starts on the tap rather than on page load. */
+.story{
+  position:fixed;inset:0;z-index:150;background:#20180d;display:none;
+  align-items:center;justify-content:center;overflow:hidden;
+}
+.story.on{display:flex}
+.story.closing{animation:storyOut .8s ease forwards}
+@keyframes storyOut{to{opacity:0;visibility:hidden}}
+
+.story-scene{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:18px;padding:20px;opacity:0}
+.story-scene svg{width:min(1000px,96vw);height:auto;max-height:74vh;
+  box-shadow:0 24px 60px rgba(0,0,0,.42);border-radius:6px}
+.caption{font-family:'Marcellus',serif;color:#ffe9b0;letter-spacing:.16em;
+  text-transform:uppercase;font-size:clamp(.6rem,2.4vw,.8rem);text-align:center;margin:0;opacity:0}
+
+.story-skip{
+  position:absolute;top:18px;right:18px;z-index:5;cursor:pointer;
+  background:rgba(253,247,236,.10);border:1px solid rgba(232,205,124,.55);color:#ffe9b0;
+  font-family:'Marcellus',serif;letter-spacing:.18em;text-transform:uppercase;font-size:.62rem;
+  padding:10px 18px;border-radius:2px;transition:.25s;
+}
+.story-skip:hover{background:rgba(253,247,236,.2)}
+
+.story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+
+/* --- the timeline, all of it gated behind .playing --- */
+.story.playing .sc-map{animation:sceneShow 6.2s ease both}
+.story.playing .sc-cafe{animation:sceneShow 6.4s ease 5.8s both}
+.story.playing .sc-selfie{animation:sceneShow 4.2s ease 11.8s both}
+@keyframes sceneShow{0%{opacity:0}9%{opacity:1}86%{opacity:1}100%{opacity:0}}
+
+.story.playing .cap-1{animation:capShow 5.6s ease .8s both}
+.story.playing .cap-2{animation:capShow 5.8s ease 6.4s both}
+.story.playing .cap-3{animation:capShow 4s ease 12.4s both}
+@keyframes capShow{0%{opacity:0;transform:translateY(8px)}16%{opacity:.95;transform:none}
+  84%{opacity:.95;transform:none}100%{opacity:0}}
+
+/* scene 1 */
+.story.playing .sc-map svg{animation:mapPan 6.2s ease-in-out both}
+@keyframes mapPan{0%{transform:scale(1.14) translateX(5%)}100%{transform:scale(1.02) translateX(-4%)}}
+.story.playing .pin-a{animation:pinPop .7s ease .25s both}
+.story.playing .pin-b{animation:pinPop .7s ease 3.9s both}
+@keyframes pinPop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+.route{stroke-dasharray:2 14;stroke-dashoffset:740;opacity:0}
+.story.playing .route{animation:drawRoute 4.2s linear .9s both}
+@keyframes drawRoute{0%{stroke-dashoffset:740;opacity:0}6%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+.plane{opacity:0;transform:translate(168px,392px) rotate(-41.7deg)}
+.story.playing .plane{animation:flyPlane 4.2s ease-in-out .9s both, planeIn .4s ease .9s both}
+@keyframes planeIn{from{opacity:0}to{opacity:1}}
+@keyframes flyPlane{
+  0%{transform:translate(168.0px,392.0px) rotate(-41.7deg)}
+  8.333%{transform:translate(223.3px,346.1px) rotate(-37.5deg)}
+  16.67%{transform:translate(278.6px,307.2px) rotate(-32.7deg)}
+  25%{transform:translate(333.8px,275.2px) rotate(-27.3deg)}
+  33.33%{transform:translate(388.9px,250.2px) rotate(-21.4deg)}
+  41.67%{transform:translate(444.0px,232.1px) rotate(-14.9deg)}
+  50%{transform:translate(499.0px,221.0px) rotate(-7.9deg)}
+  58.33%{transform:translate(554.0px,216.8px) rotate(-0.8deg)}
+  66.67%{transform:translate(608.9px,219.6px) rotate(6.5deg)}
+  75%{transform:translate(663.8px,229.2px) rotate(13.5deg)}
+  83.33%{transform:translate(718.6px,245.9px) rotate(20.2deg)}
+  91.67%{transform:translate(773.3px,269.5px) rotate(26.3deg)}
+  100%{transform:translate(828.0px,300.0px) rotate(31.9deg)}
+}
+
+/* scene 2 */
+.story.playing .sc-cafe svg{animation:cafePush 6.4s ease-in-out 5.8s both;transform-origin:50% 74%}
+@keyframes cafePush{            /* wide to establish, then push in on the two of them */
+  0%{transform:scale(1.02)}
+  50%{transform:scale(1.06)}
+  100%{transform:scale(1.46)}
+}
+.clock{opacity:0}
+.story.playing .clock{animation:clockShow 3s ease 6.2s both}
+@keyframes clockShow{0%{opacity:0;transform:translateY(-14px)}18%{opacity:1;transform:none}
+  76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
+.cafe-bg,.rays{transform-origin:500px 300px}
+.story.playing .cafe-bg{animation:softenBg 2.4s ease 9.2s both}
+@keyframes softenBg{to{filter:blur(3px);opacity:.7}}
+.him,.her{opacity:0}
+.story.playing .him{animation:figIn .9s ease 8.6s both}
+.story.playing .her{animation:figIn .9s ease 9.4s both}
+@keyframes figIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.spark{opacity:0;transform-origin:500px 400px}
+.story.playing .spark{animation:sparkle 1.8s ease 10.2s both}
+@keyframes sparkle{0%{opacity:0;transform:scale(.4) rotate(0)}
+  40%{opacity:1;transform:scale(1.5) rotate(90deg)}100%{opacity:0;transform:scale(2.2) rotate(180deg)}}
+
+/* scene 3 */
+.finder{opacity:0;transform-origin:500px 300px}
+.story.playing .finder{animation:finderIn 1s ease 12s both}
+@keyframes finderIn{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+.shutter{opacity:0}
+.story.playing .shutter{animation:shutterIn .5s ease 13.2s both, shutterTap .35s ease 14.6s}
+@keyframes shutterIn{from{opacity:0}to{opacity:1}}
+@keyframes shutterTap{50%{transform:scale(.82)}}
+.story.playing .story-flash{animation:flashNow .9s ease 14.9s both}
+@keyframes flashNow{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .story{display:none !important}
+}
+@media(max-width:640px){
+  .story-scene svg{max-height:62vh}
+  .story-skip{top:12px;right:12px;padding:9px 14px}
+}
+
 /* ================= OPENING GATE ================= */
 .opening{
   position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
@@ -330,6 +441,261 @@ body.locked .music-btn{display:none}
 
 <div class="thalambralu" id="thalambralu" aria-hidden="true"></div>
 
+<!-- ==================== HOW THEY MET ==================== -->
+<div class="story" id="story" role="dialog" aria-label="How Teja and Deeksha met">
+  <button class="story-skip" id="storySkip" type="button">Skip &rsaquo;</button>
+
+  <!-- ---------- Scene 1 · the flight ---------- -->
+  <section class="story-scene sc-map">
+    <svg viewBox="0 0 1000 600" role="img" aria-label="A flight arcs from California to Shawnee, Kansas across a vintage map">
+      <defs>
+        <linearGradient id="parchment" x1="0" y1="0" x2="0.4" y2="1">
+          <stop offset="0" stop-color="#f6e4bd"/><stop offset=".5" stop-color="#eed6a6"/><stop offset="1" stop-color="#e2c288"/>
+        </linearGradient>
+        <radialGradient id="markGlow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#e0561c" stop-opacity=".55"/><stop offset="1" stop-color="#e0561c" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="vign" cx=".5" cy=".5" r=".72">
+          <stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#3b2a12" stop-opacity=".42"/>
+        </radialGradient>
+      </defs>
+
+      <rect width="1000" height="600" fill="url(#parchment)"/>
+      <!-- latitude / longitude grid -->
+      <g stroke="#c9a86e" stroke-width=".8" opacity=".38">
+        <path d="M0 90h1000M0 180h1000M0 270h1000M0 360h1000M0 450h1000M0 540h1000"/>
+        <path d="M100 0v600M220 0v600M340 0v600M460 0v600M580 0v600M700 0v600M820 0v600M940 0v600"/>
+      </g>
+      <!-- stylised landmass -->
+      <path d="M96 236 q54 -46 132 -34 q46 -52 128 -40 q68 -46 150 -12 q86 -34 168 6 q76 -16 128 34
+               q42 62 -14 108 q34 78 -46 108 q-42 72 -140 56 q-74 44 -166 8 q-92 40 -172 -6
+               q-92 12 -140 -60 q-58 -70 -28 -168Z"
+            fill="#dfc899" stroke="#b99a5e" stroke-width="2.4" opacity=".85"/>
+      <!-- inland detail -->
+      <g stroke="#b99a5e" stroke-width="1.4" fill="none" opacity=".5">
+        <path d="M300 200 q60 40 20 96 q-40 52 30 92"/>
+        <path d="M560 168 q-30 70 34 108 q60 36 26 106"/>
+        <path d="M700 240 q56 30 40 84"/>
+      </g>
+      <!-- compass rose -->
+      <g transform="translate(898,470)" opacity=".8">
+        <circle r="40" fill="none" stroke="#b07a2a" stroke-width="1.6"/>
+        <circle r="29" fill="none" stroke="#b07a2a" stroke-width=".8"/>
+        <path d="M0 -36 L9 0 L0 36 L-9 0Z" fill="#a8541c"/>
+        <path d="M-36 0 L0 -9 L36 0 L0 9Z" fill="#c9a227"/>
+        <text y="-46" text-anchor="middle" font-family="Marcellus,serif" font-size="15" fill="#8a5a20">N</text>
+      </g>
+
+      <!-- flight arc -->
+      <path class="route" d="M168 392 Q500 96 828 300" fill="none" stroke="#c9861f"
+            stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
+
+      <!-- California -->
+      <g class="pin pin-a">
+        <circle cx="168" cy="392" r="54" fill="url(#markGlow)"/>
+        <circle cx="168" cy="392" r="13" fill="#a8541c"/>
+        <circle cx="168" cy="392" r="24" fill="none" stroke="#a8541c" stroke-width="2" opacity=".7"/>
+        <text x="168" y="452" text-anchor="middle" font-family="Marcellus,serif" font-size="27" fill="#7a3d10"
+              letter-spacing="3">CALIFORNIA</text>
+      </g>
+      <!-- Kansas -->
+      <g class="pin pin-b">
+        <circle cx="828" cy="300" r="54" fill="url(#markGlow)"/>
+        <circle cx="828" cy="300" r="13" fill="#a8541c"/>
+        <circle cx="828" cy="300" r="24" fill="none" stroke="#a8541c" stroke-width="2" opacity=".7"/>
+        <text x="828" y="360" text-anchor="middle" font-family="Marcellus,serif" font-size="27" fill="#7a3d10"
+              letter-spacing="3">SHAWNEE, KS</text>
+      </g>
+
+      <!-- the aeroplane -->
+      <g class="plane">
+        <g transform="translate(-19,-13) scale(1.15)">
+          <path d="M2 12 L26 9 L33 12 L26 15 Z" fill="#fdf7ec" stroke="#8a5a20" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M13 10 L18 1 L22 1 L19 10 Z" fill="#e8c05a" stroke="#8a5a20" stroke-width="1.2"/>
+          <path d="M13 14 L18 23 L22 23 L19 14 Z" fill="#e8c05a" stroke="#8a5a20" stroke-width="1.2"/>
+          <path d="M3 12 L7 7 L9 8 L7 12 Z" fill="#a3122f" stroke="#8a5a20" stroke-width="1"/>
+          <circle cx="27" cy="12" r="1.8" fill="#8a5a20"/>
+        </g>
+      </g>
+
+      <rect width="1000" height="600" fill="url(#vign)"/>
+    </svg>
+    <p class="caption cap-1">a flight, and everything after</p>
+  </section>
+
+  <!-- ---------- Scene 2 · first sight ---------- -->
+  <section class="story-scene sc-cafe">
+    <svg viewBox="0 0 1000 600" role="img" aria-label="Sunlight through the windows of Fat Bee Coffee, where they first saw each other">
+      <defs>
+        <linearGradient id="cafeWall" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f7e6c8"/><stop offset=".55" stop-color="#eed7ac"/><stop offset="1" stop-color="#d9b881"/>
+        </linearGradient>
+        <linearGradient id="paneLight" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0" stop-color="#fffaea"/><stop offset="1" stop-color="#ffe9b0"/>
+        </linearGradient>
+        <linearGradient id="rayGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff6d8" stop-opacity=".85"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="hazy" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="4"/></filter>
+      </defs>
+
+      <rect width="1000" height="600" fill="url(#cafeWall)"/>
+
+      <!-- window wall -->
+      <g class="cafe-bg">
+        <rect x="70" y="52" width="386" height="316" rx="8" fill="url(#paneLight)" stroke="#b08a52" stroke-width="6"/>
+        <path d="M263 52v316M70 210h386" stroke="#b08a52" stroke-width="6"/>
+        <rect x="544" y="52" width="386" height="316" rx="8" fill="url(#paneLight)" stroke="#b08a52" stroke-width="6"/>
+        <path d="M737 52v316M544 210h386" stroke="#b08a52" stroke-width="6"/>
+        <!-- street beyond the glass -->
+        <g opacity=".35" fill="#8fae6a">
+          <circle cx="150" cy="150" r="46"/><circle cx="205" cy="176" r="34"/>
+          <circle cx="840" cy="150" r="44"/><circle cx="786" cy="180" r="30"/>
+        </g>
+        <!-- hanging plants -->
+        <g>
+          <path d="M120 52v34M330 52v26M640 52v30M880 52v22" stroke="#8a6a3a" stroke-width="3"/>
+          <g fill="#4f7f3c">
+            <path d="M120 86 q-34 8 -40 44 q34 2 40 -44ZM120 86 q34 8 40 44 q-34 2 -40 -44ZM120 92 q-8 34 6 56 q16 -24 -6 -56Z"/>
+            <path d="M330 78 q-30 8 -34 40 q30 0 34 -40ZM330 78 q30 8 34 40 q-30 0 -34 -40Z"/>
+            <path d="M640 82 q-30 8 -34 40 q30 0 34 -40ZM640 82 q30 8 34 40 q-30 0 -34 -40Z"/>
+            <path d="M880 74 q-26 8 -30 36 q26 0 30 -36ZM880 74 q26 8 30 36 q-26 0 -30 -36Z"/>
+          </g>
+        </g>
+        <!-- the shop sign -->
+        <g transform="translate(500,120)">
+          <rect x="-140" y="-42" width="280" height="84" rx="12" fill="#7a4a22" stroke="#c9a227" stroke-width="3"/>
+          <text y="-4" text-anchor="middle" font-family="Marcellus,serif" font-size="30" fill="#ffe9b0" letter-spacing="3">FAT BEE</text>
+          <text y="26" text-anchor="middle" font-family="Marcellus,serif" font-size="19" fill="#e8c05a" letter-spacing="6">COFFEE</text>
+          <g transform="translate(-118,-56)">
+            <ellipse cx="0" cy="0" rx="11" ry="8" fill="#f0c53f" stroke="#5a3a12" stroke-width="1.6"/>
+            <path d="M-5 -6v13M1 -7v15" stroke="#5a3a12" stroke-width="1.6"/>
+            <ellipse cx="-2" cy="-9" rx="7" ry="4" fill="#fffdf6" opacity=".85"/>
+          </g>
+        </g>
+        <!-- counter and floor -->
+        <rect x="0" y="368" width="1000" height="30" fill="#a8734a"/>
+        <rect x="0" y="398" width="1000" height="202" fill="#c9a06a"/>
+        <g stroke="#b08a52" stroke-width="2" opacity=".5">
+          <path d="M0 440h1000M0 490h1000M0 545h1000"/>
+        </g>
+      </g>
+
+      <!-- sunlight streaking in -->
+      <g class="rays">
+        <path d="M120 60 L300 600 L120 600Z" fill="url(#rayGrad)" opacity=".5"/>
+        <path d="M300 60 L470 600 L330 600Z" fill="url(#rayGrad)" opacity=".38"/>
+        <path d="M640 60 L780 600 L660 600Z" fill="url(#rayGrad)" opacity=".42"/>
+      </g>
+
+      <!-- table -->
+      <g>
+        <ellipse cx="500" cy="470" rx="150" ry="26" fill="#8a5a2b" opacity=".25"/>
+        <rect x="360" y="440" width="280" height="18" rx="9" fill="#a8734a"/>
+        <rect x="484" y="458" width="32" height="82" fill="#8f5f3a"/>
+        <rect x="446" y="540" width="108" height="14" rx="6" fill="#8f5f3a"/>
+        <!-- two cups -->
+        <g><path d="M420 420 q-4 16 4 20 q12 5 22 0 q8 -4 4 -20Z" fill="#fdf7ec" stroke="#c9a86e" stroke-width="2"/>
+           <path d="M450 424 q10 2 8 10 q-2 7 -10 6" fill="none" stroke="#c9a86e" stroke-width="2"/></g>
+        <g><path d="M556 420 q-4 16 4 20 q12 5 22 0 q8 -4 4 -20Z" fill="#fdf7ec" stroke="#c9a86e" stroke-width="2"/>
+           <path d="M586 424 q10 2 8 10 q-2 7 -10 6" fill="none" stroke="#c9a86e" stroke-width="2"/></g>
+      </g>
+
+      <!-- Teja, looking up -->
+      <g class="him">
+        <path d="M356 440 q40 -14 80 0 l10 96 h-100Z" fill="#39506b"/>
+        <rect x="386" y="424" width="20" height="22" rx="8" fill="#e0a97c"/>
+        <circle cx="396" cy="398" r="32" fill="#e9b78a"/>
+        <path d="M364 396 a32 32 0 0 1 64 0 a32 22 0 0 0 -64 0Z" fill="#2b1b12"/>
+        <circle cx="410" cy="400" r="3" fill="#3d2718"/>
+        <path d="M404 414 q9 6 17 0" fill="none" stroke="#a86a4a" stroke-width="2.6" stroke-linecap="round"/>
+      </g>
+
+      <!-- Deeksha, just seen -->
+      <g class="her">
+        <path d="M566 440 q40 -14 80 0 l10 96 h-100Z" fill="#a3122f"/>
+        <path d="M636 440 q22 42 12 96 h-22Z" fill="#c4173b"/>
+        <rect x="596" y="424" width="20" height="22" rx="8" fill="#dfa87c"/>
+        <circle cx="606" cy="398" r="31" fill="#eab98d"/>
+        <path d="M575 396 a31 31 0 0 1 62 0 a31 21 0 0 0 -62 0Z" fill="#241510"/>
+        <circle cx="638" cy="410" r="15" fill="#241510"/>
+        <path d="M642 424 q12 30 4 50" stroke="#241510" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <circle cx="592" cy="400" r="3" fill="#3d2718"/>
+        <path d="M584 414 q9 6 17 0" fill="none" stroke="#a86a4a" stroke-width="2.6" stroke-linecap="round"/>
+      </g>
+
+      <!-- the glance -->
+      <g class="spark">
+        <path d="M500 388 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6Z" fill="#fff3c4"/>
+      </g>
+
+      <!-- the clock on the phone -->
+      <g class="clock">
+        <rect x="392" y="196" width="216" height="112" rx="18" fill="#2b2318" stroke="#c9a227" stroke-width="3"/>
+        <text id="storyClock" x="500" y="266" text-anchor="middle" font-family="Marcellus,serif"
+              font-size="52" fill="#ffe9b0" letter-spacing="3">2:45:36</text>
+      </g>
+    </svg>
+    <p class="caption cap-2">Fat Bee Coffee &middot; 2:45:36 &middot; the first time he looked up</p>
+  </section>
+
+  <!-- ---------- Scene 3 · the first selfie ---------- -->
+  <section class="story-scene sc-selfie">
+    <svg viewBox="0 0 1000 600" role="img" aria-label="Their first selfie together at the coffee shop">
+      <defs>
+        <linearGradient id="selfieBg" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0" stop-color="#f9e8c6"/><stop offset="1" stop-color="#e3c08a"/>
+        </linearGradient>
+      </defs>
+      <rect width="1000" height="600" fill="#20180d"/>
+      <!-- viewfinder -->
+      <g class="finder">
+        <rect x="150" y="34" width="700" height="470" rx="20" fill="url(#selfieBg)"/>
+        <g opacity=".35" fill="#c9a06a">
+          <rect x="150" y="330" width="700" height="174"/>
+        </g>
+        <!-- blurred cafe behind -->
+        <g opacity=".5" filter="url(#softer)">
+          <rect x="210" y="80" width="220" height="170" rx="10" fill="#fff3cf"/>
+          <rect x="570" y="80" width="220" height="170" rx="10" fill="#fff3cf"/>
+          <circle cx="500" cy="150" r="46" fill="#e8c05a"/>
+        </g>
+
+        <!-- the two of them, leaning in -->
+        <g>
+          <path d="M300 504 q60 -120 150 -96 l16 96Z" fill="#39506b"/>
+          <circle cx="432" cy="292" r="56" fill="#e9b78a" transform="rotate(-9 432 292)"/>
+          <path d="M376 288 a56 56 0 0 1 112 0 a56 38 0 0 0 -112 0Z" fill="#2b1b12" transform="rotate(-9 432 292)"/>
+          <circle cx="414" cy="292" r="4.5" fill="#3d2718"/><circle cx="456" cy="288" r="4.5" fill="#3d2718"/>
+          <path d="M414 318 q22 18 44 -4" fill="none" stroke="#a3122f" stroke-width="4" stroke-linecap="round"/>
+
+          <path d="M700 504 q-60 -120 -150 -96 l-16 96Z" fill="#a3122f"/>
+          <circle cx="566" cy="288" r="54" fill="#eab98d" transform="rotate(10 566 288)"/>
+          <path d="M512 284 a54 54 0 0 1 108 0 a54 36 0 0 0 -108 0Z" fill="#241510" transform="rotate(10 566 288)"/>
+          <circle cx="620" cy="306" r="26" fill="#241510"/>
+          <circle cx="546" cy="288" r="4.5" fill="#3d2718"/><circle cx="588" cy="292" r="4.5" fill="#3d2718"/>
+          <path d="M544 316 q22 18 44 -4" fill="none" stroke="#a3122f" stroke-width="4" stroke-linecap="round"/>
+          <!-- his arm, holding the phone -->
+          <path d="M330 470 q-70 -60 -96 -150" stroke="#e9b78a" stroke-width="26" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- viewfinder brackets -->
+        <g stroke="#fffdf6" stroke-width="4" fill="none" opacity=".9">
+          <path d="M186 82v-24h30M814 82v-24h-30M186 456v24h30M814 456v24h-30"/>
+        </g>
+      </g>
+      <!-- shutter -->
+      <g class="shutter">
+        <circle cx="500" cy="548" r="30" fill="none" stroke="#fdf7ec" stroke-width="4"/>
+        <circle cx="500" cy="548" r="22" fill="#fdf7ec"/>
+      </g>
+    </svg>
+    <p class="caption cap-3">and the first of many</p>
+  </section>
+
+  <div class="story-flash" id="storyFlash"></div>
+</div>
+
 <!-- ==================== HERO ==================== -->
 <header class="hero">
   <svg class="toran" id="toran" viewBox="0 0 800 74" preserveAspectRatio="none" aria-hidden="true">
@@ -398,6 +764,8 @@ body.locked .music-btn{display:none}
         <p class="alias">(a) Balasubramani</p>
         <p class="rel">Son of</p>
         <p class="people">Sri Ganaparti Pratap<br>&amp; Smt. Ganaparti Geetha</p>
+        <p class="rel">Cousins</p>
+        <p class="people">Pranavika &middot; Pravalika<br>Sanji &middot; Sriji</p>
       </div>
 
       <div class="knot reveal">
@@ -1190,6 +1558,53 @@ document.getElementById('icsBtn').addEventListener('click', function(){
   set('muhJasmine', J);
 })();
 
+/* ================= HOW THEY MET =================
+   Runs between the opening tap and the invitation. Skippable at any point;
+   skipped entirely for anyone who has asked for reduced motion. */
+const story = (function(){
+  const el    = document.getElementById('story');
+  const skip  = document.getElementById('storySkip');
+  const clock = document.getElementById('storyClock');
+  const RUN   = 15300;   // hand over while the shutter flash is still bright
+  const calm  = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null, ticker = null, done = null;
+
+  function finish(){
+    if(!el.classList.contains('on')) return;
+    clearTimeout(timer); clearInterval(ticker);
+    el.classList.add('closing');
+    setTimeout(() => { el.remove(); }, 800);
+    if(done){ const f = done; done = null; f(); }
+  }
+
+  function play(onDone){
+    if(calm || !el){ onDone && onDone(); return; }
+    done = onDone;
+    el.classList.add('on');
+    void el.offsetWidth;                                // commit before animating
+    el.classList.add('playing');
+
+    // the clock rolls up and settles on the second they met — started when the
+    // clock actually comes on screen, not when the story begins
+    if(clock){
+      clock.textContent = '2:45:12';
+      setTimeout(() => {
+        let sec = 12;
+        ticker = setInterval(() => {
+          sec += 1;
+          if(sec >= 36){ clock.textContent = '2:45:36'; clearInterval(ticker); return; }
+          clock.textContent = '2:45:' + String(sec).padStart(2,'0');
+        }, 78);
+      }, 6400);
+    }
+
+    timer = setTimeout(finish, RUN);
+  }
+
+  skip && skip.addEventListener('click', finish);
+  return { play, skip: finish };
+})();
+
 /* ================= BACKGROUND MUSIC ================= */
 const music = (function(){
   const audio = document.getElementById('bgm');
@@ -1242,11 +1657,15 @@ const music = (function(){
     if(opened) return;
     opened = true;
     if(withMusic) music.play().catch(()=>{});
-    document.body.classList.remove('locked');
-    toTop();
-    requestAnimationFrame(toTop);          // after the scroll lock is released
     gate.classList.add('hidden');
     setTimeout(() => gate.remove(), 800);
+
+    // the story plays over the locked page; the invitation is revealed after it
+    story.play(() => {
+      document.body.classList.remove('locked');
+      toTop();
+      requestAnimationFrame(toTop);        // after the scroll lock is released
+    });
   }
   document.getElementById('openBtn').addEventListener('click', () => open(true));
   document.getElementById('openSilentBtn').addEventListener('click', () => open(false));

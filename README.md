@@ -41,6 +41,25 @@ start audio without a real tap, so rather than failing silently the site asks th
 it — with music, or via the "Open without music" link. Once opened, a small toggle sits in the
 bottom-right corner for the rest of the visit.
 
+## How they met
+
+After the opening tap, three scenes play before the invitation appears (about 15 seconds):
+
+1. **The flight** — a plane arcs from California to Shawnee, Kansas across a vintage map, drawing a
+   dotted gold trail behind it while the camera pans across.
+2. **First sight** — the map dissolves into Fat Bee Coffee, sunlight streaking through the windows.
+   The clock rolls up and settles on **2:45:36**, the background softens, and they see each other.
+3. **The first selfie** — the view becomes a phone viewfinder, the shutter taps, and a white flash
+   hands over to the invitation.
+
+Every animation is held until the guest taps open (the `.playing` class starts the whole timeline),
+so it can never run out of sync with the music. There is a **Skip** button throughout, and the whole
+sequence is bypassed for anyone whose device asks for reduced motion. It plays once per page load;
+reloading the page plays it again.
+
+Timings live in one place — the `HOW THEY MET` CSS block — and the total length is the `RUN` constant
+in the matching script block. Both must be changed together.
+
 ## Thalambralu
 
 Turmeric-stained rice drifts down the page, as the couple pour over each other at the muhurtham.
