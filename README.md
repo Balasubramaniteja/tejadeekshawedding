@@ -26,9 +26,10 @@ up blank.
   file is only fetched when a guest actually taps play. 2:54 long; it fades out at the end and
   begins quietly, so the loop joins without a click.
   Replace this file to change the music — the filename is referenced once in `index.html`.
-- `assets/img/story-groom.jpg`, `assets/img/story-bride.jpg` — the portraits shown in the opening
-  scene, supplied by the couple. Cropped out of their decorative frames and masked into arches by the
-  SVG, so the shaping costs nothing extra (520 px wide, ~78 KB each).
+- `assets/img/story-groom.png`, `assets/img/story-bride.png` — the couple, cut out of their supplied
+  portraits and standing in the opening scene (~50 KB each).
+- `assets/img/story-cafe.jpg`, `assets/img/story-selfie.jpg` — the Fat Bee Coffee and selfie scenes,
+  supplied by the couple (1100 px wide, ~125 KB each).
 - `assets/img/deities.png` — the artwork that opens the invitation, supplied by the couple. The flat
   white around the marigold frame was made transparent and the panel inside it recoloured to the page
   cream, so it sits on the background rather than in a white box (880 px wide, 165 KB).
@@ -48,30 +49,35 @@ bottom-right corner for the rest of the visit.
 
 After the opening tap, three scenes play before the invitation appears (about 17 seconds):
 
-1. **Two places** — the screen splits: the groom on a sun-drenched California coast, the bride in a
-   Kansas field of wildflowers, each in an arched portrait with a signpost naming the state. A small
-   aeroplane crosses high over California; the camera pans up after it, the panels falling away
-   beneath, and opens into a full sky of drifting clouds. A vintage aeroplane cuts east across it,
-   trailing golden condensation and hanging dust, while the golden hour sweeps in from the east and
-   spreads back the way it came.
-2. **First sight** — the sky gives way to Fat Bee Coffee, sunlight streaking through the windows.
-   The clock rolls up and settles on **2:45:36**, the background softens out of focus, and they see
-   each other.
-3. **The first selfie** — the view becomes a phone viewfinder, the shutter taps, and a white flash
-   hands over to the invitation.
+1. **Two places** — the screen splits: the groom on a California coast, the bride in a Kansas field,
+   each cut out of their own portrait and standing in a painted scene. A small aeroplane crosses high
+   over California; the camera pans up after it, the panels falling away beneath, and opens into a sky
+   of drifting clouds. A vintage aeroplane cuts east across it, trailing golden condensation and
+   hanging dust, while the golden hour sweeps in from the east and spreads back the way it came.
+2. **First sight** — Fat Bee Coffee. The camera pushes in, the clock rolls up and settles on
+   **2:45:36**, and the room pulls out of focus around the two of them.
+3. **The first selfie** — a viewfinder frames the shot, the shutter taps, and a white flash hands
+   over to the invitation.
+
+The figures in scene 1 were cut out of their backgrounds with a U²-Net matting model, the alpha then
+eroded a couple of pixels to kill the bright rim that matting leaves around hair and shoulders. The
+painted backdrops behind them carry a small blur, so the composition reads as shallow depth of field
+rather than a cutout pasted onto scenery.
+
+The focus pull in scene 2 is the same photograph drawn twice: a sharp copy, and a blurred copy masked
+by a radial gradient so only the edges soften. Nothing about the couple moves.
 
 Every animation is held until the guest taps open (the `.playing` class starts the whole timeline),
 so it can never run out of sync with the music. There is a **Skip** button throughout, and the whole
-sequence is bypassed for anyone whose device asks for reduced motion. It plays once per page load;
-reloading the page plays it again.
+sequence is bypassed for anyone whose device asks for reduced motion. It plays once per page load.
 
 Timings live in one place — the `HOW THEY MET` CSS block — and the total length is the `RUN` constant
 in the matching script block. Both must be changed together.
 
-Two details that are easy to break if the flight path is ever edited: the aeroplane's keyframes are
-spaced by **arc length**, not by curve parameter, so that it stays exactly at the tip of the trail it
-draws (spacing them evenly in `t` makes the trail visibly outrun the plane). And the
-`stroke-dasharray` on the trail must equal the path's real length, 1204 units.
+One detail that is easy to break if the flight path is ever edited: the aeroplane's keyframes are
+spaced by **arc length**, not by curve parameter, so it stays exactly at the tip of the trail it
+draws. Spacing them evenly in `t` makes the trail visibly outrun the plane. The `stroke-dasharray`
+on the trail must also equal the path's real length, 1322 units.
 
 ## Thalambralu
 

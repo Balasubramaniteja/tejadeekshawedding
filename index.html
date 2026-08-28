@@ -236,33 +236,40 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
   84%{opacity:.95;transform:none}100%{opacity:0}}
 
 /* ---- scene 1a: the two panels ---- */
-.s1-panels{transform-origin:500px 400px}
+.s1-panels{transform-origin:550px 400px}
+.figure{opacity:0}
+.story.playing .fig-g{animation:figRise 1s cubic-bezier(.2,.7,.3,1) .35s both}
+.story.playing .fig-b{animation:figRise 1s cubic-bezier(.2,.7,.3,1) .6s both}
+@keyframes figRise{from{opacity:0;transform:translateY(26px) scale(.99)}to{opacity:1;transform:none}}
+.shade{opacity:0}
+.story.playing .shade{animation:shadeIn 1s ease .55s both}
+@keyframes shadeIn{to{opacity:1}}
 .story.playing .s1-panels{animation:panelsIn .9s ease both, panUp 1.5s ease-in 3.5s both}
 @keyframes panelsIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
 @keyframes panUp{0%{transform:translateY(0) scale(1)}100%{transform:translateY(72%) scale(1.3);opacity:0}}
-.panel-l{transform-origin:250px 300px}
-.panel-r{transform-origin:750px 300px}
+.panel-l{transform-origin:275px 300px}
+.panel-r{transform-origin:825px 300px}
 .story.playing .panel-l{animation:slideL .9s cubic-bezier(.2,.7,.3,1) both}
 .story.playing .panel-r{animation:slideR .9s cubic-bezier(.2,.7,.3,1) both}
 @keyframes slideL{from{transform:translateX(-90px)}to{transform:none}}
-@keyframes slideR{from{transform:translate(590px,0)}to{transform:translate(500px,0)}}
+@keyframes slideR{from{transform:translate(640px,0)}to{transform:translate(550px,0)}}
 .seam{opacity:0}
 .story.playing .seam{animation:seamIn .5s ease .5s both}
 @keyframes seamIn{to{opacity:1}}
 .tiny-plane{opacity:0}
 .story.playing .tiny-plane{animation:tinyFly 2.6s linear 1.2s both}
 @keyframes tinyFly{
-  0%{opacity:0;transform:translate(30px,120px) rotate(-9deg)}
+  0%{opacity:0;transform:translate(20px,132px) rotate(-9deg)}
   12%{opacity:.95}
   88%{opacity:.95}
-  100%{opacity:0;transform:translate(430px,54px) rotate(-9deg)}
+  100%{opacity:0;transform:translate(500px,50px) rotate(-9deg)}
 }
-.field{transform-origin:750px 560px}
+.field{transform-origin:275px 580px}
 .story.playing .field{animation:sway 4s ease-in-out infinite alternate}
 @keyframes sway{from{transform:skewX(-1.6deg)}to{transform:skewX(1.6deg)}}
 
 /* ---- scene 1b: up into the sky ---- */
-.s1-sky{opacity:0;transform-origin:500px 300px}
+.s1-sky{opacity:0;transform-origin:550px 300px}
 .story.playing .s1-sky{animation:skyIn 5.4s ease 3.6s both}
 @keyframes skyIn{
   0%{opacity:0;transform:translateY(-34%) scale(1.22)}
@@ -280,29 +287,30 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 @keyframes drift1{from{transform:translateX(90px)}to{transform:translateX(-190px)}}
 @keyframes drift2{from{transform:translateX(140px)}to{transform:translateX(-150px)}}
 @keyframes drift3{from{transform:translateX(-60px)}to{transform:translateX(-300px)}}
-.trail{stroke-dasharray:1204;stroke-dashoffset:1204}
+.trail{stroke-dasharray:1322;stroke-dashoffset:1322}
 .story.playing .trail{animation:drawTrail 4s ease-out 4.46s both}
 .story.playing .trail-thin{animation:drawTrail 4s ease-out 4.5s both}
 @keyframes drawTrail{to{stroke-dashoffset:0}}
-.sky-plane{opacity:0;transform:translate(-90px,392px) rotate(-22.3deg)}
+.sky-plane{opacity:0;transform:translate(-100px,392px) rotate(-20.4deg)}
 .story.playing .sky-plane{animation:skyFly 4s ease-out 4.4s both, planeIn .4s ease 4.4s both}
 @keyframes planeIn{from{opacity:0}to{opacity:1}}
 @keyframes skyFly{
-  0%{transform:translate(-90.0px,392.0px) rotate(-22.3deg)}
-  7.143%{transform:translate(-9.8px,360.7px) rotate(-20.3deg)}
-  14.29%{transform:translate(71.7px,332.3px) rotate(-18.2deg)}
-  21.43%{transform:translate(153.7px,307.1px) rotate(-16.0deg)}
-  28.57%{transform:translate(236.9px,285.1px) rotate(-13.7deg)}
-  35.71%{transform:translate(321.2px,266.3px) rotate(-11.4deg)}
-  42.86%{transform:translate(405.6px,251.2px) rotate(-9.0deg)}
-  50%{transform:translate(491.1px,239.5px) rotate(-6.5deg)}
-  57.14%{transform:translate(576.7px,231.5px) rotate(-4.1deg)}
-  64.29%{transform:translate(662.2px,227.3px) rotate(-1.6deg)}
-  71.43%{transform:translate(748.4px,226.8px) rotate(0.9deg)}
-  78.57%{transform:translate(834.5px,230.1px) rotate(3.4deg)}
-  85.71%{transform:translate(920.1px,237.1px) rotate(5.9deg)}
-  92.86%{transform:translate(1005.6px,247.8px) rotate(8.4deg)}
-  100%{transform:translate(1090.0px,262.0px) rotate(10.7deg)}
+  0%{transform:translate(-100.0px,392.0px) rotate(-20.4deg)}
+  7.143%{transform:translate(-10.7px,360.4px) rotate(-18.5deg)}
+  14.29%{transform:translate(79.4px,331.9px) rotate(-16.5deg)}
+  21.43%{transform:translate(170.4px,306.6px) rotate(-14.5deg)}
+  28.57%{transform:translate(262.3px,284.6px) rotate(-12.4deg)}
+  35.71%{transform:translate(354.6px,266.0px) rotate(-10.3deg)}
+  42.86%{transform:translate(447.7px,250.9px) rotate(-8.1deg)}
+  50%{transform:translate(541.8px,239.3px) rotate(-5.9deg)}
+  57.14%{transform:translate(635.8px,231.5px) rotate(-3.7deg)}
+  64.29%{transform:translate(730.3px,227.3px) rotate(-1.4deg)}
+  71.43%{transform:translate(824.3px,226.8px) rotate(0.9deg)}
+  78.57%{transform:translate(918.8px,230.1px) rotate(3.1deg)}
+  85.71%{transform:translate(1013.2px,237.1px) rotate(5.4deg)}
+  92.86%{transform:translate(1106.8px,247.8px) rotate(7.6deg)}
+  100%{transform:translate(1200.0px,262.0px) rotate(9.8deg)}
+}
 }
 }
 .mote{opacity:0}
@@ -311,28 +319,27 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
   20%{opacity:.95}100%{opacity:0;transform:translateY(-46px) scale(1.4)}}
 
 /* ---- scene 2 ---- */
-.story.playing .sc-cafe svg{animation:cafePush 5.8s ease-in-out 8.6s both;transform-origin:50% 74%}
-@keyframes cafePush{0%{transform:scale(1.02)}50%{transform:scale(1.06)}100%{transform:scale(1.46)}}
+.story.playing .sc-cafe svg{animation:cafePush 5.8s ease-in-out 8.6s both;transform-origin:50% 56%}
+@keyframes cafePush{0%{transform:scale(1.03)}55%{transform:scale(1.09)}100%{transform:scale(1.22)}}
+.focuspull{opacity:0}
+.story.playing .focuspull{animation:pullFocus 2.2s ease 11.6s both}
+@keyframes pullFocus{to{opacity:1}}
 .clock{opacity:0}
 .story.playing .clock{animation:clockShow 3s ease 9s both}
 @keyframes clockShow{0%{opacity:0;transform:translateY(-14px)}18%{opacity:1;transform:none}
   76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
-.cafe-bg,.rays{transform-origin:500px 300px}
-.story.playing .cafe-bg{animation:softenBg 2s ease 12.2s both}
-@keyframes softenBg{to{filter:blur(3px);opacity:.7}}
-.him,.her{opacity:0}
-.story.playing .him{animation:figIn .9s ease 11s both}
-.story.playing .her{animation:figIn .9s ease 11.6s both}
-@keyframes figIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.spark{opacity:0;transform-origin:500px 400px}
-.story.playing .spark{animation:sparkle 1.6s ease 12.6s both}
+.spark{opacity:0;transform-origin:550px 300px}
+.story.playing .spark{animation:sparkle 1.8s ease 12.4s both}
 @keyframes sparkle{0%{opacity:0;transform:scale(.4) rotate(0)}
   40%{opacity:1;transform:scale(1.5) rotate(90deg)}100%{opacity:0;transform:scale(2.2) rotate(180deg)}}
 
 /* ---- scene 3 ---- */
-.finder{opacity:0;transform-origin:500px 300px}
-.story.playing .finder{animation:finderIn 1s ease 14.2s both}
-@keyframes finderIn{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+.finder-img{transform-origin:550px 300px}
+.story.playing .finder-img{animation:finderIn 3.6s ease-out 14.1s both}
+@keyframes finderIn{from{transform:scale(1.1)}to{transform:scale(1)}}
+.finder{opacity:0}
+.story.playing .finder{animation:hudIn .6s ease 14.5s both}
+@keyframes hudIn{from{opacity:0}to{opacity:1}}
 .shutter{opacity:0}
 .story.playing .shutter{animation:shutterIn .5s ease 15.2s both, shutterTap .35s ease 16.4s}
 @keyframes shutterIn{from{opacity:0}to{opacity:1}}
@@ -491,18 +498,18 @@ body.locked .music-btn{display:none}
 <div class="story" id="story" role="dialog" aria-label="How Teja and Deeksha met">
   <button class="story-skip" id="storySkip" type="button">Skip &rsaquo;</button>
 
-  <!-- ---------- Scene 1 · two coasts, one sky ---------- -->
+  <!-- ---------- Scene 1 · two places, one sky ---------- -->
   <section class="story-scene sc-open">
-    <svg viewBox="0 0 1000 600" role="img" aria-label="The groom in California and the bride in Kansas, joined by a flight across the sky">
+    <svg viewBox="0 0 1100 600" role="img" aria-label="The groom on the California coast and the bride in a Kansas field, joined by a flight across the sky">
       <defs>
         <linearGradient id="caSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7cc4e8"/><stop offset=".55" stop-color="#bfe3f2"/><stop offset="1" stop-color="#f2e6c8"/>
+          <stop offset="0" stop-color="#6fbfe6"/><stop offset=".52" stop-color="#bde2f2"/><stop offset="1" stop-color="#f3e8cc"/>
         </linearGradient>
         <linearGradient id="ksSky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f4c46a"/><stop offset=".5" stop-color="#f8ddA0"/><stop offset="1" stop-color="#f6e9bd"/>
+          <stop offset="0" stop-color="#f2bd63"/><stop offset=".48" stop-color="#f9dfa4"/><stop offset="1" stop-color="#f7ecc4"/>
         </linearGradient>
         <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4f9fc4"/><stop offset="1" stop-color="#2f7ba0"/>
+          <stop offset="0" stop-color="#4f9fc4"/><stop offset="1" stop-color="#2d7699"/>
         </linearGradient>
         <linearGradient id="skyBlue" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#4e9fd4"/><stop offset=".55" stop-color="#9fd2ec"/><stop offset="1" stop-color="#d8eef8"/>
@@ -513,59 +520,59 @@ body.locked .music-btn{display:none}
         <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
           <stop offset="0" stop-color="#fff6cf" stop-opacity=".95"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
         </radialGradient>
+        <filter id="bgSoft" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="2.6"/></filter>
+        <radialGradient id="shadeGrad" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#4a3a20" stop-opacity=".42"/><stop offset="1" stop-color="#4a3a20" stop-opacity="0"/>
+        </radialGradient>
         <linearGradient id="goldRamp" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#000"/><stop offset=".2" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>
         </linearGradient>
-        <mask id="goldSweep"><rect width="2000" height="600" fill="url(#goldRamp)"/></mask>
+        <mask id="goldSweep"><rect width="2200" height="600" fill="url(#goldRamp)"/></mask>
         <linearGradient id="trailGrad" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stop-color="#ffe9a8" stop-opacity="0"/><stop offset=".25" stop-color="#ffd77a"/>
           <stop offset="1" stop-color="#fff3c4"/>
         </linearGradient>
-        <clipPath id="archL"><path d="M132 470V228a114 114 0 0 1 228 0v242Z"/></clipPath>
-        <clipPath id="archR"><path d="M140 470V228a114 114 0 0 1 228 0v242Z"/></clipPath>
-        <filter id="feather"><feGaussianBlur stdDeviation="7"/></filter>
       </defs>
 
-      <!-- ============ the two panels ============ -->
+      <!-- ============ the two places ============ -->
       <g class="s1-panels">
         <!-- ---- California ---- -->
         <g class="panel-l">
-          <rect width="500" height="600" fill="url(#caSky)"/>
-          <circle cx="118" cy="112" r="74" fill="url(#sunGlow)"/>
-          <circle cx="118" cy="112" r="26" fill="#fffbe2" opacity=".9"/>
-          <g fill="#fffdf8" opacity=".72">
-            <ellipse cx="330" cy="96" rx="58" ry="22"/><ellipse cx="372" cy="86" rx="40" ry="18"/>
-            <ellipse cx="292" cy="88" rx="34" ry="15"/>
+          <g filter="url(#bgSoft)">
+          <rect width="550" height="600" fill="url(#caSky)"/>
+          <circle cx="112" cy="104" r="80" fill="url(#sunGlow)"/>
+          <circle cx="112" cy="104" r="27" fill="#fffbe2" opacity=".92"/>
+          <g fill="#fffdf8" opacity=".7">
+            <ellipse cx="360" cy="92" rx="62" ry="23"/><ellipse cx="408" cy="82" rx="42" ry="18"/>
+            <ellipse cx="316" cy="84" rx="36" ry="15"/>
           </g>
-          <!-- ocean + headland -->
-          <rect y="352" width="500" height="88" fill="url(#sea)"/>
-          <g fill="#fffdf8" opacity=".5">
-            <path d="M20 384q22-9 44 0t44 0M150 400q22-9 44 0t44 0M300 380q22-9 44 0t44 0M410 402q22-9 44 0t44 0"/>
+          <!-- ocean and shore -->
+          <rect y="330" width="550" height="96" fill="url(#sea)"/>
+          <g stroke="#fffdf8" stroke-width="3" fill="none" opacity=".45">
+            <path d="M24 366q24-10 48 0t48 0M170 388q24-10 48 0t48 0M330 360q24-10 48 0t48 0M448 392q24-10 48 0t48 0"/>
           </g>
-          <path d="M0 440q120-34 250-20t250-14v194H0Z" fill="#c9b071"/>
-          <path d="M0 470q130-26 250-12t250-10v152H0Z" fill="#b99a5e" opacity=".55"/>
+          <path d="M0 426q140-30 275-16t275-12v202H0Z" fill="#dcc79a"/>
+          <path d="M0 470q150-24 275-10t275-8v148H0Z" fill="#cbb27e"/>
           <!-- palms -->
-          <g stroke="#6b5330" stroke-width="6" fill="none">
-            <path d="M62 452q-8-64 6-102"/><path d="M448 464q10-56-4-90"/>
+          <g stroke="#6b5330" stroke-width="7" fill="none" stroke-linecap="round">
+            <path d="M56 444q-10-72 6-116"/><path d="M508 452q12-64-4-104"/>
           </g>
           <g fill="#3f7a3d">
-            <path d="M68 350q-42-16-56 8 40 12 56-8ZM68 350q42-16 56 8-40 12-56-8ZM68 348q-8-40 14-54 6 36-14 54ZM68 350q34-26 58-16-22 24-58 16Z"/>
-            <path d="M444 374q-34-14-46 6 32 10 46-6ZM444 374q34-14 46 6-32 10-46-6ZM444 372q-6-32 12-44 4 30-12 44Z"/>
+            <path d="M62 328q-48-18-64 10 46 14 64-10ZM62 328q48-18 64 10-46 14-64-10ZM62 326q-10-46 16-62 8 42-16 62ZM62 328q38-30 66-18-24 28-66 18Z"/>
+            <path d="M504 348q-40-16-54 8 38 12 54-8ZM504 348q40-16 54 8-38 12-54-8ZM504 346q-8-38 14-52 6 36-14 52Z"/>
+          </g>
           </g>
           <!-- signpost -->
-          <g transform="translate(440,492)">
-            <rect x="-4" y="-44" width="8" height="76" fill="#8a6a3a"/>
+          <g transform="translate(486,470)">
+            <rect x="-4" y="-46" width="9" height="84" fill="#8a6a3a"/>
             <g transform="rotate(-4)">
-              <rect x="-74" y="-58" width="148" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
-              <text y="-35" text-anchor="middle" font-family="Marcellus,serif" font-size="17" fill="#7a4a22" letter-spacing="1.5">CALIFORNIA</text>
+              <rect x="-78" y="-62" width="156" height="34" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
+              <text y="-38" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="1.5">CALIFORNIA</text>
             </g>
           </g>
-          <!-- the groom -->
-          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="#fdf7ec"/>
-          <image href="assets/img/story-groom.jpg" x="120" y="196" width="252" height="332"
-                 preserveAspectRatio="xMidYMin slice" clip-path="url(#archL)"/>
-          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#fdf7ec" stroke-width="10" opacity=".9"/>
-          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+          <!-- the groom, standing in the light -->
+          <ellipse class="shade" cx="272" cy="596" rx="196" ry="30" fill="url(#shadeGrad)"/>
+          <image class="figure fig-g" href="assets/img/story-groom.png" x="82" y="178" width="380" height="421"/>
           <!-- the aeroplane he notices, high overhead -->
           <g class="tiny-plane">
             <path d="M0 5 L15 3 L20 5 L15 7 Z" fill="#fdf7ec" stroke="#5a6b74" stroke-width="1"/>
@@ -575,83 +582,76 @@ body.locked .music-btn{display:none}
         </g>
 
         <!-- ---- Kansas ---- -->
-        <g class="panel-r" transform="translate(500,0)">
-          <rect width="500" height="600" fill="url(#ksSky)"/>
-          <circle cx="382" cy="130" r="96" fill="url(#sunGlow)"/>
-          <circle cx="382" cy="130" r="38" fill="#fff3b4" opacity=".95"/>
-          <!-- rolling hills -->
-          <path d="M0 372q120-52 250-24t250-16v268H0Z" fill="#cbc07a"/>
-          <path d="M0 416q130-40 250-14t250-20v218H0Z" fill="#b9b063" opacity=".8"/>
-          <path d="M0 462q140-30 250-8t250-16v162H0Z" fill="#9ea351"/>
-          <!-- wildflowers -->
-          <g class="field">
-            <g stroke="#7d8c40" stroke-width="2.5">
-              <path d="M40 596v-44M96 600v-38M160 592v-46M232 600v-40M300 594v-42M366 600v-36M430 592v-44M470 600v-34
-                       M68 600v-30M130 600v-28M198 600v-32M268 600v-26M334 600v-30M400 600v-26"/>
-            </g>
-            <g>
-              <circle cx="40" cy="550" r="8" fill="#e8607f"/><circle cx="96" cy="560" r="7" fill="#f0a52a"/>
-              <circle cx="160" cy="544" r="8" fill="#fff4d2"/><circle cx="232" cy="558" r="7" fill="#e8607f"/>
-              <circle cx="300" cy="550" r="8" fill="#f0a52a"/><circle cx="366" cy="562" r="7" fill="#fff4d2"/>
-              <circle cx="430" cy="546" r="8" fill="#e8607f"/><circle cx="470" cy="564" r="7" fill="#f0a52a"/>
-            </g>
-          </g>
+        <g class="panel-r" transform="translate(550,0)">
+          <g filter="url(#bgSoft)">
+          <rect width="550" height="600" fill="url(#ksSky)"/>
+          <circle cx="418" cy="122" r="104" fill="url(#sunGlow)"/>
+          <circle cx="418" cy="122" r="41" fill="#fff3b4" opacity=".95"/>
+          <path d="M0 356q132-56 275-26t275-18v288H0Z" fill="#cfc37c"/>
+          <path d="M0 404q144-42 275-14t275-22v232H0Z" fill="#bcb265" opacity=".85"/>
+          <path d="M0 452q154-32 275-8t275-18v174H0Z" fill="#a1a552"/>
           <!-- a lone tree -->
-          <g transform="translate(74,420)">
-            <path d="M0 60V0" stroke="#6b5330" stroke-width="7"/>
-            <circle cx="0" cy="-14" r="30" fill="#7d9a4a"/><circle cx="-22" cy="0" r="20" fill="#8fae5a"/>
-            <circle cx="22" cy="-2" r="18" fill="#8fae5a"/>
+          <g transform="translate(78,408)">
+            <path d="M0 64V0" stroke="#6b5330" stroke-width="8"/>
+            <circle cx="0" cy="-16" r="33" fill="#7d9a4a"/><circle cx="-24" cy="0" r="22" fill="#8fae5a"/>
+            <circle cx="24" cy="-3" r="19" fill="#8fae5a"/>
+          </g>
           </g>
           <!-- signpost -->
-          <g transform="translate(96,516)">
-            <rect x="-4" y="-40" width="8" height="70" fill="#8a6a3a"/>
+          <g transform="translate(84,506)">
+            <rect x="-4" y="-42" width="9" height="76" fill="#8a6a3a"/>
             <g transform="rotate(3)">
-              <rect x="-70" y="-54" width="140" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
-              <text y="-32" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="2">KANSAS</text>
+              <rect x="-66" y="-58" width="132" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
+              <text y="-35" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="2">KANSAS</text>
             </g>
           </g>
-          <!-- the bride -->
-          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="#fdf7ec"/>
-          <image href="assets/img/story-bride.jpg" x="128" y="196" width="252" height="336"
-                 preserveAspectRatio="xMidYMin slice" clip-path="url(#archR)"/>
-          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#fdf7ec" stroke-width="10" opacity=".9"/>
-          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+          <!-- the bride, and the wildflowers around her -->
+          <ellipse class="shade" cx="300" cy="598" rx="168" ry="28" fill="url(#shadeGrad)"/>
+          <image class="figure fig-b" href="assets/img/story-bride.png" x="148" y="146" width="304" height="463"/>
+          <g class="field">
+            <g stroke="#7d8c40" stroke-width="3">
+              <path d="M30 600v-52M84 600v-44M140 600v-56M470 600v-50M516 600v-42
+                       M58 600v-36M112 600v-32M446 600v-34M492 600v-30"/>
+            </g>
+            <g>
+              <circle cx="30" cy="546" r="9" fill="#e8607f"/><circle cx="84" cy="554" r="8" fill="#f0a52a"/>
+              <circle cx="140" cy="542" r="9" fill="#fff4d2"/><circle cx="470" cy="548" r="9" fill="#e8607f"/>
+              <circle cx="516" cy="556" r="8" fill="#f0a52a"/>
+            </g>
+          </g>
         </g>
 
-        <!-- the seam between them -->
-        <rect class="seam" x="496" width="8" height="600" fill="#fdf7ec"/>
+        <rect class="seam" x="546" width="8" height="600" fill="#fdf7ec"/>
       </g>
 
       <!-- ============ the sky ============ -->
       <g class="s1-sky">
-        <rect width="1000" height="600" fill="url(#skyBlue)"/>
-        <g class="goldwash" mask="url(#goldSweep)"><rect width="2000" height="600" fill="url(#skyGold)"/></g>
+        <rect width="1100" height="600" fill="url(#skyBlue)"/>
+        <g class="goldwash" mask="url(#goldSweep)"><rect width="2200" height="600" fill="url(#skyGold)"/></g>
         <g class="clouds" fill="#fffdf8">
           <g opacity=".95">
-            <ellipse cx="160" cy="150" rx="96" ry="42"/><ellipse cx="232" cy="132" rx="68" ry="34"/>
-            <ellipse cx="96"  cy="166" rx="58" ry="28"/>
+            <ellipse cx="176" cy="150" rx="104" ry="44"/><ellipse cx="255" cy="132" rx="72" ry="35"/>
+            <ellipse cx="106" cy="166" rx="62" ry="29"/>
           </g>
           <g opacity=".8">
-            <ellipse cx="620" cy="106" rx="82" ry="34"/><ellipse cx="680" cy="94" rx="56" ry="26"/>
+            <ellipse cx="682" cy="104" rx="88" ry="35"/><ellipse cx="748" cy="92" rx="60" ry="27"/>
           </g>
           <g opacity=".9">
-            <ellipse cx="860" cy="196" rx="104" ry="44"/><ellipse cx="930" cy="180" rx="66" ry="32"/>
+            <ellipse cx="946" cy="196" rx="112" ry="46"/><ellipse cx="1022" cy="180" rx="70" ry="33"/>
           </g>
           <g opacity=".75">
-            <ellipse cx="360" cy="452" rx="128" ry="46"/><ellipse cx="450" cy="436" rx="86" ry="34"/>
-            <ellipse cx="270" cy="466" rx="76" ry="30"/>
+            <ellipse cx="396" cy="452" rx="138" ry="48"/><ellipse cx="495" cy="436" rx="92" ry="35"/>
+            <ellipse cx="297" cy="466" rx="82" ry="31"/>
           </g>
           <g opacity=".7">
-            <ellipse cx="800" cy="500" rx="122" ry="44"/><ellipse cx="880" cy="486" rx="80" ry="32"/>
+            <ellipse cx="880" cy="500" rx="132" ry="46"/><ellipse cx="968" cy="486" rx="86" ry="33"/>
           </g>
         </g>
-        <!-- the golden condensation trail -->
-        <path class="trail" d="M-90 392 Q500 150 1090 262" fill="none" stroke="url(#trailGrad)"
-              stroke-width="9" stroke-linecap="round" opacity=".95"/>
-        <path class="trail trail-thin" d="M-90 392 Q500 150 1090 262" fill="none" stroke="#fff8e0"
+        <path class="trail" d="M-100 392 Q550 150 1200 262" fill="none" stroke="url(#trailGrad)"
+              stroke-width="10" stroke-linecap="round" opacity=".95"/>
+        <path class="trail trail-thin" d="M-100 392 Q550 150 1200 262" fill="none" stroke="#fff8e0"
               stroke-width="3" stroke-linecap="round" opacity=".9"/>
         <g class="dust"></g>
-        <!-- the vintage aeroplane -->
         <g class="sky-plane">
           <g transform="translate(-34,-22) scale(1.9)">
             <path d="M2 12 L26 9 L33 12 L26 15 Z" fill="#fdf7ec" stroke="#7a4a22" stroke-width="1.4" stroke-linejoin="round"/>
@@ -670,115 +670,31 @@ body.locked .music-btn{display:none}
 
   <!-- ---------- Scene 2 · first sight ---------- -->
   <section class="story-scene sc-cafe">
-    <svg viewBox="0 0 1000 600" role="img" aria-label="Sunlight through the windows of Fat Bee Coffee, where they first saw each other">
+    <svg viewBox="0 0 1100 600" role="img" aria-label="Teja and Deeksha at Fat Bee Coffee, the moment they first saw each other">
       <defs>
-        <linearGradient id="cafeWall" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f7e6c8"/><stop offset=".55" stop-color="#eed7ac"/><stop offset="1" stop-color="#d9b881"/>
-        </linearGradient>
-        <linearGradient id="paneLight" x1="0" y1="0" x2="0.3" y2="1">
-          <stop offset="0" stop-color="#fffaea"/><stop offset="1" stop-color="#ffe9b0"/>
-        </linearGradient>
-        <linearGradient id="rayGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#fff6d8" stop-opacity=".85"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/>
-        </linearGradient>
-        <filter id="hazy" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="4"/></filter>
+        <filter id="softFocus" x="-6%" y="-6%" width="112%" height="112%"><feGaussianBlur stdDeviation="9"/></filter>
+        <radialGradient id="focusRamp" cx=".5" cy=".52" r=".62">
+          <stop offset="0" stop-color="#000"/><stop offset=".42" stop-color="#000"/><stop offset="1" stop-color="#fff"/>
+        </radialGradient>
+        <mask id="edgeOnly"><rect width="1100" height="600" fill="url(#focusRamp)"/></mask>
+        <radialGradient id="glowRing" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff3c4" stop-opacity=".8"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
+        </radialGradient>
       </defs>
-
-      <rect width="1000" height="600" fill="url(#cafeWall)"/>
-
-      <!-- window wall -->
-      <g class="cafe-bg">
-        <rect x="70" y="52" width="386" height="316" rx="8" fill="url(#paneLight)" stroke="#b08a52" stroke-width="6"/>
-        <path d="M263 52v316M70 210h386" stroke="#b08a52" stroke-width="6"/>
-        <rect x="544" y="52" width="386" height="316" rx="8" fill="url(#paneLight)" stroke="#b08a52" stroke-width="6"/>
-        <path d="M737 52v316M544 210h386" stroke="#b08a52" stroke-width="6"/>
-        <!-- street beyond the glass -->
-        <g opacity=".35" fill="#8fae6a">
-          <circle cx="150" cy="150" r="46"/><circle cx="205" cy="176" r="34"/>
-          <circle cx="840" cy="150" r="44"/><circle cx="786" cy="180" r="30"/>
-        </g>
-        <!-- hanging plants -->
-        <g>
-          <path d="M120 52v34M330 52v26M640 52v30M880 52v22" stroke="#8a6a3a" stroke-width="3"/>
-          <g fill="#4f7f3c">
-            <path d="M120 86 q-34 8 -40 44 q34 2 40 -44ZM120 86 q34 8 40 44 q-34 2 -40 -44ZM120 92 q-8 34 6 56 q16 -24 -6 -56Z"/>
-            <path d="M330 78 q-30 8 -34 40 q30 0 34 -40ZM330 78 q30 8 34 40 q-30 0 -34 -40Z"/>
-            <path d="M640 82 q-30 8 -34 40 q30 0 34 -40ZM640 82 q30 8 34 40 q-30 0 -34 -40Z"/>
-            <path d="M880 74 q-26 8 -30 36 q26 0 30 -36ZM880 74 q26 8 30 36 q-26 0 -30 -36Z"/>
-          </g>
-        </g>
-        <!-- the shop sign -->
-        <g transform="translate(500,120)">
-          <rect x="-140" y="-42" width="280" height="84" rx="12" fill="#7a4a22" stroke="#c9a227" stroke-width="3"/>
-          <text y="-4" text-anchor="middle" font-family="Marcellus,serif" font-size="30" fill="#ffe9b0" letter-spacing="3">FAT BEE</text>
-          <text y="26" text-anchor="middle" font-family="Marcellus,serif" font-size="19" fill="#e8c05a" letter-spacing="6">COFFEE</text>
-          <g transform="translate(-118,-56)">
-            <ellipse cx="0" cy="0" rx="11" ry="8" fill="#f0c53f" stroke="#5a3a12" stroke-width="1.6"/>
-            <path d="M-5 -6v13M1 -7v15" stroke="#5a3a12" stroke-width="1.6"/>
-            <ellipse cx="-2" cy="-9" rx="7" ry="4" fill="#fffdf6" opacity=".85"/>
-          </g>
-        </g>
-        <!-- counter and floor -->
-        <rect x="0" y="368" width="1000" height="30" fill="#a8734a"/>
-        <rect x="0" y="398" width="1000" height="202" fill="#c9a06a"/>
-        <g stroke="#b08a52" stroke-width="2" opacity=".5">
-          <path d="M0 440h1000M0 490h1000M0 545h1000"/>
-        </g>
+      <image href="assets/img/story-cafe.jpg" width="1100" height="600"/>
+      <!-- the focus pull: the room softens, the two of them stay sharp -->
+      <g class="focuspull" mask="url(#edgeOnly)">
+        <image href="assets/img/story-cafe.jpg" width="1100" height="600" filter="url(#softFocus)"/>
       </g>
-
-      <!-- sunlight streaking in -->
-      <g class="rays">
-        <path d="M120 60 L300 600 L120 600Z" fill="url(#rayGrad)" opacity=".5"/>
-        <path d="M300 60 L470 600 L330 600Z" fill="url(#rayGrad)" opacity=".38"/>
-        <path d="M640 60 L780 600 L660 600Z" fill="url(#rayGrad)" opacity=".42"/>
-      </g>
-
-      <!-- table -->
-      <g>
-        <ellipse cx="500" cy="470" rx="150" ry="26" fill="#8a5a2b" opacity=".25"/>
-        <rect x="360" y="440" width="280" height="18" rx="9" fill="#a8734a"/>
-        <rect x="484" y="458" width="32" height="82" fill="#8f5f3a"/>
-        <rect x="446" y="540" width="108" height="14" rx="6" fill="#8f5f3a"/>
-        <!-- two cups -->
-        <g><path d="M420 420 q-4 16 4 20 q12 5 22 0 q8 -4 4 -20Z" fill="#fdf7ec" stroke="#c9a86e" stroke-width="2"/>
-           <path d="M450 424 q10 2 8 10 q-2 7 -10 6" fill="none" stroke="#c9a86e" stroke-width="2"/></g>
-        <g><path d="M556 420 q-4 16 4 20 q12 5 22 0 q8 -4 4 -20Z" fill="#fdf7ec" stroke="#c9a86e" stroke-width="2"/>
-           <path d="M586 424 q10 2 8 10 q-2 7 -10 6" fill="none" stroke="#c9a86e" stroke-width="2"/></g>
-      </g>
-
-      <!-- Teja, looking up -->
-      <g class="him">
-        <path d="M356 440 q40 -14 80 0 l10 96 h-100Z" fill="#39506b"/>
-        <rect x="386" y="424" width="20" height="22" rx="8" fill="#e0a97c"/>
-        <circle cx="396" cy="398" r="32" fill="#e9b78a"/>
-        <path d="M364 396 a32 32 0 0 1 64 0 a32 22 0 0 0 -64 0Z" fill="#2b1b12"/>
-        <circle cx="410" cy="400" r="3" fill="#3d2718"/>
-        <path d="M404 414 q9 6 17 0" fill="none" stroke="#a86a4a" stroke-width="2.6" stroke-linecap="round"/>
-      </g>
-
-      <!-- Deeksha, just seen -->
-      <g class="her">
-        <path d="M566 440 q40 -14 80 0 l10 96 h-100Z" fill="#a3122f"/>
-        <path d="M636 440 q22 42 12 96 h-22Z" fill="#c4173b"/>
-        <rect x="596" y="424" width="20" height="22" rx="8" fill="#dfa87c"/>
-        <circle cx="606" cy="398" r="31" fill="#eab98d"/>
-        <path d="M575 396 a31 31 0 0 1 62 0 a31 21 0 0 0 -62 0Z" fill="#241510"/>
-        <circle cx="638" cy="410" r="15" fill="#241510"/>
-        <path d="M642 424 q12 30 4 50" stroke="#241510" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <circle cx="592" cy="400" r="3" fill="#3d2718"/>
-        <path d="M584 414 q9 6 17 0" fill="none" stroke="#a86a4a" stroke-width="2.6" stroke-linecap="round"/>
-      </g>
-
-      <!-- the glance -->
-      <g class="spark">
-        <path d="M500 388 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6Z" fill="#fff3c4"/>
-      </g>
-
-      <!-- the clock on the phone -->
+      <!-- the second they met -->
       <g class="clock">
-        <rect x="392" y="196" width="216" height="112" rx="18" fill="#2b2318" stroke="#c9a227" stroke-width="3"/>
-        <text id="storyClock" x="500" y="266" text-anchor="middle" font-family="Marcellus,serif"
-              font-size="52" fill="#ffe9b0" letter-spacing="3">2:45:36</text>
+        <rect x="430" y="34" width="240" height="96" rx="16" fill="#2b2318" opacity=".88" stroke="#c9a227" stroke-width="3"/>
+        <text id="storyClock" x="550" y="98" text-anchor="middle" font-family="Marcellus,serif"
+              font-size="50" fill="#ffe9b0" letter-spacing="3">2:45:36</text>
+      </g>
+      <g class="spark">
+        <circle cx="550" cy="300" r="90" fill="url(#glowRing)"/>
+        <path d="M550 268 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8Z" fill="#fff8dc"/>
       </g>
     </svg>
     <p class="caption cap-2">Fat Bee Coffee &middot; 2:45:36 &middot; the first time he looked up</p>
@@ -786,53 +702,26 @@ body.locked .music-btn{display:none}
 
   <!-- ---------- Scene 3 · the first selfie ---------- -->
   <section class="story-scene sc-selfie">
-    <svg viewBox="0 0 1000 600" role="img" aria-label="Their first selfie together at the coffee shop">
-      <defs>
-        <linearGradient id="selfieBg" x1="0" y1="0" x2="0.3" y2="1">
-          <stop offset="0" stop-color="#f9e8c6"/><stop offset="1" stop-color="#e3c08a"/>
-        </linearGradient>
-      </defs>
-      <rect width="1000" height="600" fill="#20180d"/>
-      <!-- viewfinder -->
+    <svg viewBox="0 0 1100 600" role="img" aria-label="Their first selfie together at sunset">
+      <image class="finder-img" href="assets/img/story-selfie.jpg" width="1100" height="600"/>
       <g class="finder">
-        <rect x="150" y="34" width="700" height="470" rx="20" fill="url(#selfieBg)"/>
-        <g opacity=".35" fill="#c9a06a">
-          <rect x="150" y="330" width="700" height="174"/>
+        <g stroke="#fffdf6" stroke-width="5" fill="none" opacity=".92" stroke-linecap="round">
+          <path d="M64 118V64h54M1036 118V64h-54M64 482v54h54M1036 482v54h-54"/>
         </g>
-        <!-- blurred cafe behind -->
-        <g opacity=".5" filter="url(#softer)">
-          <rect x="210" y="80" width="220" height="170" rx="10" fill="#fff3cf"/>
-          <rect x="570" y="80" width="220" height="170" rx="10" fill="#fff3cf"/>
-          <circle cx="500" cy="150" r="46" fill="#e8c05a"/>
+        <g fill="#fffdf6" opacity=".85">
+          <circle cx="88" cy="88" r="0"/>
         </g>
-
-        <!-- the two of them, leaning in -->
-        <g>
-          <path d="M300 504 q60 -120 150 -96 l16 96Z" fill="#39506b"/>
-          <circle cx="432" cy="292" r="56" fill="#e9b78a" transform="rotate(-9 432 292)"/>
-          <path d="M376 288 a56 56 0 0 1 112 0 a56 38 0 0 0 -112 0Z" fill="#2b1b12" transform="rotate(-9 432 292)"/>
-          <circle cx="414" cy="292" r="4.5" fill="#3d2718"/><circle cx="456" cy="288" r="4.5" fill="#3d2718"/>
-          <path d="M414 318 q22 18 44 -4" fill="none" stroke="#a3122f" stroke-width="4" stroke-linecap="round"/>
-
-          <path d="M700 504 q-60 -120 -150 -96 l-16 96Z" fill="#a3122f"/>
-          <circle cx="566" cy="288" r="54" fill="#eab98d" transform="rotate(10 566 288)"/>
-          <path d="M512 284 a54 54 0 0 1 108 0 a54 36 0 0 0 -108 0Z" fill="#241510" transform="rotate(10 566 288)"/>
-          <circle cx="620" cy="306" r="26" fill="#241510"/>
-          <circle cx="546" cy="288" r="4.5" fill="#3d2718"/><circle cx="588" cy="292" r="4.5" fill="#3d2718"/>
-          <path d="M544 316 q22 18 44 -4" fill="none" stroke="#a3122f" stroke-width="4" stroke-linecap="round"/>
-          <!-- his arm, holding the phone -->
-          <path d="M330 470 q-70 -60 -96 -150" stroke="#e9b78a" stroke-width="26" fill="none" stroke-linecap="round"/>
+        <g stroke="#fffdf6" stroke-width="2" opacity=".35">
+          <path d="M400 64v472M700 64v472M64 220h972M64 380h972"/>
         </g>
-
-        <!-- viewfinder brackets -->
-        <g stroke="#fffdf6" stroke-width="4" fill="none" opacity=".9">
-          <path d="M186 82v-24h30M814 82v-24h-30M186 456v24h30M814 456v24h-30"/>
+        <g transform="translate(96,556)">
+          <circle cx="0" cy="0" r="9" fill="#e0561c"/>
+          <text x="20" y="6" font-family="Marcellus,serif" font-size="20" fill="#fffdf6" letter-spacing="3">REC</text>
         </g>
       </g>
-      <!-- shutter -->
       <g class="shutter">
-        <circle cx="500" cy="548" r="30" fill="none" stroke="#fdf7ec" stroke-width="4"/>
-        <circle cx="500" cy="548" r="22" fill="#fdf7ec"/>
+        <circle cx="1004" cy="552" r="26" fill="none" stroke="#fdf7ec" stroke-width="4"/>
+        <circle cx="1004" cy="552" r="19" fill="#fdf7ec"/>
       </g>
     </svg>
     <p class="caption cap-3">and the first of many</p>
@@ -1751,7 +1640,7 @@ const story = (function(){
   function seedDust(){
     const g = el.querySelector('.dust');
     if(!g || g.childElementCount) return;
-    const P0=[-90,392], P1=[500,150], P2=[1090,262];
+    const P0=[-100,392], P1=[550,150], P2=[1200,262];
     const at = t => { const u=1-t; return [
       u*u*P0[0] + 2*u*t*P1[0] + t*t*P2[0],
       u*u*P0[1] + 2*u*t*P1[1] + t*t*P2[1] ]; };
