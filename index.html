@@ -196,7 +196,8 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
    invitation. Every animation is paused until .playing is set, so the timeline
    starts on the tap rather than on page load. */
 .story{
-  position:fixed;inset:0;z-index:150;background:#20180d;display:none;
+  position:fixed;inset:0;z-index:150;display:none;
+  background:radial-gradient(circle at 50% 46%, #302514, #15100a 72%);
   align-items:center;justify-content:center;overflow:hidden;
 }
 .story.on{display:flex}
@@ -221,84 +222,129 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 .story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* --- the timeline, all of it gated behind .playing --- */
-.story.playing .sc-map{animation:sceneShow 6.2s ease both}
-.story.playing .sc-cafe{animation:sceneShow 6.4s ease 5.8s both}
-.story.playing .sc-selfie{animation:sceneShow 4.2s ease 11.8s both}
+.story.playing .sc-open{animation:sceneShowLong 9s ease both}
+@keyframes sceneShowLong{0%{opacity:0}8%{opacity:1}93%{opacity:1}100%{opacity:0}}
+.story.playing .sc-cafe{animation:sceneShow 5.8s ease 8.6s both}
+.story.playing .sc-selfie{animation:sceneShow 3.8s ease 14s both}
 @keyframes sceneShow{0%{opacity:0}9%{opacity:1}86%{opacity:1}100%{opacity:0}}
 
-.story.playing .cap-1{animation:capShow 5.6s ease .8s both}
-.story.playing .cap-2{animation:capShow 5.8s ease 6.4s both}
-.story.playing .cap-3{animation:capShow 4s ease 12.4s both}
+.story.playing .cap-1a{animation:capShow 3.2s ease .5s both}
+.story.playing .cap-1b{animation:capShow 3.6s ease 5s both}
+.story.playing .cap-2{animation:capShow 5s ease 9.2s both}
+.story.playing .cap-3{animation:capShow 3s ease 14.8s both}
 @keyframes capShow{0%{opacity:0;transform:translateY(8px)}16%{opacity:.95;transform:none}
   84%{opacity:.95;transform:none}100%{opacity:0}}
 
-/* scene 1 */
-.story.playing .sc-map svg{animation:mapPan 6.2s ease-in-out both}
-@keyframes mapPan{0%{transform:scale(1.14) translateX(5%)}100%{transform:scale(1.02) translateX(-4%)}}
-.story.playing .pin-a{animation:pinPop .7s ease .25s both}
-.story.playing .pin-b{animation:pinPop .7s ease 3.9s both}
-@keyframes pinPop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
-.route{stroke-dasharray:2 14;stroke-dashoffset:740;opacity:0}
-.story.playing .route{animation:drawRoute 4.2s linear .9s both}
-@keyframes drawRoute{0%{stroke-dashoffset:740;opacity:0}6%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
-.plane{opacity:0;transform:translate(168px,392px) rotate(-41.7deg)}
-.story.playing .plane{animation:flyPlane 4.2s ease-in-out .9s both, planeIn .4s ease .9s both}
-@keyframes planeIn{from{opacity:0}to{opacity:1}}
-@keyframes flyPlane{
-  0%{transform:translate(168.0px,392.0px) rotate(-41.7deg)}
-  8.333%{transform:translate(223.3px,346.1px) rotate(-37.5deg)}
-  16.67%{transform:translate(278.6px,307.2px) rotate(-32.7deg)}
-  25%{transform:translate(333.8px,275.2px) rotate(-27.3deg)}
-  33.33%{transform:translate(388.9px,250.2px) rotate(-21.4deg)}
-  41.67%{transform:translate(444.0px,232.1px) rotate(-14.9deg)}
-  50%{transform:translate(499.0px,221.0px) rotate(-7.9deg)}
-  58.33%{transform:translate(554.0px,216.8px) rotate(-0.8deg)}
-  66.67%{transform:translate(608.9px,219.6px) rotate(6.5deg)}
-  75%{transform:translate(663.8px,229.2px) rotate(13.5deg)}
-  83.33%{transform:translate(718.6px,245.9px) rotate(20.2deg)}
-  91.67%{transform:translate(773.3px,269.5px) rotate(26.3deg)}
-  100%{transform:translate(828.0px,300.0px) rotate(31.9deg)}
+/* ---- scene 1a: the two panels ---- */
+.s1-panels{transform-origin:500px 400px}
+.story.playing .s1-panels{animation:panelsIn .9s ease both, panUp 1.5s ease-in 3.5s both}
+@keyframes panelsIn{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
+@keyframes panUp{0%{transform:translateY(0) scale(1)}100%{transform:translateY(72%) scale(1.3);opacity:0}}
+.panel-l{transform-origin:250px 300px}
+.panel-r{transform-origin:750px 300px}
+.story.playing .panel-l{animation:slideL .9s cubic-bezier(.2,.7,.3,1) both}
+.story.playing .panel-r{animation:slideR .9s cubic-bezier(.2,.7,.3,1) both}
+@keyframes slideL{from{transform:translateX(-90px)}to{transform:none}}
+@keyframes slideR{from{transform:translate(590px,0)}to{transform:translate(500px,0)}}
+.seam{opacity:0}
+.story.playing .seam{animation:seamIn .5s ease .5s both}
+@keyframes seamIn{to{opacity:1}}
+.tiny-plane{opacity:0}
+.story.playing .tiny-plane{animation:tinyFly 2.6s linear 1.2s both}
+@keyframes tinyFly{
+  0%{opacity:0;transform:translate(30px,120px) rotate(-9deg)}
+  12%{opacity:.95}
+  88%{opacity:.95}
+  100%{opacity:0;transform:translate(430px,54px) rotate(-9deg)}
 }
+.field{transform-origin:750px 560px}
+.story.playing .field{animation:sway 4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:skewX(-1.6deg)}to{transform:skewX(1.6deg)}}
 
-/* scene 2 */
-.story.playing .sc-cafe svg{animation:cafePush 6.4s ease-in-out 5.8s both;transform-origin:50% 74%}
-@keyframes cafePush{            /* wide to establish, then push in on the two of them */
-  0%{transform:scale(1.02)}
-  50%{transform:scale(1.06)}
-  100%{transform:scale(1.46)}
+/* ---- scene 1b: up into the sky ---- */
+.s1-sky{opacity:0;transform-origin:500px 300px}
+.story.playing .s1-sky{animation:skyIn 5.4s ease 3.6s both}
+@keyframes skyIn{
+  0%{opacity:0;transform:translateY(-34%) scale(1.22)}
+  20%{opacity:1;transform:translateY(0) scale(1.1)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
 }
+.goldwash{transform:translateX(640px)}
+.story.playing .goldwash{animation:warmUp 3.4s ease-in-out 4.8s both}
+@keyframes warmUp{from{transform:translateX(640px)}to{transform:translateX(-360px)}}
+.story.playing .clouds > g:nth-child(1){animation:drift1 9s linear 3.6s both}
+.story.playing .clouds > g:nth-child(2){animation:drift2 9s linear 3.6s both}
+.story.playing .clouds > g:nth-child(3){animation:drift1 11s linear 3.6s both}
+.story.playing .clouds > g:nth-child(4){animation:drift3 8s linear 3.6s both}
+.story.playing .clouds > g:nth-child(5){animation:drift2 10s linear 3.6s both}
+@keyframes drift1{from{transform:translateX(90px)}to{transform:translateX(-190px)}}
+@keyframes drift2{from{transform:translateX(140px)}to{transform:translateX(-150px)}}
+@keyframes drift3{from{transform:translateX(-60px)}to{transform:translateX(-300px)}}
+.trail{stroke-dasharray:1204;stroke-dashoffset:1204}
+.story.playing .trail{animation:drawTrail 4s ease-out 4.46s both}
+.story.playing .trail-thin{animation:drawTrail 4s ease-out 4.5s both}
+@keyframes drawTrail{to{stroke-dashoffset:0}}
+.sky-plane{opacity:0;transform:translate(-90px,392px) rotate(-22.3deg)}
+.story.playing .sky-plane{animation:skyFly 4s ease-out 4.4s both, planeIn .4s ease 4.4s both}
+@keyframes planeIn{from{opacity:0}to{opacity:1}}
+@keyframes skyFly{
+  0%{transform:translate(-90.0px,392.0px) rotate(-22.3deg)}
+  7.143%{transform:translate(-9.8px,360.7px) rotate(-20.3deg)}
+  14.29%{transform:translate(71.7px,332.3px) rotate(-18.2deg)}
+  21.43%{transform:translate(153.7px,307.1px) rotate(-16.0deg)}
+  28.57%{transform:translate(236.9px,285.1px) rotate(-13.7deg)}
+  35.71%{transform:translate(321.2px,266.3px) rotate(-11.4deg)}
+  42.86%{transform:translate(405.6px,251.2px) rotate(-9.0deg)}
+  50%{transform:translate(491.1px,239.5px) rotate(-6.5deg)}
+  57.14%{transform:translate(576.7px,231.5px) rotate(-4.1deg)}
+  64.29%{transform:translate(662.2px,227.3px) rotate(-1.6deg)}
+  71.43%{transform:translate(748.4px,226.8px) rotate(0.9deg)}
+  78.57%{transform:translate(834.5px,230.1px) rotate(3.4deg)}
+  85.71%{transform:translate(920.1px,237.1px) rotate(5.9deg)}
+  92.86%{transform:translate(1005.6px,247.8px) rotate(8.4deg)}
+  100%{transform:translate(1090.0px,262.0px) rotate(10.7deg)}
+}
+}
+.mote{opacity:0}
+.story.playing .mote{animation:moteUp 2.4s ease-out both}
+@keyframes moteUp{0%{opacity:0;transform:translateY(0) scale(.5)}
+  20%{opacity:.95}100%{opacity:0;transform:translateY(-46px) scale(1.4)}}
+
+/* ---- scene 2 ---- */
+.story.playing .sc-cafe svg{animation:cafePush 5.8s ease-in-out 8.6s both;transform-origin:50% 74%}
+@keyframes cafePush{0%{transform:scale(1.02)}50%{transform:scale(1.06)}100%{transform:scale(1.46)}}
 .clock{opacity:0}
-.story.playing .clock{animation:clockShow 3s ease 6.2s both}
+.story.playing .clock{animation:clockShow 3s ease 9s both}
 @keyframes clockShow{0%{opacity:0;transform:translateY(-14px)}18%{opacity:1;transform:none}
   76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
 .cafe-bg,.rays{transform-origin:500px 300px}
-.story.playing .cafe-bg{animation:softenBg 2.4s ease 9.2s both}
+.story.playing .cafe-bg{animation:softenBg 2s ease 12.2s both}
 @keyframes softenBg{to{filter:blur(3px);opacity:.7}}
 .him,.her{opacity:0}
-.story.playing .him{animation:figIn .9s ease 8.6s both}
-.story.playing .her{animation:figIn .9s ease 9.4s both}
+.story.playing .him{animation:figIn .9s ease 11s both}
+.story.playing .her{animation:figIn .9s ease 11.6s both}
 @keyframes figIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .spark{opacity:0;transform-origin:500px 400px}
-.story.playing .spark{animation:sparkle 1.8s ease 10.2s both}
+.story.playing .spark{animation:sparkle 1.6s ease 12.6s both}
 @keyframes sparkle{0%{opacity:0;transform:scale(.4) rotate(0)}
   40%{opacity:1;transform:scale(1.5) rotate(90deg)}100%{opacity:0;transform:scale(2.2) rotate(180deg)}}
 
-/* scene 3 */
+/* ---- scene 3 ---- */
 .finder{opacity:0;transform-origin:500px 300px}
-.story.playing .finder{animation:finderIn 1s ease 12s both}
+.story.playing .finder{animation:finderIn 1s ease 14.2s both}
 @keyframes finderIn{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
 .shutter{opacity:0}
-.story.playing .shutter{animation:shutterIn .5s ease 13.2s both, shutterTap .35s ease 14.6s}
+.story.playing .shutter{animation:shutterIn .5s ease 15.2s both, shutterTap .35s ease 16.4s}
 @keyframes shutterIn{from{opacity:0}to{opacity:1}}
 @keyframes shutterTap{50%{transform:scale(.82)}}
-.story.playing .story-flash{animation:flashNow .9s ease 14.9s both}
+.story.playing .story-flash{animation:flashNow .9s ease 16.9s both}
 @keyframes flashNow{0%{opacity:0}18%{opacity:1}100%{opacity:0}}
 
 @media (prefers-reduced-motion:reduce){
   .story{display:none !important}
 }
 @media(max-width:640px){
-  .story-scene svg{max-height:62vh}
+  .story-scene svg{width:100vw;max-height:56vh;border-radius:0}
   .story-skip{top:12px;right:12px;padding:9px 14px}
 }
 
@@ -445,82 +491,181 @@ body.locked .music-btn{display:none}
 <div class="story" id="story" role="dialog" aria-label="How Teja and Deeksha met">
   <button class="story-skip" id="storySkip" type="button">Skip &rsaquo;</button>
 
-  <!-- ---------- Scene 1 · the flight ---------- -->
-  <section class="story-scene sc-map">
-    <svg viewBox="0 0 1000 600" role="img" aria-label="A flight arcs from California to Shawnee, Kansas across a vintage map">
+  <!-- ---------- Scene 1 · two coasts, one sky ---------- -->
+  <section class="story-scene sc-open">
+    <svg viewBox="0 0 1000 600" role="img" aria-label="The groom in California and the bride in Kansas, joined by a flight across the sky">
       <defs>
-        <linearGradient id="parchment" x1="0" y1="0" x2="0.4" y2="1">
-          <stop offset="0" stop-color="#f6e4bd"/><stop offset=".5" stop-color="#eed6a6"/><stop offset="1" stop-color="#e2c288"/>
+        <linearGradient id="caSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7cc4e8"/><stop offset=".55" stop-color="#bfe3f2"/><stop offset="1" stop-color="#f2e6c8"/>
         </linearGradient>
-        <radialGradient id="markGlow" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#e0561c" stop-opacity=".55"/><stop offset="1" stop-color="#e0561c" stop-opacity="0"/>
+        <linearGradient id="ksSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f4c46a"/><stop offset=".5" stop-color="#f8ddA0"/><stop offset="1" stop-color="#f6e9bd"/>
+        </linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4f9fc4"/><stop offset="1" stop-color="#2f7ba0"/>
+        </linearGradient>
+        <linearGradient id="skyBlue" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4e9fd4"/><stop offset=".55" stop-color="#9fd2ec"/><stop offset="1" stop-color="#d8eef8"/>
+        </linearGradient>
+        <linearGradient id="skyGold" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e8894a"/><stop offset=".45" stop-color="#f6bf63"/><stop offset="1" stop-color="#fbe6ac"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#fff6cf" stop-opacity=".95"/><stop offset="1" stop-color="#fff6cf" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="vign" cx=".5" cy=".5" r=".72">
-          <stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#3b2a12" stop-opacity=".42"/>
-        </radialGradient>
+        <linearGradient id="goldRamp" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#000"/><stop offset=".2" stop-color="#fff"/><stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+        <mask id="goldSweep"><rect width="2000" height="600" fill="url(#goldRamp)"/></mask>
+        <linearGradient id="trailGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#ffe9a8" stop-opacity="0"/><stop offset=".25" stop-color="#ffd77a"/>
+          <stop offset="1" stop-color="#fff3c4"/>
+        </linearGradient>
+        <clipPath id="archL"><path d="M132 470V228a114 114 0 0 1 228 0v242Z"/></clipPath>
+        <clipPath id="archR"><path d="M140 470V228a114 114 0 0 1 228 0v242Z"/></clipPath>
+        <filter id="feather"><feGaussianBlur stdDeviation="7"/></filter>
       </defs>
 
-      <rect width="1000" height="600" fill="url(#parchment)"/>
-      <!-- latitude / longitude grid -->
-      <g stroke="#c9a86e" stroke-width=".8" opacity=".38">
-        <path d="M0 90h1000M0 180h1000M0 270h1000M0 360h1000M0 450h1000M0 540h1000"/>
-        <path d="M100 0v600M220 0v600M340 0v600M460 0v600M580 0v600M700 0v600M820 0v600M940 0v600"/>
-      </g>
-      <!-- stylised landmass -->
-      <path d="M96 236 q54 -46 132 -34 q46 -52 128 -40 q68 -46 150 -12 q86 -34 168 6 q76 -16 128 34
-               q42 62 -14 108 q34 78 -46 108 q-42 72 -140 56 q-74 44 -166 8 q-92 40 -172 -6
-               q-92 12 -140 -60 q-58 -70 -28 -168Z"
-            fill="#dfc899" stroke="#b99a5e" stroke-width="2.4" opacity=".85"/>
-      <!-- inland detail -->
-      <g stroke="#b99a5e" stroke-width="1.4" fill="none" opacity=".5">
-        <path d="M300 200 q60 40 20 96 q-40 52 30 92"/>
-        <path d="M560 168 q-30 70 34 108 q60 36 26 106"/>
-        <path d="M700 240 q56 30 40 84"/>
-      </g>
-      <!-- compass rose -->
-      <g transform="translate(898,470)" opacity=".8">
-        <circle r="40" fill="none" stroke="#b07a2a" stroke-width="1.6"/>
-        <circle r="29" fill="none" stroke="#b07a2a" stroke-width=".8"/>
-        <path d="M0 -36 L9 0 L0 36 L-9 0Z" fill="#a8541c"/>
-        <path d="M-36 0 L0 -9 L36 0 L0 9Z" fill="#c9a227"/>
-        <text y="-46" text-anchor="middle" font-family="Marcellus,serif" font-size="15" fill="#8a5a20">N</text>
+      <!-- ============ the two panels ============ -->
+      <g class="s1-panels">
+        <!-- ---- California ---- -->
+        <g class="panel-l">
+          <rect width="500" height="600" fill="url(#caSky)"/>
+          <circle cx="118" cy="112" r="74" fill="url(#sunGlow)"/>
+          <circle cx="118" cy="112" r="26" fill="#fffbe2" opacity=".9"/>
+          <g fill="#fffdf8" opacity=".72">
+            <ellipse cx="330" cy="96" rx="58" ry="22"/><ellipse cx="372" cy="86" rx="40" ry="18"/>
+            <ellipse cx="292" cy="88" rx="34" ry="15"/>
+          </g>
+          <!-- ocean + headland -->
+          <rect y="352" width="500" height="88" fill="url(#sea)"/>
+          <g fill="#fffdf8" opacity=".5">
+            <path d="M20 384q22-9 44 0t44 0M150 400q22-9 44 0t44 0M300 380q22-9 44 0t44 0M410 402q22-9 44 0t44 0"/>
+          </g>
+          <path d="M0 440q120-34 250-20t250-14v194H0Z" fill="#c9b071"/>
+          <path d="M0 470q130-26 250-12t250-10v152H0Z" fill="#b99a5e" opacity=".55"/>
+          <!-- palms -->
+          <g stroke="#6b5330" stroke-width="6" fill="none">
+            <path d="M62 452q-8-64 6-102"/><path d="M448 464q10-56-4-90"/>
+          </g>
+          <g fill="#3f7a3d">
+            <path d="M68 350q-42-16-56 8 40 12 56-8ZM68 350q42-16 56 8-40 12-56-8ZM68 348q-8-40 14-54 6 36-14 54ZM68 350q34-26 58-16-22 24-58 16Z"/>
+            <path d="M444 374q-34-14-46 6 32 10 46-6ZM444 374q34-14 46 6-32 10-46-6ZM444 372q-6-32 12-44 4 30-12 44Z"/>
+          </g>
+          <!-- signpost -->
+          <g transform="translate(440,492)">
+            <rect x="-4" y="-44" width="8" height="76" fill="#8a6a3a"/>
+            <g transform="rotate(-4)">
+              <rect x="-74" y="-58" width="148" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
+              <text y="-35" text-anchor="middle" font-family="Marcellus,serif" font-size="17" fill="#7a4a22" letter-spacing="1.5">CALIFORNIA</text>
+            </g>
+          </g>
+          <!-- the groom -->
+          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="#fdf7ec"/>
+          <image href="assets/img/story-groom.jpg" x="120" y="196" width="252" height="332"
+                 preserveAspectRatio="xMidYMin slice" clip-path="url(#archL)"/>
+          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#fdf7ec" stroke-width="10" opacity=".9"/>
+          <path d="M132 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+          <!-- the aeroplane he notices, high overhead -->
+          <g class="tiny-plane">
+            <path d="M0 5 L15 3 L20 5 L15 7 Z" fill="#fdf7ec" stroke="#5a6b74" stroke-width="1"/>
+            <path d="M8 4 L11 0 L13 0 L11 4 Z" fill="#e8c05a"/>
+            <path d="M8 6 L11 10 L13 10 L11 6 Z" fill="#e8c05a"/>
+          </g>
+        </g>
+
+        <!-- ---- Kansas ---- -->
+        <g class="panel-r" transform="translate(500,0)">
+          <rect width="500" height="600" fill="url(#ksSky)"/>
+          <circle cx="382" cy="130" r="96" fill="url(#sunGlow)"/>
+          <circle cx="382" cy="130" r="38" fill="#fff3b4" opacity=".95"/>
+          <!-- rolling hills -->
+          <path d="M0 372q120-52 250-24t250-16v268H0Z" fill="#cbc07a"/>
+          <path d="M0 416q130-40 250-14t250-20v218H0Z" fill="#b9b063" opacity=".8"/>
+          <path d="M0 462q140-30 250-8t250-16v162H0Z" fill="#9ea351"/>
+          <!-- wildflowers -->
+          <g class="field">
+            <g stroke="#7d8c40" stroke-width="2.5">
+              <path d="M40 596v-44M96 600v-38M160 592v-46M232 600v-40M300 594v-42M366 600v-36M430 592v-44M470 600v-34
+                       M68 600v-30M130 600v-28M198 600v-32M268 600v-26M334 600v-30M400 600v-26"/>
+            </g>
+            <g>
+              <circle cx="40" cy="550" r="8" fill="#e8607f"/><circle cx="96" cy="560" r="7" fill="#f0a52a"/>
+              <circle cx="160" cy="544" r="8" fill="#fff4d2"/><circle cx="232" cy="558" r="7" fill="#e8607f"/>
+              <circle cx="300" cy="550" r="8" fill="#f0a52a"/><circle cx="366" cy="562" r="7" fill="#fff4d2"/>
+              <circle cx="430" cy="546" r="8" fill="#e8607f"/><circle cx="470" cy="564" r="7" fill="#f0a52a"/>
+            </g>
+          </g>
+          <!-- a lone tree -->
+          <g transform="translate(74,420)">
+            <path d="M0 60V0" stroke="#6b5330" stroke-width="7"/>
+            <circle cx="0" cy="-14" r="30" fill="#7d9a4a"/><circle cx="-22" cy="0" r="20" fill="#8fae5a"/>
+            <circle cx="22" cy="-2" r="18" fill="#8fae5a"/>
+          </g>
+          <!-- signpost -->
+          <g transform="translate(96,516)">
+            <rect x="-4" y="-40" width="8" height="70" fill="#8a6a3a"/>
+            <g transform="rotate(3)">
+              <rect x="-70" y="-54" width="140" height="32" rx="5" fill="#f6e4bd" stroke="#8a6a3a" stroke-width="3"/>
+              <text y="-32" text-anchor="middle" font-family="Marcellus,serif" font-size="18" fill="#7a4a22" letter-spacing="2">KANSAS</text>
+            </g>
+          </g>
+          <!-- the bride -->
+          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="#fdf7ec"/>
+          <image href="assets/img/story-bride.jpg" x="128" y="196" width="252" height="336"
+                 preserveAspectRatio="xMidYMin slice" clip-path="url(#archR)"/>
+          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#fdf7ec" stroke-width="10" opacity=".9"/>
+          <path d="M140 470V228a114 114 0 0 1 228 0v242Z" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+        </g>
+
+        <!-- the seam between them -->
+        <rect class="seam" x="496" width="8" height="600" fill="#fdf7ec"/>
       </g>
 
-      <!-- flight arc -->
-      <path class="route" d="M168 392 Q500 96 828 300" fill="none" stroke="#c9861f"
-            stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/>
-
-      <!-- California -->
-      <g class="pin pin-a">
-        <circle cx="168" cy="392" r="54" fill="url(#markGlow)"/>
-        <circle cx="168" cy="392" r="13" fill="#a8541c"/>
-        <circle cx="168" cy="392" r="24" fill="none" stroke="#a8541c" stroke-width="2" opacity=".7"/>
-        <text x="168" y="452" text-anchor="middle" font-family="Marcellus,serif" font-size="27" fill="#7a3d10"
-              letter-spacing="3">CALIFORNIA</text>
-      </g>
-      <!-- Kansas -->
-      <g class="pin pin-b">
-        <circle cx="828" cy="300" r="54" fill="url(#markGlow)"/>
-        <circle cx="828" cy="300" r="13" fill="#a8541c"/>
-        <circle cx="828" cy="300" r="24" fill="none" stroke="#a8541c" stroke-width="2" opacity=".7"/>
-        <text x="828" y="360" text-anchor="middle" font-family="Marcellus,serif" font-size="27" fill="#7a3d10"
-              letter-spacing="3">SHAWNEE, KS</text>
-      </g>
-
-      <!-- the aeroplane -->
-      <g class="plane">
-        <g transform="translate(-19,-13) scale(1.15)">
-          <path d="M2 12 L26 9 L33 12 L26 15 Z" fill="#fdf7ec" stroke="#8a5a20" stroke-width="1.4" stroke-linejoin="round"/>
-          <path d="M13 10 L18 1 L22 1 L19 10 Z" fill="#e8c05a" stroke="#8a5a20" stroke-width="1.2"/>
-          <path d="M13 14 L18 23 L22 23 L19 14 Z" fill="#e8c05a" stroke="#8a5a20" stroke-width="1.2"/>
-          <path d="M3 12 L7 7 L9 8 L7 12 Z" fill="#a3122f" stroke="#8a5a20" stroke-width="1"/>
-          <circle cx="27" cy="12" r="1.8" fill="#8a5a20"/>
+      <!-- ============ the sky ============ -->
+      <g class="s1-sky">
+        <rect width="1000" height="600" fill="url(#skyBlue)"/>
+        <g class="goldwash" mask="url(#goldSweep)"><rect width="2000" height="600" fill="url(#skyGold)"/></g>
+        <g class="clouds" fill="#fffdf8">
+          <g opacity=".95">
+            <ellipse cx="160" cy="150" rx="96" ry="42"/><ellipse cx="232" cy="132" rx="68" ry="34"/>
+            <ellipse cx="96"  cy="166" rx="58" ry="28"/>
+          </g>
+          <g opacity=".8">
+            <ellipse cx="620" cy="106" rx="82" ry="34"/><ellipse cx="680" cy="94" rx="56" ry="26"/>
+          </g>
+          <g opacity=".9">
+            <ellipse cx="860" cy="196" rx="104" ry="44"/><ellipse cx="930" cy="180" rx="66" ry="32"/>
+          </g>
+          <g opacity=".75">
+            <ellipse cx="360" cy="452" rx="128" ry="46"/><ellipse cx="450" cy="436" rx="86" ry="34"/>
+            <ellipse cx="270" cy="466" rx="76" ry="30"/>
+          </g>
+          <g opacity=".7">
+            <ellipse cx="800" cy="500" rx="122" ry="44"/><ellipse cx="880" cy="486" rx="80" ry="32"/>
+          </g>
+        </g>
+        <!-- the golden condensation trail -->
+        <path class="trail" d="M-90 392 Q500 150 1090 262" fill="none" stroke="url(#trailGrad)"
+              stroke-width="9" stroke-linecap="round" opacity=".95"/>
+        <path class="trail trail-thin" d="M-90 392 Q500 150 1090 262" fill="none" stroke="#fff8e0"
+              stroke-width="3" stroke-linecap="round" opacity=".9"/>
+        <g class="dust"></g>
+        <!-- the vintage aeroplane -->
+        <g class="sky-plane">
+          <g transform="translate(-34,-22) scale(1.9)">
+            <path d="M2 12 L26 9 L33 12 L26 15 Z" fill="#fdf7ec" stroke="#7a4a22" stroke-width="1.4" stroke-linejoin="round"/>
+            <path d="M12 10 L19 0 L23 0 L19 10 Z" fill="#e8c05a" stroke="#7a4a22" stroke-width="1.2"/>
+            <path d="M12 14 L19 24 L23 24 L19 14 Z" fill="#e8c05a" stroke="#7a4a22" stroke-width="1.2"/>
+            <path d="M3 12 L8 6 L10 7 L8 12 Z" fill="#a3122f" stroke="#7a4a22" stroke-width="1"/>
+            <circle cx="27" cy="12" r="1.8" fill="#7a4a22"/>
+            <path d="M18 12h6" stroke="#7a4a22" stroke-width="1"/>
+          </g>
         </g>
       </g>
-
-      <rect width="1000" height="600" fill="url(#vign)"/>
     </svg>
-    <p class="caption cap-1">a flight, and everything after</p>
+    <p class="caption cap-1a">a coast, a prairie, and 1,600 miles between them</p>
+    <p class="caption cap-1b">one flight, and everything after</p>
   </section>
 
   <!-- ---------- Scene 2 · first sight ---------- -->
@@ -1565,7 +1710,7 @@ const story = (function(){
   const el    = document.getElementById('story');
   const skip  = document.getElementById('storySkip');
   const clock = document.getElementById('storyClock');
-  const RUN   = 15300;   // hand over while the shutter flash is still bright
+  const RUN   = 17300;   // hand over while the shutter flash is still bright
   const calm  = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null, ticker = null, done = null;
 
@@ -1580,6 +1725,7 @@ const story = (function(){
   function play(onDone){
     if(calm || !el){ onDone && onDone(); return; }
     done = onDone;
+    seedDust();
     el.classList.add('on');
     void el.offsetWidth;                                // commit before animating
     el.classList.add('playing');
@@ -1595,10 +1741,32 @@ const story = (function(){
           if(sec >= 36){ clock.textContent = '2:45:36'; clearInterval(ticker); return; }
           clock.textContent = '2:45:' + String(sec).padStart(2,'0');
         }, 78);
-      }, 6400);
+      }, 9200);
     }
 
     timer = setTimeout(finish, RUN);
+  }
+
+  // shimmering dust left hanging in the aeroplane's wake
+  function seedDust(){
+    const g = el.querySelector('.dust');
+    if(!g || g.childElementCount) return;
+    const P0=[-90,392], P1=[500,150], P2=[1090,262];
+    const at = t => { const u=1-t; return [
+      u*u*P0[0] + 2*u*t*P1[0] + t*t*P2[0],
+      u*u*P0[1] + 2*u*t*P1[1] + t*t*P2[1] ]; };
+    let out = '';
+    for(let i=0;i<26;i++){
+      const t = (i+0.5)/26;
+      const [x,y] = at(t);
+      const jx = x + (Math.random()*30-15), jy = y + (Math.random()*26-13);
+      const r  = (1.6 + Math.random()*2.6).toFixed(1);
+      // fire just after the plane reaches that point
+      const delay = (4.5 + 4.0*Math.pow(t,0.82)).toFixed(2);
+      out += `<circle class="mote" cx="${jx.toFixed(1)}" cy="${jy.toFixed(1)}" r="${r}" `
+           + `fill="${Math.random()<0.4 ? '#fff6d8' : '#ffd77a'}" style="animation-delay:${delay}s"/>`;
+    }
+    g.innerHTML = out;
   }
 
   skip && skip.addEventListener('click', finish);
