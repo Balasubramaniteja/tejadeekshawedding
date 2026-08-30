@@ -10,8 +10,7 @@ A single-page, fully static wedding invitation site.
 |---|---|---|---|
 | Haldi (పసుపు) | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Nalugu (నలుగు) | Tue, 20 October 2026 | 4:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Welcome Dinner (విందు) | Tue, 20 October 2026 | 7:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikoduku & Pellikuthuru (పెళ్ళికొడుకు & పెళ్ళికూతురు) | Wed, 21 October 2026 | 9:00 AM onwards | 6330 Lackman Rd, Shawnee, KS 66217 |
+| Pellikoduku & Pellikuthuru (పెళ్ళికొడుకు & పెళ్ళికూతురు) | Tue, 20 October 2026 | 9:00 AM onwards | 6330 Lackman Rd, Shawnee, KS 66217 |
 | Muhurtham (ముహూర్తం) | Wed, 21 October 2026 | 11:30 AM | 6330 Lackman Rd, Shawnee, KS 66217 |
 
 Each event card carries a supplied illustration. Behind each one an SVG scene is also drawn inline
@@ -28,8 +27,6 @@ up blank.
   Replace this file to change the music — the filename is referenced once in `index.html`.
 - `assets/img/journey.webm`, `assets/img/journey.mp4`, `assets/img/journey-poster.jpg` — the
   California-to-Kansas map animation, supplied by the couple as a GIF and re-encoded (47 KB / 56 KB).
-- `assets/img/story-cafe.jpg`, `assets/img/story-selfie-street.jpg`, `assets/img/story-engaged.jpg` —
-  the cafe, selfie and engagement scenes, supplied by the couple (~130 KB each).
 - `assets/img/deities.png` — the artwork that opens the invitation, supplied by the couple. The flat
   white around the marigold frame was made transparent and the panel inside it recoloured to the page
   cream, so it sits on the background rather than in a white box (880 px wide, 165 KB).
@@ -45,36 +42,24 @@ start audio without a real tap, so rather than failing silently the site asks th
 it — with music, or via the "Open without music" link. Once opened, a small toggle sits in the
 bottom-right corner for the rest of the visit.
 
-## How they met
+## The journey
 
-After the opening tap, four scenes play before the invitation appears (about 18 seconds):
-
-**1 · The journey** (6s) — the couple's own animated map: his avatar travels the dashed arc from
-California to Kansas, ending "Finally together in Kansas."
-
-**2 · First sight** (5s) — Fat Bee Coffee. The camera pushes in, the clock rolls up and settles on
-**2:45:36**, and the room pulls out of focus around them.
-
-**3 · The first selfie** (4s) — their street selfie inside a portrait phone viewfinder, with corner
-brackets, a framing grid, a REC dot and a shutter that taps. A white flash carries into the next scene.
-
-**4 · We got engaged** (4.7s) — the park bench photograph, darkened from the left so the words sit on
-the quiet side of the frame: *We got engaged · May 25th · And now, the wedding.* This one holds
-rather than fading, so it hands straight over to the invitation.
+After the opening tap, one scene plays before the invitation appears (about 7 seconds): the couple's
+own animated map, dated **March 6**, his avatar travelling the dashed arc from California to Kansas
+and ending "Finally together in Kansas."
 
 The journey is a real video, not a GIF. The supplied GIF was 6.8 MB; re-encoded it is **47 KB** as
 VP9 WebM and **56 KB** as H.264 MP4 — a hundred times smaller, with no visible loss. Both sources are
 listed: Chrome and Firefox take the WebM, Safari and iOS take the MP4. It is `preload="metadata"` and
-starts from frame zero each time the story runs, so it can never appear mid-animation. If autoplay is
-ever refused the poster frame stands in and the story carries on.
+starts from frame zero each time, so it can never appear mid-animation. If autoplay is ever refused
+the poster frame stands in and the story carries on.
 
-Every animation is held until the guest taps open (the `.playing` class starts the whole timeline),
-so it can never run out of sync with the music. There is a **Skip** button throughout, and the
-sequence is bypassed entirely for anyone whose device asks for reduced motion. It plays once per page
-load.
+The animation is held until the guest taps open (the `.playing` class starts the timeline), so it can
+never run out of sync with the music. There is a **Skip** button, and the sequence is bypassed
+entirely for anyone whose device asks for reduced motion.
 
-Timings live in one place — the `HOW THEY MET` CSS block — and the total length is the `RUN` constant
-in the matching script block. Both must be changed together.
+Timings live in the `HOW THEY MET` CSS block; the total length is the `RUN` constant in the matching
+script block. Both must be changed together.
 
 ## Thalambralu
 
@@ -89,14 +74,13 @@ To change the density or colours, see the `THALAMBRALU` block near the bottom of
 ## Event images
 
 Each event card shows a supplied image, and falls back to its drawn SVG scene if the file is ever
-missing. The five in use are the couple's own illustrations — the haldi tub, the నలుగు ceremony, the
-family welcome dinner, the pellikuthuru ceremony and the muhurtham — resized to 880 px wide and saved
-as progressive JPEG (~155 KB each, 775 KB total). File names:
+missing. The four in use are the couple's own illustrations — the haldi tub, the నలుగు ceremony, the
+pellikuthuru ceremony and the muhurtham — resized to 880 px wide and saved as progressive JPEG
+(~155 KB each, 625 KB total). File names:
 
 ```
 assets/events/haldi.jpg
 assets/events/nalugu.jpg
-assets/events/welcome-dinner.jpg
 assets/events/pellikoduku-pellikuthuru.jpg
 assets/events/muhurtham.jpg
 ```
@@ -127,7 +111,7 @@ one `const W = { … }` block near the bottom of `index.html`:
 
 - `phone` — used by the RSVP button (WhatsApp) and the footer `tel:` link
 - `countdownTo` — the Muhurtham timestamp the countdown counts down to
-- `events` — the five calendar entries produced by the "Add to calendar" button
+- `events` — the four calendar entries produced by the "Add to calendar" button
 
 To change a name, date or address, edit the visible text directly in `index.html`
 (search for the word you want to replace).
@@ -147,7 +131,7 @@ New Google Form with these five questions, **in this order**:
 | 1 | Your name | Short answer | — |
 | 2 | Will you join us? | Multiple choice | `Joyfully accepts` · `Regretfully declines` |
 | 3 | Number of guests (including you) | Short answer | — |
-| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Welcome Dinner` · `Pellikoduku & Pellikuthuru` · `Muhurtham` |
+| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikoduku & Pellikuthuru` · `Muhurtham` |
 | 5 | A wish for the couple | Paragraph | — |
 
 The option text must match exactly — Google silently drops values it does not recognise.

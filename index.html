@@ -7,7 +7,7 @@
 <meta name="description" content="With the blessings of our families, Ganaparti Teja and Enukonda Sai Deeksha cordially invite you to their wedding on 21 October 2026 in Shawnee, Kansas.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Teja weds Deeksha — 21 October 2026">
-<meta property="og:description" content="Haldi, Nalugu & Welcome Dinner on 20 October; Pellikoduku, Pellikuthuru & Muhurtham on 21 October 2026. Kansas.">
+<meta property="og:description" content="Haldi, Nalugu, Pellikoduku & Pellikuthuru on 20 October; Muhurtham on 21 October 2026 at 11:30 AM. Kansas.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#6d0f24">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='3' font-size='24'>%F0%9F%AA%94</text></svg>">
@@ -222,67 +222,22 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 .story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* --- the timeline, all of it gated behind .playing --- */
+.scene-date{font-family:'Marcellus',serif;color:#e8cd7c;letter-spacing:.26em;text-transform:uppercase;
+  font-size:clamp(.58rem,2.2vw,.72rem);margin:0 0 14px;text-align:center;opacity:0}
+.story.playing .scene-date{animation:capShow 5.6s ease .45s both}
 .vid-wrap{width:min(1000px,96vw);border-radius:6px;overflow:hidden;
   box-shadow:0 24px 60px rgba(0,0,0,.42);background:#fdf7ec}
 .journey{display:block;width:100%;height:auto}
 
-.story.playing .sc-journey{animation:sceneShow 6.2s ease both}
-.story.playing .sc-cafe{animation:sceneShow 5s ease 5.8s both}
-.story.playing .sc-selfie{animation:sceneShow 4s ease 10.4s both}
-.story.playing .sc-engaged{animation:sceneHold 4.7s ease 13.9s both}
-@keyframes sceneShow{0%{opacity:0}9%{opacity:1}86%{opacity:1}100%{opacity:0}}
-@keyframes sceneHold{0%{opacity:0}8%{opacity:1}100%{opacity:1}}
+.story.playing .sc-journey{animation:sceneShow 6.6s ease both}
+@keyframes sceneShow{0%{opacity:0}8%{opacity:1}88%{opacity:1}100%{opacity:0}}
 
-.story.playing .cap-1{animation:capShow 5s ease .7s both}
-.story.playing .cap-2{animation:capShow 4.2s ease 6.2s both}
-.story.playing .cap-3{animation:capShow 3.2s ease 10.9s both}
+.story.playing .cap-1{animation:capShow 5.4s ease .8s both}
 @keyframes capShow{0%{opacity:0;transform:translateY(8px)}16%{opacity:.95;transform:none}
   84%{opacity:.95;transform:none}100%{opacity:0}}
 
-/* 1 · the journey */
-.story.playing .vid-wrap{animation:journeyIn 6.2s ease both}
+.story.playing .vid-wrap{animation:journeyIn 6.6s ease both}
 @keyframes journeyIn{0%{transform:scale(1.04)}100%{transform:scale(1)}}
-
-/* 2 · first sight */
-.story.playing .sc-cafe svg{animation:cafePush 5s ease-in-out 5.8s both;transform-origin:50% 56%}
-@keyframes cafePush{0%{transform:scale(1.03)}55%{transform:scale(1.09)}100%{transform:scale(1.22)}}
-.clock{opacity:0}
-.story.playing .clock{animation:clockShow 2.6s ease 6.1s both}
-@keyframes clockShow{0%{opacity:0;transform:translateY(-14px)}18%{opacity:1;transform:none}
-  76%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-10px)}}
-.focuspull{opacity:0}
-.story.playing .focuspull{animation:pullFocus 1.8s ease 8s both}
-@keyframes pullFocus{to{opacity:1}}
-.spark{opacity:0;transform-origin:550px 300px}
-.story.playing .spark{animation:sparkle 1.7s ease 8.5s both}
-@keyframes sparkle{0%{opacity:0;transform:scale(.4) rotate(0)}
-  40%{opacity:1;transform:scale(1.5) rotate(90deg)}100%{opacity:0;transform:scale(2.2) rotate(180deg)}}
-
-/* 3 · the selfie */
-.finder-img{transform-origin:550px 300px}
-.story.playing .finder-img{animation:finderIn 3.8s ease-out 10.5s both}
-@keyframes finderIn{from{transform:scale(1.09)}to{transform:scale(1)}}
-.finder{opacity:0}
-.story.playing .finder{animation:hudIn .6s ease 10.9s both}
-@keyframes hudIn{from{opacity:0}to{opacity:1}}
-.shutter{opacity:0;transform-origin:550px 528px}
-.story.playing .shutter{animation:hudIn .5s ease 11.4s both, shutterTap .35s ease 13.1s}
-@keyframes shutterTap{50%{transform:scale(.82)}}
-.story.playing .story-flash{animation:flashNow .8s ease 13.3s both}
-@keyframes flashNow{0%{opacity:0}20%{opacity:1}100%{opacity:0}}
-
-/* 4 · the engagement */
-.eng-img{transform-origin:550px 300px}
-.story.playing .eng-img{animation:engPush 4.7s ease-out 13.9s both}
-@keyframes engPush{from{transform:scale(1.08)}to{transform:scale(1)}}
-.eng-ring,.eng-1,.eng-rule,.eng-2,.eng-3{opacity:0}
-.story.playing .eng-ring{animation:riseIn 1s ease 14.4s both}
-.story.playing .eng-1{animation:riseIn 1.2s ease 14.6s both}
-.story.playing .eng-rule{animation:ruleIn .9s ease 15.2s both;transform-origin:94px 322px}
-.story.playing .eng-2{animation:riseIn 1s ease 15.4s both}
-.story.playing .eng-3{animation:riseIn 1s ease 16.6s both}
-@keyframes riseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@keyframes ruleIn{from{opacity:0;transform:scaleX(.2)}to{opacity:.85;transform:none}}
 
 @media (prefers-reduced-motion:reduce){
   .story{display:none !important}
@@ -437,6 +392,7 @@ body.locked .music-btn{display:none}
 
   <!-- ---------- 1 · the journey ---------- -->
   <section class="story-scene sc-journey">
+    <p class="scene-date">March 6 &middot; the journey begins</p>
     <div class="vid-wrap">
       <video id="journeyVid" class="journey" width="1100" height="620" muted playsinline
              preload="metadata" poster="assets/img/journey-poster.jpg">
@@ -445,97 +401,6 @@ body.locked .music-btn{display:none}
       </video>
     </div>
     <p class="caption cap-1">California to Kansas &middot; one journey, to the person who became home</p>
-  </section>
-
-  <!-- ---------- 2 · first sight ---------- -->
-  <section class="story-scene sc-cafe">
-    <svg viewBox="0 0 1100 600" role="img" aria-label="Teja and Deeksha at Fat Bee Coffee, the moment they first saw each other">
-      <defs>
-        <filter id="softFocus" x="-6%" y="-6%" width="112%" height="112%"><feGaussianBlur stdDeviation="9"/></filter>
-        <radialGradient id="focusRamp" cx=".5" cy=".52" r=".62">
-          <stop offset="0" stop-color="#000"/><stop offset=".42" stop-color="#000"/><stop offset="1" stop-color="#fff"/>
-        </radialGradient>
-        <mask id="edgeOnly"><rect width="1100" height="600" fill="url(#focusRamp)"/></mask>
-        <radialGradient id="glowRing" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#fff3c4" stop-opacity=".8"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      <image href="assets/img/story-cafe.jpg" width="1100" height="600"/>
-      <g class="focuspull" mask="url(#edgeOnly)">
-        <image href="assets/img/story-cafe.jpg" width="1100" height="600" filter="url(#softFocus)"/>
-      </g>
-      <g class="clock">
-        <rect x="430" y="34" width="240" height="96" rx="16" fill="#2b2318" opacity=".88" stroke="#c9a227" stroke-width="3"/>
-        <text id="storyClock" x="550" y="98" text-anchor="middle" font-family="Marcellus,serif"
-              font-size="50" fill="#ffe9b0" letter-spacing="3">2:45:36</text>
-      </g>
-      <g class="spark">
-        <circle cx="550" cy="300" r="90" fill="url(#glowRing)"/>
-        <path d="M550 268 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8Z" fill="#fff8dc"/>
-      </g>
-    </svg>
-    <p class="caption cap-2">Fat Bee Coffee &middot; 2:45:36 &middot; the first time he looked up</p>
-  </section>
-
-  <!-- ---------- 3 · the first selfie ---------- -->
-  <section class="story-scene sc-selfie">
-    <svg viewBox="0 0 1100 600" role="img" aria-label="Their first selfie together, framed in a phone camera">
-      <defs><clipPath id="phoneClip"><rect x="390" y="12" width="320" height="576" rx="26"/></clipPath></defs>
-      <rect width="1100" height="600" fill="#17110c"/>
-      <g class="finder-img">
-        <image href="assets/img/story-selfie-street.jpg" x="390" y="12" width="320" height="576"
-               preserveAspectRatio="xMidYMid slice" clip-path="url(#phoneClip)"/>
-      </g>
-      <g class="finder">
-        <rect x="390" y="12" width="320" height="576" rx="26" fill="none" stroke="#fffdf6" stroke-width="3" opacity=".5"/>
-        <g stroke="#fffdf6" stroke-width="4" fill="none" opacity=".9" stroke-linecap="round">
-          <path d="M414 62V38h26M686 62V38h-26M414 538v24h26M686 538v24h-26"/>
-        </g>
-        <g stroke="#fffdf6" stroke-width="1.6" opacity=".26">
-          <path d="M497 12v576M603 12v576M390 204h320M390 396h320"/>
-        </g>
-        <g transform="translate(414,52)">
-          <circle cx="0" cy="-6" r="6" fill="#e0561c"/>
-          <text x="14" y="0" font-family="Marcellus,serif" font-size="15" fill="#fffdf6" letter-spacing="3">REC</text>
-        </g>
-      </g>
-      <g class="shutter">
-        <circle cx="550" cy="528" r="27" fill="none" stroke="#fdf7ec" stroke-width="3.5" opacity=".95"/>
-        <circle cx="550" cy="528" r="20" fill="#fdf7ec"/>
-      </g>
-    </svg>
-    <p class="caption cap-3">and the first of many</p>
-  </section>
-
-  <!-- ---------- 4 · the engagement ---------- -->
-  <section class="story-scene sc-engaged">
-    <svg viewBox="0 0 1100 600" role="img" aria-label="We got engaged, May 25th">
-      <defs>
-        <linearGradient id="engDim" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#150c14" stop-opacity=".88"/>
-          <stop offset=".42" stop-color="#150c14" stop-opacity=".55"/>
-          <stop offset="1" stop-color="#150c14" stop-opacity=".18"/>
-        </linearGradient>
-        <linearGradient id="engFoot" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#150c14" stop-opacity="0"/>
-          <stop offset="1" stop-color="#150c14" stop-opacity=".7"/>
-        </linearGradient>
-      </defs>
-      <image class="eng-img" href="assets/img/story-engaged.jpg" width="1100" height="600"/>
-      <rect width="1100" height="600" fill="url(#engDim)"/>
-      <rect y="470" width="1100" height="130" fill="url(#engFoot)"/>
-      <g class="eng-ring" transform="translate(96,196)">
-        <circle cx="0" cy="0" r="15" fill="none" stroke="#e8cd7c" stroke-width="2.6"/>
-        <path d="M0 -21 l6 11 -6 6 -6 -6Z" fill="#fff3c4"/>
-      </g>
-      <text class="eng-1" x="92" y="288" font-family="Cormorant Garamond,serif"
-            font-style="italic" font-size="60" fill="#ffe9a8">We got engaged</text>
-      <path class="eng-rule" d="M94 322h300" stroke="#c9a227" stroke-width="1.4"/>
-      <text class="eng-2" x="94" y="374" font-family="Marcellus,serif"
-            font-size="31" fill="#fff3c4" letter-spacing="10">MAY 25TH</text>
-      <text class="eng-3" x="94" y="556" font-family="Marcellus,serif"
-            font-size="18" fill="#e8cd7c" letter-spacing="6">AND NOW, THE WEDDING</text>
-    </svg>
   </section>
 
   <div class="story-flash" id="storyFlash"></div>
@@ -808,85 +673,6 @@ body.locked .music-btn{display:none}
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
       </article>
 
-      <!-- ============ 3. WELCOME DINNER ============ -->
-      <article class="event card reveal">
-        <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Evening welcome dinner: lanterns and string lights over a banana-leaf feast under a starry sky">
-          <defs>
-            <linearGradient id="dinSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#2b2a55"/><stop offset=".45" stop-color="#5b3f63"/>
-              <stop offset=".78" stop-color="#a8635a"/><stop offset="1" stop-color="#d99a5e"/>
-            </linearGradient>
-            <radialGradient id="dinMoon" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#fff4d8" stop-opacity=".9"/><stop offset="1" stop-color="#fff4d8" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="lampGlow" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#ffc46b" stop-opacity=".85"/><stop offset="1" stop-color="#ffc46b" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect width="320" height="165" fill="url(#dinSky)"/>
-          <circle cx="44" cy="22" r="30" fill="url(#dinMoon)"/>
-          <circle cx="44" cy="22" r="11" fill="#fff6de" opacity=".92"/>
-          <g fill="#fff6de" id="dinStars"></g>
-          <!-- palm silhouettes -->
-          <g fill="#2f2340" opacity=".85">
-            <path d="M282 130V64" stroke="#2f2340" stroke-width="4"/>
-            <path d="M282 64 q-26 -6 -34 6 q22 2 34 -6ZM282 64 q26 -6 34 6 q-22 2 -34 -6ZM282 62 q-6 -18 6 -26 q6 16 -6 26ZM282 64 q18 -14 32 -8 q-14 12 -32 8Z"/>
-            <path d="M26 132V78" stroke="#2f2340" stroke-width="3"/>
-            <path d="M26 78 q-20 -5 -26 5 q17 2 26 -5ZM26 78 q20 -5 26 5 q-17 2 -26 -5ZM26 76 q-4 -14 5 -20 q4 12 -5 20Z"/>
-          </g>
-          <!-- string lights -->
-          <path d="M-4 26 q80 30 156 16 q78 -14 172 6" fill="none" stroke="#4a3a5c" stroke-width="1.4"/>
-          <g id="dinLights"></g>
-          <!-- hanging lanterns -->
-          <g>
-            <circle cx="104" cy="66" r="22" fill="url(#lampGlow)"/>
-            <path d="M104 40v8" stroke="#6b5a44" stroke-width="1.4"/>
-            <path d="M94 50h20l4 14q-14 8 -28 0Z" fill="#e8a33f"/>
-            <path d="M96 64h16l-2 5h-12Z" fill="#c9812a"/>
-          </g>
-          <g>
-            <circle cx="216" cy="56" r="19" fill="url(#lampGlow)"/>
-            <path d="M216 32v8" stroke="#6b5a44" stroke-width="1.4"/>
-            <path d="M208 42h16l3 12q-11 6 -22 0Z" fill="#f0b452"/>
-            <path d="M210 54h12l-1.5 4h-9Z" fill="#c9812a"/>
-          </g>
-          <!-- table -->
-          <path d="M0 126h320v39H0Z" fill="#7c4a33"/>
-          <path d="M0 126h320v6H0Z" fill="#966041" opacity=".6"/>
-          <rect x="0" y="118" width="320" height="10" rx="3" fill="#a8734a"/>
-          <!-- banana leaves with food -->
-          <g>
-            <path d="M28 118 q44 -13 88 0 q-44 11 -88 0Z" fill="#3f7a3d"/>
-            <path d="M116 118 q44 -13 88 0 q-44 11 -88 0Z" fill="#4a8a45"/>
-            <path d="M204 118 q44 -13 88 0 q-44 11 -88 0Z" fill="#3f7a3d"/>
-            <g opacity=".95">
-              <ellipse cx="62" cy="115" rx="9" ry="4" fill="#fdf6e3"/>
-              <circle cx="86" cy="114" r="3.4" fill="#e8a33f"/><circle cx="96" cy="115" r="2.8" fill="#c94f2e"/>
-              <ellipse cx="150" cy="115" rx="9" ry="4" fill="#fdf6e3"/>
-              <circle cx="174" cy="114" r="3.4" fill="#e8a33f"/><circle cx="184" cy="115" r="2.8" fill="#7fae4a"/>
-              <ellipse cx="238" cy="115" rx="9" ry="4" fill="#fdf6e3"/>
-              <circle cx="262" cy="114" r="3.4" fill="#c94f2e"/><circle cx="272" cy="115" r="2.8" fill="#e8a33f"/>
-            </g>
-          </g>
-          <!-- little diyas on the table -->
-          <g>
-            <circle cx="160" cy="108" r="12" fill="url(#lampGlow)"/>
-            <ellipse cx="160" cy="110" rx="8" ry="3" fill="#d99440"/>
-            <path d="M160 107 q3 -8 0 -12 q-3 4 0 12Z" fill="#ffcf72" filter="url(#bloom)"/>
-            <path d="M160 107 q1.9 -6 0 -9 q-1.9 3 0 9Z" fill="#fff3c4">
-              <animate attributeName="opacity" values=".72;1;.72" dur="2.7s" repeatCount="indefinite"/>
-            </path>
-          </g>
-        </svg>
-        <img class="photo" src="assets/events/welcome-dinner.jpg" alt="Welcome Dinner" width="880" height="480" loading="lazy" decoding="async">
-        </div>
-        <p class="sub">Family &amp; Friends</p>
-        <h3>Welcome Dinner<span class="te">విందు</span></h3>
-        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Evening &middot; 7:00 PM onwards</span></p>
-        <p class="note">An evening to meet, eat and celebrate together before the wedding day.</p>
-        <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
-      </article>
-
       <!-- ============ 4. PELLIKODUKU & PELLIKUTHURU ============ -->
       <article class="event card reveal">
         <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Pellikoduku and Pellikuthuru: the groom with a parasol and the bride with jasmine, seated beneath a coconut-leaf pandal">
@@ -964,7 +750,7 @@ body.locked .music-btn{display:none}
         </div>
         <p class="sub">Morning Rituals</p>
         <h3>Pellikoduku &amp; Pellikuthuru<span class="te">పెళ్ళికొడుకు &amp; పెళ్ళికూతురు</span></h3>
-        <p class="when"><strong>Wednesday, 21 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
+        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
         <p class="note">The groom and bride are blessed and made ready for the wedding by their families.</p>
         <p class="where"><b>Shawnee Venue</b>6330 Lackman Rd, Shawnee, KS 66217</p>
       </article>
@@ -1056,14 +842,14 @@ body.locked .music-btn{display:none}
 
     <div class="venues">
       <div class="venue card reveal">
-        <p class="for">Haldi, Nalugu &amp; Welcome Dinner &middot; 20 October</p>
+        <p class="for">Haldi &amp; Nalugu &middot; 20 October</p>
         <h3>Mission, Kansas</h3>
         <address>4740 West 61st Street<br>Mission, KS 66205</address>
         <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener">Open in Maps</a></div>
       </div>
 
       <div class="venue card reveal">
-        <p class="for">Pellikoduku, Pellikuthuru &amp; Muhurtham &middot; 21 October</p>
+        <p class="for">Pellikoduku, Pellikuthuru &amp; Muhurtham &middot; 20&ndash;21 October</p>
         <h3>Shawnee, Kansas</h3>
         <address>6330 Lackman Rd<br>Shawnee, KS 66217</address>
         <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=6330%20Lackman%20Rd%2C%20Shawnee%2C%20KS%2066217" target="_blank" rel="noopener">Open in Maps</a></div>
@@ -1114,7 +900,6 @@ body.locked .music-btn{display:none}
           <div class="choices">
             <label class="choice"><input type="checkbox" name="events" value="Haldi"><span>Haldi</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Nalugu"><span>Nalugu</span></label>
-            <label class="choice"><input type="checkbox" name="events" value="Welcome Dinner"><span>Welcome Dinner</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Pellikoduku &amp; Pellikuthuru"><span>Pellikoduku &amp; Pellikuthuru</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Muhurtham" checked><span>Muhurtham</span></label>
           </div>
@@ -1170,9 +955,7 @@ const W = {
       loc:"4740 West 61st Street, Mission, KS 66205" },
     { uid:"nalugu",    title:"Nalugu — Teja weds Deeksha",    start:"20261020T160000", end:"20261020T190000",
       loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"dinner",    title:"Welcome Dinner — Teja weds Deeksha", start:"20261020T190000", end:"20261020T220000",
-      loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"pelli",     title:"Pellikoduku & Pellikuthuru — Teja weds Deeksha", start:"20261021T090000", end:"20261021T110000",
+    { uid:"pelli",     title:"Pellikoduku & Pellikuthuru — Teja weds Deeksha", start:"20261020T090000", end:"20261020T110000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" },
     { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T113000", end:"20261021T133000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" }
@@ -1409,14 +1192,13 @@ document.getElementById('icsBtn').addEventListener('click', function(){
 const story = (function(){
   const el    = document.getElementById('story');
   const skip  = document.getElementById('storySkip');
-  const clock = document.getElementById('storyClock');
-  const RUN   = 18400;   // hand over on the engagement card
+  const RUN   = 6600;    // the journey, then the invitation
   const calm  = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let timer = null, ticker = null, done = null;
+  let timer = null, done = null;
 
   function finish(){
     if(!el.classList.contains('on')) return;
-    clearTimeout(timer); clearInterval(ticker);
+    clearTimeout(timer);
     el.classList.add('closing');
     setTimeout(() => { el.remove(); }, 800);
     if(done){ const f = done; done = null; f(); }
@@ -1429,20 +1211,6 @@ const story = (function(){
     el.classList.add('on');
     void el.offsetWidth;                                // commit before animating
     el.classList.add('playing');
-
-    // the clock rolls up and settles on the second they met — started when the
-    // clock actually comes on screen, not when the story begins
-    if(clock){
-      clock.textContent = '2:45:12';
-      setTimeout(() => {
-        let sec = 12;
-        ticker = setInterval(() => {
-          sec += 1;
-          if(sec >= 36){ clock.textContent = '2:45:36'; clearInterval(ticker); return; }
-          clock.textContent = '2:45:' + String(sec).padStart(2,'0');
-        }, 78);
-      }, 6300);
-    }
 
     timer = setTimeout(finish, RUN);
   }
