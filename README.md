@@ -10,7 +10,7 @@ A single-page, fully static wedding invitation site.
 |---|---|---|---|
 | Haldi (పసుపు) | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Nalugu (నలుగు) | Tue, 20 October 2026 | 4:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikoduku & Pellikuthuru (పెళ్ళికొడుకు & పెళ్ళికూతురు) | Tue, 20 October 2026 | 9:00 AM onwards | 6330 Lackman Rd, Shawnee, KS 66217 |
+| Pellikuthuru (పెళ్ళికూతురు) | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Muhurtham (ముహూర్తం) | Wed, 21 October 2026 | 11:30 AM | 6330 Lackman Rd, Shawnee, KS 66217 |
 
 Each event card carries a supplied illustration. Behind each one an SVG scene is also drawn inline
@@ -81,7 +81,7 @@ pellikuthuru ceremony and the muhurtham — resized to 880 px wide and saved as 
 ```
 assets/events/haldi.jpg
 assets/events/nalugu.jpg
-assets/events/pellikoduku-pellikuthuru.jpg
+assets/events/pellikuthuru.jpg
 assets/events/muhurtham.jpg
 ```
 
@@ -131,7 +131,7 @@ New Google Form with these five questions, **in this order**:
 | 1 | Your name | Short answer | — |
 | 2 | Will you join us? | Multiple choice | `Joyfully accepts` · `Regretfully declines` |
 | 3 | Number of guests (including you) | Short answer | — |
-| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikoduku & Pellikuthuru` · `Muhurtham` |
+| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikuthuru` · `Muhurtham` |
 | 5 | A wish for the couple | Paragraph | — |
 
 The option text must match exactly — Google silently drops values it does not recognise.
@@ -166,6 +166,25 @@ googleForm: {
 The browser posts into a hidden iframe, so the guest never leaves the invitation and never sees a
 Google page. Google returns a cross-origin response the page cannot read, which is why the site
 shows its own confirmation message rather than waiting for one.
+
+### What actually gets sent
+
+The event checkboxes are a single Google Forms checkbox question, so each ticked event is posted as a
+repeated parameter under the same entry id. A guest who ticks Haldi, Pellikuthuru and Muhurtham sends:
+
+```
+entry.<name>      = Ravi Kumar
+entry.<attending> = Joyfully accepts
+entry.<guests>    = 3
+entry.<events>    = Haldi
+entry.<events>    = Pellikuthuru
+entry.<events>    = Muhurtham
+entry.<message>   = So happy for you both!
+```
+
+In the spreadsheet that lands as one row, with the events column reading
+`Haldi, Pellikuthuru, Muhurtham` — so you can filter or count per event. The option text on the form
+must match the site's values exactly, or Google drops the ones it does not recognise.
 
 ## Deploying to GitHub Pages
 
