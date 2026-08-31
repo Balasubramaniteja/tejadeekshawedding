@@ -7,15 +7,14 @@
 <meta name="description" content="With the blessings of our families, Ganaparti Teja and Enukonda Sai Deeksha cordially invite you to their wedding on 21 October 2026 in Shawnee, Kansas.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Teja weds Deeksha — 21 October 2026">
-<meta property="og:description" content="Haldi, Nalugu & Pellikuthuru on 20 October; Muhurtham on 21 October 2026 at 11:30 AM. Kansas.">
+<meta property="og:description" content="Haldi, Nalugu & Pellikuthuru on 20 October; Muhurtham on 21 October 2026 at 10:00 AM. Kansas.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#6d0f24">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='3' font-size='24'>%F0%9F%AA%94</text></svg>">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/marcellus-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/telugu-400.woff2" crossorigin>
 <style>
 /* Self-hosted webfonts — no external requests, so the invitation renders
-   correctly (Telugu conjuncts included) even on a slow or filtered network. */
+   identically even on a slow or filtered network. */
 @font-face{font-family:'Marcellus';font-style:normal;font-weight:400;font-display:swap;
   src:url('assets/fonts/marcellus-400.woff2') format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300;font-display:swap;
@@ -28,10 +27,6 @@
   src:url('assets/fonts/cormorant-300i.woff2') format('woff2')}
 @font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;
   src:url('assets/fonts/cormorant-400i.woff2') format('woff2')}
-@font-face{font-family:'Noto Serif Telugu';font-style:normal;font-weight:400;font-display:swap;
-  src:url('assets/fonts/telugu-400.woff2') format('woff2')}
-@font-face{font-family:'Noto Serif Telugu';font-style:normal;font-weight:600;font-display:swap;
-  src:url('assets/fonts/telugu-600.woff2') format('woff2')}
 
 :root{
   --maroon:#6d0f24; --maroon-deep:#48091a; --gold:#c9a227; --gold-lt:#e8cd7c;
@@ -50,7 +45,6 @@ body{
   font-size:19px; line-height:1.65; overflow-x:hidden;
 }
 h1,h2,h3,h4{font-family:'Marcellus',Georgia,serif;font-weight:400;letter-spacing:.02em;margin:0}
-.te{font-family:'Noto Serif Telugu',serif;letter-spacing:0}
 a{color:inherit}
 img,svg{max-width:100%}
 
@@ -59,7 +53,6 @@ img,svg{max-width:100%}
 section{padding:70px 0;position:relative}
 .eyebrow{font-family:'Marcellus',serif;text-transform:uppercase;letter-spacing:.32em;font-size:.6rem;color:var(--gold);margin:0 0 10px}
 .section-title{font-size:clamp(1.7rem,5.2vw,2.5rem);color:var(--maroon);text-align:center}
-.section-title .te{display:block;font-size:.55em;color:var(--gold);margin-top:6px;letter-spacing:0}
 .section-head{text-align:center;margin-bottom:42px}
 .divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:16px auto 0;max-width:240px}
 .divider .line{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
@@ -81,10 +74,10 @@ section{padding:70px 0;position:relative}
 @keyframes spin{to{transform:rotate(360deg)}}
 .deities{display:block;width:min(560px,94%);height:auto;margin:24px auto 6px}
 .invocation{color:var(--maroon);font-size:1.05rem;margin:8px 0 0}
+.invocation .invoke-line{font-family:'Marcellus',serif;letter-spacing:.16em;text-transform:uppercase;font-size:.92rem}
 .invocation small{display:block;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:6px;font-family:'Marcellus',serif}
-.shubha{font-family:'Noto Serif Telugu',serif;color:var(--gold);font-size:1.05rem;margin:16px 0 0}
+.shubha{font-family:'Marcellus',serif;color:var(--gold);font-size:1.02rem;letter-spacing:.22em;text-transform:uppercase;margin:16px 0 0}
 .blessing{max-width:560px;margin:20px auto 0;font-style:italic;color:var(--muted)}
-.te-line{font-family:'Noto Serif Telugu',serif;font-style:normal;color:var(--maroon);font-size:1rem;line-height:2;margin-top:22px}
 
 
 .names{margin:12px 0 0}
@@ -128,19 +121,20 @@ section{padding:70px 0;position:relative}
 /* ================= EVENTS ================= */
 .events{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
 .event{padding:26px 22px 28px;text-align:center;display:flex;flex-direction:column}
-.scene-wrap{position:relative;width:100%;margin:0 0 18px;overflow:hidden;line-height:0;
-  border:1px solid rgba(201,162,39,.45);box-shadow:0 4px 14px rgba(74,10,24,.10)}
-.event.featured .scene-wrap{border-color:var(--gold)}
-.event .scene{width:100%;height:auto;display:block}
-.event .photo{width:100%;height:auto;display:block;aspect-ratio:320/165;object-fit:cover;background:var(--cream-2)}
-.scene-wrap.has-photo svg.scene{display:none}
+.event.featured{padding-top:40px;grid-column:1/-1}
+.event.featured .schedule{max-width:440px;margin-left:auto;margin-right:auto}
 .event .sub{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-family:'Marcellus',serif;margin:0}
 .event h3{font-size:1.55rem;color:var(--maroon);margin:6px 0 0}
-.event h3 .te{display:block;font-size:.62em;color:var(--gold);margin-top:2px}
 .event .when{margin:18px 0 0}
 .event .when strong{display:block;font-family:'Marcellus',serif;color:var(--maroon);font-size:1.05rem;letter-spacing:.04em}
 .event .when span{display:block;font-size:.98rem;color:var(--muted);margin-top:3px}
 .event .note{margin:14px 0 0;font-size:.94rem;font-style:italic;color:var(--muted)}
+.event .schedule{margin:16px 0 0;display:flex;flex-direction:column;gap:8px;
+  border-top:1px solid rgba(201,162,39,.4);border-bottom:1px solid rgba(201,162,39,.4);padding:14px 0}
+.event .schedule span{display:flex;align-items:baseline;gap:10px;justify-content:center;
+  font-size:.95rem;color:var(--ink)}
+.event .schedule b{font-family:'Marcellus',serif;font-weight:400;color:var(--maroon);
+  letter-spacing:.06em;font-size:.82rem;white-space:nowrap}
 .event .where{margin:16px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
 .event .where b{display:block;font-style:normal;color:var(--ink);font-family:'Marcellus',serif;font-weight:400;font-size:.9rem}
 .event.featured{border-color:var(--gold);box-shadow:0 16px 44px rgba(109,15,36,.18)}
@@ -179,8 +173,8 @@ textarea{min-height:96px;resize:vertical}
 
 /* ================= CONTACT / VERSE ================= */
 .verse{text-align:center;background:linear-gradient(180deg,var(--maroon),var(--maroon-deep));color:var(--cream);padding:76px 20px}
-.verse .verse-line{font-size:1.25rem;line-height:2.3;color:var(--gold-lt)}
-.verse .shubhamastu{margin-top:30px;color:var(--gold-lt);letter-spacing:.06em;font-size:1.1rem;opacity:.85}
+.verse .verse-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;line-height:2.1;color:var(--gold-lt)}
+.verse .shubhamastu{font-family:'Marcellus',serif;margin-top:30px;color:var(--gold-lt);letter-spacing:.24em;text-transform:uppercase;font-size:.82rem;opacity:.85}
 .verse .translation{max-width:580px;margin:22px auto 0;font-style:italic;opacity:.92}
 .verse .lamp{width:44px;height:44px;margin:0 auto 22px;display:block;color:var(--gold-lt)}
 
@@ -255,7 +249,7 @@ body.locked{overflow:hidden}
 body.locked .music-btn{display:none}
 .opening-inner{max-width:430px;width:100%}
 .opening .ring{width:84px;height:84px;display:block;margin:0 auto 18px;animation:spin 110s linear infinite}
-.opening-eyebrow{font-family:'Noto Serif Telugu',serif;color:var(--gold);font-size:1.02rem;margin:0}
+.opening-eyebrow{font-family:'Marcellus',serif;color:var(--gold);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;margin:0}
 .opening-names{font-family:'Marcellus',serif;color:var(--maroon);font-size:clamp(1.9rem,8.5vw,2.9rem);margin:12px 0 8px;line-height:1.18}
 .opening-names span{color:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.58em;display:inline-block;margin:0 .18em}
 .opening-date{font-family:'Marcellus',serif;letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;color:var(--muted);margin:0}
@@ -270,10 +264,6 @@ body.locked .music-btn{display:none}
 .open-btn::after{content:"";position:absolute;inset:-11px;border-radius:50%;border:1px solid var(--gold);
   opacity:.65;animation:pulse 2.6s ease-out infinite}
 @keyframes pulse{0%{transform:scale(.9);opacity:.7}100%{transform:scale(1.3);opacity:0}}
-.opening-hint{font-family:'Marcellus',serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:22px 0 0}
-.opening-silent{background:none;border:0;color:var(--muted);font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:.95rem;margin-top:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px}
-.opening-silent:hover{color:var(--maroon)}
 @media (prefers-reduced-motion:reduce){.open-btn::after{animation:none}.opening .ring{animation:none}}
 
 /* ================= MUSIC TOGGLE (persistent, after the gate) ================= */
@@ -367,15 +357,13 @@ body.locked .music-btn{display:none}
       </g>
       <circle cx="60" cy="60" r="5" fill="#6d0f24"/>
     </svg>
-    <p class="opening-eyebrow te">శుభ వివాహం</p>
+    <p class="opening-eyebrow">Shubha Vivaham</p>
     <p class="opening-names">Teja<span>weds</span>Deeksha</p>
     <p class="opening-date">21 October 2026 &middot; Shawnee, Kansas</p>
 
-    <button class="open-btn" id="openBtn" type="button" aria-label="Open the invitation with music">
+    <button class="open-btn" id="openBtn" type="button" aria-label="Open the invitation">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5 19 12 8 18.5Z" fill="currentColor"/></svg>
     </button>
-    <p class="opening-hint">Tap to open &middot; with music</p>
-    <button class="opening-silent" id="openSilentBtn" type="button">Open without music</button>
   </div>
 </div>
 
@@ -412,13 +400,12 @@ body.locked .music-btn{display:none}
          alt="Lord Venkateswara, Padmavathi, Shiva, Parvathi, Brahma, Hanuman, Ganesha, Murugan and Sai Baba">
 
     <p class="invocation">
-      <span class="te">॥ శ్రీ గణేశాయ నమః ॥</span>
-      <small>Sri Ganeshaya Namah</small>
+      <span class="invoke-line">Sri Ganeshaya Namah</span>
+      <small>We begin with the blessings of Lord Ganesha</small>
     </p>
 
-    <p class="shubha te">శుభ వివాహం</p>
+    <p class="shubha">Shubha Vivaham</p>
 
-    <p class="blessing te-line">పెద్దల ఆశీస్సులతో, మా వివాహ వేడుకకు<br>మిమ్మల్ని సాదరంగా ఆహ్వానిస్తున్నాము.</p>
     <p class="blessing">With the blessings of the Almighty and our elders,<br>we joyfully invite you to share in the celebration of our wedding.</p>
 
     <div class="names">
@@ -432,7 +419,7 @@ body.locked .music-btn{display:none}
     <p class="hero-date">
       <span>Wednesday, 21 October 2026</span>
       <span class="sep">&#10022;</span>
-      <span>11:30 AM</span>
+      <span>Muhurtham 10:00 AM</span>
       <span class="sep">&#10022;</span>
       <span>Shawnee, Kansas</span>
     </p>
@@ -457,7 +444,7 @@ body.locked .music-btn{display:none}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Together with their families</p>
-      <h2 class="section-title">Two Families, One Bond<span class="te">రెండు కుటుంబాలు, ఒక బంధం</span></h2>
+      <h2 class="section-title">Two Families, One Bond</h2>
       <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
     </div>
 
@@ -468,8 +455,6 @@ body.locked .music-btn{display:none}
         <p class="alias">(a) Balasubramani</p>
         <p class="rel">Son of</p>
         <p class="people">Sri Ganaparti Pratap<br>&amp; Smt. Ganaparti Geetha</p>
-        <p class="rel">Cousins</p>
-        <p class="people">Pranavika &middot; Pravalika<br>Sanji &middot; Sriji</p>
       </div>
 
       <div class="knot reveal">
@@ -486,8 +471,6 @@ body.locked .music-btn{display:none}
         <p class="alias">&nbsp;</p>
         <p class="rel">Daughter of</p>
         <p class="people">Sri Enukonda Ravi<br>&amp; Smt. Enukonda Kalpana</p>
-        <p class="rel">Sister &amp; Brother</p>
-        <p class="people">Enukonda Sai Deepthi<br>Enukonda Sai Mohith</p>
       </div>
     </div>
   </div>
@@ -498,7 +481,7 @@ body.locked .music-btn{display:none}
   <div class="wrap wide">
     <div class="section-head reveal">
       <p class="eyebrow">Save these moments</p>
-      <h2 class="section-title">Wedding Celebrations<span class="te">వేడుకలు</span></h2>
+      <h2 class="section-title">Wedding Celebrations</h2>
       <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
     </div>
 
@@ -506,74 +489,8 @@ body.locked .music-btn{display:none}
 
       <!-- ============ 1. HALDI ============ -->
       <article class="event card reveal">
-        <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Morning haldi ceremony: turmeric in a brass plate beneath marigold garlands">
-          <defs>
-            <linearGradient id="haldiSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fdf3d2"/><stop offset=".5" stop-color="#f9e5ac"/><stop offset="1" stop-color="#f1d386"/>
-            </linearGradient>
-            <radialGradient id="haldiSun" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#fffbe2" stop-opacity=".95"/><stop offset="1" stop-color="#fffbe2" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="haldiGround" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#d8b96e"/><stop offset="1" stop-color="#c19c4e"/>
-            </linearGradient>
-          </defs>
-          <rect width="320" height="165" fill="url(#haldiSky)"/>
-          <!-- morning sun -->
-          <circle cx="250" cy="36" r="54" fill="url(#haldiSun)"/>
-          <circle cx="250" cy="36" r="15" fill="#fff3b4" opacity=".95"/>
-          <!-- layered hills -->
-          <path d="M0 94 q54 -24 108 -6 q56 20 104 -10 q56 -32 108 -2v89H0Z" fill="#cdd69c" opacity=".5"/>
-          <path d="M0 108 q70 -20 132 2 q66 22 188 -8v63H0Z" fill="#bbc986" opacity=".6"/>
-          <!-- banana plants -->
-          <g transform="translate(24,128)">
-            <path d="M0 0V-46" stroke="#4a7036" stroke-width="3"/>
-            <path d="M0 -44 q-26 -6 -34 10 q24 6 34 -10Z" fill="#5f8a45"/>
-            <path d="M0 -44 q26 -8 36 8 q-26 6 -36 -8Z" fill="#6b9550"/>
-            <path d="M0 -46 q-11 -20 4 -30 q10 18 -4 30Z" fill="#4f7f3c"/>
-          </g>
-          <g transform="translate(298,132)">
-            <path d="M0 0V-40" stroke="#4a7036" stroke-width="3"/>
-            <path d="M0 -38 q24 -6 32 10 q-22 6 -32 -10Z" fill="#5f8a45"/>
-            <path d="M0 -38 q-24 -8 -34 8 q24 6 34 -8Z" fill="#6b9550"/>
-            <path d="M0 -40 q9 -17 -3 -25 q-8 15 3 25Z" fill="#4f7f3c"/>
-          </g>
-          <!-- ground -->
-          <path d="M0 126 q160 -10 320 0v39H0Z" fill="url(#haldiGround)"/>
-          <!-- marigold garland -->
-          <path d="M0 16 Q160 54 320 16" fill="none" stroke="#3f7a3d" stroke-width="2"/>
-          <g id="haldiMarigolds"></g>
-          <!-- low table with a banana leaf -->
-          <rect x="104" y="129" width="6" height="16" fill="#8f5f3a"/>
-          <rect x="210" y="129" width="6" height="16" fill="#8f5f3a"/>
-          <rect x="94" y="122" width="132" height="8" rx="2" fill="#a8734a"/>
-          <path d="M92 122 q68 -15 136 0 q-68 11 -136 0Z" fill="#4f7f3c"/>
-          <path d="M96 122 q64 -10 128 0" stroke="#3f6b30" stroke-width="1" fill="none"/>
-          <!-- brass plate of turmeric -->
-          <ellipse cx="148" cy="119" rx="34" ry="8" fill="#b98a2c"/>
-          <ellipse cx="148" cy="116" rx="31" ry="7.5" fill="#e8bb3c"/>
-          <ellipse cx="142" cy="115" rx="14" ry="3.4" fill="#f5d766" opacity=".75"/>
-          <path d="M132 115 q16 -12 32 0 q-16 5 -32 0Z" fill="#e8a91c"/>
-          <!-- kumkuma bowl -->
-          <ellipse cx="202" cy="119" rx="15" ry="4.5" fill="#b98a2c"/>
-          <path d="M188 117 q14 -9 28 0 q-14 4 -28 0Z" fill="#b5232f"/>
-          <!-- turmeric roots on the leaf -->
-          <path d="M100 119 q9 -6 15 -1 q-6 7 -15 1Z" fill="#d98f16"/>
-          <path d="M112 121 q7 -5 12 -1 q-5 6 -12 1Z" fill="#c98010"/>
-          <!-- loose marigolds -->
-          <g fill="#f0a52a"><circle cx="240" cy="126" r="4"/><circle cx="252" cy="130" r="3"/><circle cx="74" cy="129" r="3.4"/></g>
-          <!-- turmeric dust in the light -->
-          <g fill="#f6d453" opacity=".85">
-            <circle cx="86" cy="70" r="2.4"><animate attributeName="cy" values="70;56;70" dur="7s" repeatCount="indefinite"/></circle>
-            <circle cx="206" cy="88" r="1.9"><animate attributeName="cy" values="88;74;88" dur="9s" repeatCount="indefinite"/></circle>
-            <circle cx="128" cy="60" r="1.6"><animate attributeName="cy" values="60;48;60" dur="11s" repeatCount="indefinite"/></circle>
-            <circle cx="266" cy="100" r="2.1"><animate attributeName="cy" values="100;88;100" dur="8s" repeatCount="indefinite"/></circle>
-          </g>
-        </svg>
-        <img class="photo" src="assets/events/haldi.jpg" alt="Haldi" width="880" height="480" loading="lazy" decoding="async">
-        </div>
         <p class="sub">Turmeric Ceremony</p>
-        <h3>Haldi<span class="te">పసుపు</span></h3>
+        <h3>Haldi</h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
         <p class="note">A morning of turmeric, music and blessings. Yellow attire encouraged.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
@@ -581,87 +498,8 @@ body.locked .music-btn{display:none}
 
       <!-- ============ 2. NALUGU ============ -->
       <article class="event card reveal">
-        <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Nalugu ceremony: a brass kalash with coconut and mango leaves beside lit oil lamps on a kolam">
-          <defs>
-            <linearGradient id="nalSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fbeed6"/><stop offset=".6" stop-color="#f4dcb6"/><stop offset="1" stop-color="#e8c795"/>
-            </linearGradient>
-            <linearGradient id="nalPot" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#a8631f"/><stop offset=".35" stop-color="#e0a04a"/>
-              <stop offset=".62" stop-color="#c07a28"/><stop offset="1" stop-color="#8f5219"/>
-            </linearGradient>
-            <radialGradient id="nalGlow" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#ffcf72" stop-opacity=".8"/><stop offset="1" stop-color="#ffcf72" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect width="320" height="165" fill="url(#nalSky)"/>
-          <!-- verandah pillars -->
-          <g fill="#e6cfa4" opacity=".75">
-            <rect x="8" y="16" width="20" height="120" rx="2"/><rect x="292" y="16" width="20" height="120" rx="2"/>
-            <rect x="2" y="10" width="32" height="9" rx="2"/><rect x="286" y="10" width="32" height="9" rx="2"/>
-          </g>
-          <path d="M28 26 q132 -18 264 0" fill="none" stroke="#cbab74" stroke-width="2.5"/>
-          <!-- hanging mango leaf toran -->
-          <g id="nalToran"></g>
-          <!-- floor -->
-          <path d="M0 122h320v43H0Z" fill="#d9bd90"/>
-          <path d="M0 122h320" stroke="#c4a274" stroke-width="1.5"/>
-          <!-- kolam / muggu on the floor -->
-          <g stroke="#fdf7ec" stroke-width="1.2" fill="none" opacity=".9" transform="translate(160,146) scale(1,.42)">
-            <circle r="40"/><circle r="27"/>
-            <g id="nalMuggu"></g>
-          </g>
-          <!-- banana leaf under the kalash -->
-          <path d="M108 128 q52 -14 104 0 q-52 12 -104 0Z" fill="#5f8a45"/>
-          <!-- kalash -->
-          <ellipse cx="160" cy="126" rx="30" ry="6" fill="#8a5a20" opacity=".3" filter="url(#soft)"/>
-          <path d="M140 84 q-9 24 2 36 q18 9 36 0 q11 -12 2 -36Z" fill="url(#nalPot)"/>
-          <rect x="137" y="77" width="46" height="9" rx="4" fill="#e0a04a"/>
-          <path d="M143 77 q7 -9 17 -9 q10 0 17 9Z" fill="#c98a33"/>
-          <!-- mango leaves in the mouth -->
-          <g fill="#4f7f3c">
-            <path d="M160 68 q-17 -3 -22 -14 q15 -3 22 14Z"/>
-            <path d="M160 68 q17 -3 22 -14 q-15 -3 -22 14Z"/>
-            <path d="M160 66 q-9 -9 -6 -19 q9 7 6 19Z" fill="#5e9448"/>
-            <path d="M160 66 q9 -9 6 -19 q-9 7 -6 19Z" fill="#5e9448"/>
-          </g>
-          <!-- coconut -->
-          <ellipse cx="160" cy="49" rx="11" ry="13" fill="#8a5a2b"/>
-          <ellipse cx="156" cy="45" rx="4" ry="5" fill="#a06f38" opacity=".7"/>
-          <path d="M160 36 q3 -7 0 -11 q-3 4 0 11Z" fill="#c9a227"/>
-          <!-- oil lamps -->
-          <g>
-            <circle cx="86" cy="108" r="20" fill="url(#nalGlow)"/>
-            <path d="M72 122 q14 7 28 0 q-4 7 -14 7 q-10 0 -14 -7Z" fill="#b5722a"/>
-            <ellipse cx="86" cy="121" rx="15" ry="4.5" fill="#d99440"/>
-            <path d="M86 118 q4 -10 0 -15 q-4 5 0 15Z" fill="#ffcf72" filter="url(#bloom)"/>
-            <path d="M86 118 q2.4 -8 0 -11 q-2.4 3 0 11Z" fill="#fff3c4">
-              <animate attributeName="opacity" values=".78;1;.78" dur="2.4s" repeatCount="indefinite"/>
-            </path>
-          </g>
-          <g>
-            <circle cx="236" cy="112" r="18" fill="url(#nalGlow)"/>
-            <path d="M224 124 q12 6 24 0 q-3 6 -12 6 q-9 0 -12 -6Z" fill="#b5722a"/>
-            <ellipse cx="236" cy="123" rx="13" ry="4" fill="#d99440"/>
-            <path d="M236 121 q3.4 -9 0 -13 q-3.4 4 0 13Z" fill="#ffcf72" filter="url(#bloom)"/>
-            <path d="M236 121 q2.1 -7 0 -10 q-2.1 3 0 10Z" fill="#fff3c4">
-              <animate attributeName="opacity" values="1;.74;1" dur="3.1s" repeatCount="indefinite"/>
-            </path>
-          </g>
-          <!-- scattered petals -->
-          <g fill="#e8607f" opacity=".85">
-            <ellipse cx="118" cy="140" rx="4" ry="2.4" transform="rotate(-18 118 140)"/>
-            <ellipse cx="200" cy="144" rx="4" ry="2.4" transform="rotate(22 200 144)"/>
-            <ellipse cx="146" cy="152" rx="3.4" ry="2" transform="rotate(8 146 152)"/>
-          </g>
-          <g fill="#f0a52a" opacity=".9">
-            <circle cx="176" cy="139" r="3"/><circle cx="132" cy="146" r="2.6"/><circle cx="214" cy="152" r="2.4"/>
-          </g>
-        </svg>
-        <img class="photo" src="assets/events/nalugu.jpg" alt="Nalugu" width="880" height="480" loading="lazy" decoding="async">
-        </div>
         <p class="sub">Ritual Bath &amp; Blessings</p>
-        <h3>Nalugu<span class="te">నలుగు</span></h3>
+        <h3>Nalugu</h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Afternoon &middot; 4:00 PM onwards</span></p>
         <p class="note">The traditional Telugu ceremony for the bride and groom, performed by the elders.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
@@ -669,81 +507,8 @@ body.locked .music-btn{display:none}
 
       <!-- ============ 4. PELLIKUTHURU ============ -->
       <article class="event card reveal">
-        <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Pellikuthuru: the bride with jasmine in her hair, seated beneath a coconut-leaf pandal">
-          <defs>
-            <linearGradient id="pkSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#e8f0d8"/><stop offset=".55" stop-color="#f6ecc9"/><stop offset="1" stop-color="#f0dda8"/>
-            </linearGradient>
-            <radialGradient id="pkLight" cx=".5" cy=".2" r=".7">
-              <stop offset="0" stop-color="#fffbe8" stop-opacity=".85"/><stop offset="1" stop-color="#fffbe8" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <rect width="320" height="165" fill="url(#pkSky)"/>
-          <ellipse cx="160" cy="20" rx="150" ry="80" fill="url(#pkLight)"/>
-          <!-- background foliage -->
-          <path d="M0 96 q56 -22 112 -4 q58 18 100 -8 q54 -26 108 -4v86H0Z" fill="#bfd09a" opacity=".45"/>
-          <path d="M0 112 q72 -18 136 2 q64 20 184 -6v57H0Z" fill="#aec489" opacity=".5"/>
-          <g opacity=".3" filter="url(#soft)" fill="#7fa15e">
-            <ellipse cx="52" cy="92" rx="34" ry="22"/><ellipse cx="272" cy="88" rx="36" ry="24"/>
-          </g>
-          <!-- pandal posts + coconut leaf canopy -->
-          <g fill="#c9a86e">
-            <rect x="30" y="44" width="8" height="92" rx="2"/><rect x="282" y="44" width="8" height="92" rx="2"/>
-          </g>
-          <path d="M26 46 q134 -22 268 0" fill="none" stroke="#a8873f" stroke-width="3"/>
-          <g id="pkFronds"></g>
-          <!-- floor + kolam -->
-          <path d="M0 130h320v35H0Z" fill="#e0c99a"/>
-          <path d="M0 130h320" stroke="#c9ac78" stroke-width="1.4"/>
-          <g stroke="#fffaf0" stroke-width="1.1" fill="none" opacity=".85" transform="translate(160,150) scale(1,.4)">
-            <circle r="34"/><circle r="22"/>
-          </g>
-          <!-- ===== groom (left), seated with parasol ===== -->
-          <g>
-            <!-- parasol -->
-            <path d="M92 30v62" stroke="#a8873f" stroke-width="2"/>
-            <path d="M64 30 q28 -22 56 0 q-28 7 -56 0Z" fill="#d9a441"/>
-            <path d="M64 30 q28 -10 56 0" fill="none" stroke="#b9862c" stroke-width="1"/>
-            <circle cx="92" cy="20" r="2.4" fill="#c9a227"/>
-            <!-- wooden seat -->
-            <rect x="66" y="121" width="52" height="9" rx="2" fill="#a8734a"/>
-            <rect x="70" y="130" width="6" height="6" fill="#8f5f3a"/><rect x="108" y="130" width="6" height="6" fill="#8f5f3a"/>
-            <!-- body -->
-            <path d="M76 96 q16 -8 32 0 l6 26 h-44Z" fill="#fdf8ec"/>
-            <path d="M88 96 h12 l-6 26 h-6Z" fill="#d9a441" opacity=".8"/>
-            <rect x="86" y="84" width="12" height="14" rx="5" fill="#e0a97c"/>
-            <circle cx="92" cy="70" r="18" fill="#e9b78a"/>
-            <path d="M74 68 a18 18 0 0 1 36 0 a18 13 0 0 0 -36 0Z" fill="#2b1b12"/>
-            <!-- turmeric thread on the wrist -->
-            <path d="M108 104 q10 4 12 12" stroke="#e9b78a" stroke-width="7" fill="none" stroke-linecap="round"/>
-            <circle cx="120" cy="116" r="3.4" fill="#e8c33f"/>
-          </g>
-          <!-- ===== bride (right), jasmine in her hair ===== -->
-          <g>
-            <rect x="202" y="121" width="52" height="9" rx="2" fill="#a8734a"/>
-            <rect x="206" y="130" width="6" height="6" fill="#8f5f3a"/><rect x="244" y="130" width="6" height="6" fill="#8f5f3a"/>
-            <path d="M212 98 q16 -8 32 0 l7 24 h-46Z" fill="#a3122f"/>
-            <path d="M238 98 q13 22 6 24 h-8Z" fill="#c4173b"/>
-            <rect x="222" y="86" width="12" height="14" rx="5" fill="#dfa87c"/>
-            <circle cx="228" cy="72" r="17" fill="#eab98d"/>
-            <path d="M211 72 a17 17 0 0 1 34 0 a17 12 0 0 0 -34 0Z" fill="#241510"/>
-            <circle cx="250" cy="76" r="8" fill="#241510"/>
-            <path d="M252 84 q7 18 2 28" stroke="#241510" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <g fill="#fffdf6"><circle cx="253" cy="90" r="2"/><circle cx="255" cy="99" r="2"/><circle cx="255" cy="108" r="2"/></g>
-            <path d="M214 60 q14 -10 28 0" fill="none" stroke="#c9a227" stroke-width="1.6"/>
-            <path d="M216 100 q12 16 24 0" fill="none" stroke="#c9a227" stroke-width="2.4"/>
-            <path d="M208 92 q-10 4 -12 12" stroke="#eab98d" stroke-width="7" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- petals in the air -->
-          <g fill="#f0a52a" opacity=".8">
-            <circle cx="152" cy="60" r="2.4"><animate attributeName="cy" values="60;96;60" dur="10s" repeatCount="indefinite"/></circle>
-            <circle cx="172" cy="80" r="2"><animate attributeName="cy" values="80;112;80" dur="13s" repeatCount="indefinite"/></circle>
-          </g>
-        </svg>
-        <img class="photo" src="assets/events/pellikuthuru.jpg" alt="Pellikuthuru" width="880" height="480" loading="lazy" decoding="async">
-        </div>
         <p class="sub">Morning Rituals</p>
-        <h3>Pellikuthuru<span class="te">పెళ్ళికూతురు</span></h3>
+        <h3>Pellikuthuru</h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
         <p class="note">The bride is blessed and made ready for the wedding by her family.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
@@ -752,71 +517,13 @@ body.locked .music-btn{display:none}
       <!-- ============ 5. MUHURTHAM ============ -->
       <article class="event card featured reveal">
         <span class="ribbon">The Wedding</span>
-        <div class="scene-wrap has-photo"><svg class="scene" viewBox="0 0 320 165" role="img" aria-label="Muhurtham: the sacred fire in a mandapam hung with marigold garlands">
-          <defs>
-            <linearGradient id="muhSky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fdf6e6"/><stop offset=".55" stop-color="#f6e3c4"/><stop offset="1" stop-color="#ecd0a4"/>
-            </linearGradient>
-            <radialGradient id="muhGlow" cx=".5" cy=".62" r=".55">
-              <stop offset="0" stop-color="#ffd77a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd77a" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="muhFire" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0" stop-color="#e0561c"/><stop offset=".5" stop-color="#f59b1e"/><stop offset="1" stop-color="#ffe08a"/>
-            </linearGradient>
-          </defs>
-          <rect width="320" height="165" fill="url(#muhSky)"/>
-          <!-- light rays -->
-          <g fill="#fff3cf" opacity=".45" filter="url(#softer)">
-            <path d="M120 0 L96 165 L140 165Z"/><path d="M186 0 L176 165 L222 165Z"/>
-          </g>
-          <!-- mandapam -->
-          <g fill="#e8d2a4" stroke="#c9a86e" stroke-width="1.2">
-            <rect x="26" y="40" width="20" height="98" rx="2"/><rect x="18" y="132" width="36" height="10" rx="2"/><rect x="18" y="32" width="36" height="10" rx="2"/>
-            <rect x="274" y="40" width="20" height="98" rx="2"/><rect x="266" y="132" width="36" height="10" rx="2"/><rect x="266" y="32" width="36" height="10" rx="2"/>
-          </g>
-          <path d="M18 36 Q160 -12 302 36" fill="none" stroke="#c9a227" stroke-width="3"/>
-          <path d="M18 44 Q160 -4 302 44" fill="none" stroke="#a3122f" stroke-width="6" opacity=".85"/>
-          <g id="muhToran"></g>
-          <!-- floor -->
-          <path d="M0 138h320v27H0Z" fill="#dcc59a"/>
-          <ellipse cx="160" cy="140" rx="120" ry="10" fill="#c9a227" opacity=".18"/>
-          <!-- homam fire pit -->
-          <circle cx="160" cy="112" r="46" fill="url(#muhGlow)"/>
-          <path d="M132 122 h56 l-6 16 h-44Z" fill="#a8734a"/>
-          <rect x="128" y="116" width="64" height="8" rx="2" fill="#c08a52"/>
-          <!-- flames -->
-          <g>
-            <path d="M160 116 q-13 -14 -6 -30 q4 8 9 10 q-4 -16 8 -26 q-2 14 7 22 q6 6 4 14 q-2 8 -22 10Z" fill="url(#muhFire)">
-              <animate attributeName="opacity" values=".85;1;.85" dur="1.6s" repeatCount="indefinite"/>
-            </path>
-            <path d="M160 116 q-7 -9 -3 -18 q3 6 6 8 q-2 -9 4 -15 q0 9 4 14 q3 5 1 8 q-2 4 -12 3Z" fill="#fff0b8" opacity=".9" filter="url(#bloom)">
-              <animate attributeName="opacity" values=".6;.95;.6" dur="1.1s" repeatCount="indefinite"/>
-            </path>
-          </g>
-          <!-- kalash pair -->
-          <g fill="#c98a33">
-            <path d="M74 118 q-5 12 1 18 q9 5 18 0 q6 -6 1 -18Z"/><rect x="72" y="113" width="24" height="6" rx="3" fill="#e0a04a"/>
-            <path d="M226 118 q-5 12 1 18 q9 5 18 0 q6 -6 1 -18Z"/><rect x="224" y="113" width="24" height="6" rx="3" fill="#e0a04a"/>
-          </g>
-          <g fill="#4f7f3c">
-            <path d="M84 111 q-9 -2 -12 -8 q8 -2 12 8ZM84 111 q9 -2 12 -8 q-8 -2 -12 8Z"/>
-            <path d="M236 111 q-9 -2 -12 -8 q8 -2 12 8ZM236 111 q9 -2 12 -8 q-8 -2 -12 8Z"/>
-          </g>
-          <ellipse cx="84" cy="100" rx="7" ry="8" fill="#8a5a2b"/><ellipse cx="236" cy="100" rx="7" ry="8" fill="#8a5a2b"/>
-          <!-- jasmine strands -->
-          <g fill="#fffdf6" opacity=".95" id="muhJasmine"></g>
-          <!-- rising embers -->
-          <g fill="#ffc46b">
-            <circle cx="150" cy="84" r="1.8"><animate attributeName="cy" values="84;44;84" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="6s" repeatCount="indefinite"/></circle>
-            <circle cx="170" cy="90" r="1.5"><animate attributeName="cy" values="90;48;90" dur="8s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="8s" repeatCount="indefinite"/></circle>
-            <circle cx="160" cy="78" r="1.3"><animate attributeName="cy" values="78;40;78" dur="7s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0;1" dur="7s" repeatCount="indefinite"/></circle>
-          </g>
-        </svg>
-        <img class="photo" src="assets/events/muhurtham.jpg" alt="Muhurtham" width="880" height="480" loading="lazy" decoding="async">
-        </div>
         <p class="sub">Sacred Vows</p>
-        <h3>Muhurtham<span class="te">ముహూర్తం</span></h3>
-        <p class="when"><strong>Wednesday, 21 October 2026</strong><span>11:30 AM</span></p>
+        <h3>Muhurtham</h3>
+        <p class="when"><strong>Wednesday, 21 October 2026</strong><span>From 9:00 AM onwards</span></p>
+        <p class="schedule">
+          <span><b>10:00 &ndash; 11:30 AM</b>Muhurtham</span>
+          <span><b>Followed by</b>Lunch</span>
+        </p>
         <p class="note">The sacred vows that bind two souls, two families, and countless memories yet to come.</p>
         <p class="where"><b>Shawnee Venue</b>6330 Lackman Rd, Shawnee, KS 66217</p>
       </article>
@@ -830,7 +537,7 @@ body.locked .music-btn{display:none}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Where to find us</p>
-      <h2 class="section-title">The Venues<span class="te">వేదిక</span></h2>
+      <h2 class="section-title">The Venues</h2>
       <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
     </div>
 
@@ -863,7 +570,7 @@ body.locked .music-btn{display:none}
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Kindly let us know</p>
-      <h2 class="section-title">RSVP<span class="te">మీ రాక తెలియజేయండి</span></h2>
+      <h2 class="section-title">RSVP</h2>
       <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
     </div>
 
@@ -923,12 +630,12 @@ body.locked .music-btn{display:none}
     <path d="M18 36v4h12v-4"/>
     <path d="M14 28q10 -6 20 0"/>
   </svg>
-  <p class="te verse-line">
-    సఖా సప్తపదా భవ ॥<br>
-    సఖ్యం తే గమేయమ్ ॥
+  <p class="verse-line">
+    Sakha saptapada bhava<br>
+    Sakhyam te gameyam
   </p>
   <p class="translation">“With these seven steps, you have become my friend. May I never part from your friendship, and may you never part from mine.”</p>
-  <p class="te shubhamastu">శుభమస్తు</p>
+  <p class="shubhamastu">Shubhamastu</p>
 </section>
 
 <footer>
@@ -942,7 +649,7 @@ const W = {
   groom: "Ganaparti Teja",
   bride: "Enukonda Sai Deeksha",
   phone: "+19134567891",            // used for the tel: link and WhatsApp RSVP
-  countdownTo: "2026-10-21T11:30:00-05:00",  // Muhurtham, US Central (CDT)
+  countdownTo: "2026-10-21T10:00:00-05:00",  // Muhurtham start, US Central (CDT)
   events: [
     { uid:"haldi",     title:"Haldi — Teja weds Deeksha",     start:"20261020T090000", end:"20261020T120000",
       loc:"4740 West 61st Street, Mission, KS 66205" },
@@ -950,7 +657,7 @@ const W = {
       loc:"4740 West 61st Street, Mission, KS 66205" },
     { uid:"pelli",     title:"Pellikuthuru — Teja weds Deeksha", start:"20261020T090000", end:"20261020T110000",
       loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T113000", end:"20261021T133000",
+    { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T090000", end:"20261021T133000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" }
   ],
   icsDesc: "The wedding of Ganaparti Teja and Enukonda Sai Deeksha.",
@@ -1115,70 +822,6 @@ document.getElementById('icsBtn').addEventListener('click', function(){
   setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
 });
 
-/* ================= SCENE ILLUSTRATION DETAIL ================= */
-(function(){
-  const set = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
-
-  // Haldi — marigolds strung along the garland curve Q(0,16)-(160,54)-(320,16)
-  let m = '';
-  for(let i=0;i<=17;i++){
-    const t=i/17, u=1-t;
-    const x = t*320, y = u*u*16 + 2*u*t*54 + t*t*16;
-    m += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(4.6-1.1*Math.abs(2*t-1)).toFixed(1)}" fill="${i%2?'#f0a52a':'#e8862a'}"/>`;
-  }
-  set('haldiMarigolds', m);
-
-  // Nalugu — mango-leaf toran under the beam, and floor muggu petals
-  let n = '';
-  for(let i=0;i<=17;i++){
-    const t=i/17, x=28+t*264, y=26-18*(4*t*(1-t)), h=13+(i%3)*4;
-    n += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q 3.4 ${h/2} 0 ${h} q -3.4 ${-h/2} 0 ${-h}Z" fill="#4f7f3c"/>`;
-    if(i%3===0) n += `<circle cx="${x.toFixed(1)}" cy="${(y+h+3.5).toFixed(1)}" r="2.6" fill="#e08a1e"/>`;
-  }
-  set('nalToran', n);
-  set('nalMuggu', Array.from({length:10},(_,i)=>
-    `<path d="M0 -27 q 6 -6 0 -11 q -6 5 0 11Z" transform="rotate(${i*36})" fill="#fffaf0" stroke="none" opacity=".9"/>`).join(''));
-
-  // Welcome dinner — stars and string lights
-  const stars=[[24,18],[96,12],[140,30],[188,16],[248,24],[300,14],[68,44],[168,48],[262,52],[122,58],[306,44],[44,66]];
-  set('dinStars', stars.map(([x,y],i)=>{
-    const lo=(0.35+(i%3)*0.1).toFixed(2);
-    return `<circle cx="${x}" cy="${y}" r="${(0.9+(i%3)*0.45).toFixed(2)}" opacity="${lo}">
-      <animate attributeName="opacity" values="${lo};1;${lo}" dur="${3+(i%5)}s" repeatCount="indefinite"/></circle>`;
-  }).join(''));
-  let L='';
-  for(let i=0;i<=18;i++){
-    const t=i/18, x=-4+t*328;
-    const y = 26 + 15*(1-Math.pow(2*t-1,2)) - (t>0.55 ? 26*(t-0.55) : 0) + 5;
-    L += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5" fill="#ffcf72" opacity=".22"/>`;
-    L += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.9" fill="#ffe6ae"><animate attributeName="opacity" values="1;.45;1" dur="${(2.4+(i%4)*0.7).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
-  }
-  set('dinLights', L);
-
-  // Pellikuthuru — coconut fronds over the pandal
-  let F='';
-  for(let i=0;i<=13;i++){
-    const t=i/13, x=26+t*268, y=46-20*(4*t*(1-t));
-    F += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q 5 10 1 20 q -8 -8 -1 -20Z" fill="#6b9550"/>`;
-    F += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q -5 10 -1 20 q 8 -8 1 -20Z" fill="#5f8a45"/>`;
-  }
-  set('pkFronds', F);
-
-  // Muhurtham — marigold toran along the arch + hanging jasmine strands
-  let T='';
-  for(let i=0;i<=19;i++){
-    const t=i/19, x=18+t*284, y=44-46*(4*t*(1-t)), h=11+(i%3)*4;
-    T += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} q 3.2 ${h/2} 0 ${h} q -3.2 ${-h/2} 0 ${-h}Z" fill="#2e6b3a"/>`;
-    if(i%2===0) T += `<circle cx="${x.toFixed(1)}" cy="${(y+h+4).toFixed(1)}" r="3" fill="${i%4?'#f0a52a':'#e8862a'}"/>`;
-  }
-  set('muhToran', T);
-  let J='';
-  [58,96,224,262].forEach((x,k)=>{
-    for(let i=0;i<6;i++) J += `<circle cx="${(x+(k%2?1:-1)*i*0.6).toFixed(1)}" cy="${56+i*9}" r="2.1"/>`;
-  });
-  set('muhJasmine', J);
-})();
-
 /* ================= HOW THEY MET =================
    Runs between the opening tap and the invitation. Skippable at any point;
    skipped entirely for anyone who has asked for reduced motion. */
@@ -1284,7 +927,6 @@ const music = (function(){
     });
   }
   document.getElementById('openBtn').addEventListener('click', () => open(true));
-  document.getElementById('openSilentBtn').addEventListener('click', () => open(false));
 })();
 
 /* ================= THALAMBRALU ================= */
@@ -1322,17 +964,6 @@ const music = (function(){
   }
   layer.appendChild(frag);
 })();
-
-/* ================= SUPPLIED EVENT PHOTOS =================
-   If a photo is ever missing, its card falls back to the scene drawn in SVG
-   rather than showing a broken image. */
-document.querySelectorAll('.event .photo').forEach(img => {
-  img.addEventListener('error', () => {
-    const wrap = img.closest('.scene-wrap');
-    if(wrap) wrap.classList.remove('has-photo');
-    img.remove();
-  });
-});
 
 /* ================= REVEAL ON SCROLL ================= */
 const io = new IntersectionObserver(es=>{

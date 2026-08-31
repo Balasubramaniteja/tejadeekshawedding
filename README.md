@@ -8,14 +8,13 @@ A single-page, fully static wedding invitation site.
 
 | Event | Date | Time | Venue |
 |---|---|---|---|
-| Haldi (పసుపు) | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Nalugu (నలుగు) | Tue, 20 October 2026 | 4:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikuthuru (పెళ్ళికూతురు) | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Muhurtham (ముహూర్తం) | Wed, 21 October 2026 | 11:30 AM | 6330 Lackman Rd, Shawnee, KS 66217 |
+| Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
+| Nalugu | Tue, 20 October 2026 | 4:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
+| Pellikuthuru | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
+| Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
-Each event card carries a supplied illustration. Behind each one an SVG scene is also drawn inline
-in `index.html` and shown automatically if the image file is ever missing, so a card can never end
-up blank.
+Event cards are text only — no photographs and no illustrations. The Muhurtham card spans the full
+width of the grid and carries the running order for the day.
 
 ## Files
 
@@ -44,17 +43,19 @@ up blank.
 - `assets/img/deities.png` — the artwork that opens the invitation, supplied by the couple. The flat
   white around the marigold frame was made transparent and the panel inside it recoloured to the page
   cream, so it sits on the background rather than in a white box (880 px wide, 165 KB).
-- `assets/fonts/*.woff2` — self-hosted webfonts. Telugu text needs a real Telugu font to shape
-  conjuncts correctly, so the fonts ship with the site rather than loading from Google Fonts.
-- `assets/events/` — drop your own event photos here (see **Event images** below).
+- `assets/fonts/*.woff2` — self-hosted webfonts (Marcellus + Cormorant Garamond), so the page
+  renders identically without reaching Google Fonts.
 - `.nojekyll` — tells GitHub Pages to serve the files as-is.
 
 ## Opening screen
 
-The invitation opens behind a centred play button. Phones and desktop browsers both refuse to
-start audio without a real tap, so rather than failing silently the site asks the guest to open
-it — with music, or via the "Open without music" link. Once opened, a small toggle sits in the
-bottom-right corner for the rest of the visit.
+The invitation opens behind a single centred play button — no caption, no second link. Phones and
+desktop browsers both refuse to start audio without a real tap, so the button doubles as that tap:
+it opens the invitation and starts the music together.
+
+There is no longer an "open without music" path, so a guest who does not want sound mutes it with
+the toggle that sits in the bottom-right corner once the page is open. That toggle is the only way
+to silence it, so leave it in place.
 
 ## The journey
 
@@ -85,38 +86,17 @@ layer is switched off for visitors who ask for reduced motion.
 
 To change the density or colours, see the `THALAMBRALU` block near the bottom of `index.html`.
 
-## Event images
-
-Each event card shows a supplied image, and falls back to its drawn SVG scene if the file is ever
-missing. The four in use are the couple's own illustrations — the haldi tub, the నలుగు ceremony, the
-pellikuthuru ceremony and the muhurtham — resized to 880 px wide and saved as progressive JPEG
-(~155 KB each, 625 KB total). File names:
-
-```
-assets/events/haldi.jpg
-assets/events/nalugu.jpg
-assets/events/pellikuthuru.jpg
-assets/events/muhurtham.jpg
-```
-
-To replace one, drop in a file with the same name. Roughly **880 × 455 px** (about 1.94:1) fits the
-card exactly; anything wider or taller is cropped from the centre. Keep each under ~200 KB so the
-page stays quick on a phone. Images load lazily, so they cost nothing until the guest scrolls down.
-
-Only use images you own or are licensed to use — this page is public once deployed. Stock-library
-images (Freepik, Shutterstock, Adobe Stock and the like) need a licence that covers use on a public
-website, and some free tiers additionally require visible attribution.
-
-The event illustrations, the story images, the journey animation and the background music were all
-supplied by the couple. Everything else on the page — the toran, the opening-screen mandala, the
-muggu dividers, the thalambralu and the per-event fallback scenes — is drawn in SVG specifically for
-this invitation, so there is nothing to licence or attribute for those.
-
 ## Language
 
-All devotional text is Telugu script, as used in a South Indian Telugu wedding —
-`శ్రీ గణేశాయ నమః`, `శుభ వివాహం`, the Saptapadi verse, and `శుభమస్తు`.
-Event names carry their Telugu equivalents (పసుపు, నలుగు, ముహూర్తం).
+The page is **English throughout**. Sanskrit and Telugu terms that have no natural English
+equivalent — *Shubha Vivaham*, *Sri Ganeshaya Namah*, the Saptapadi line, *Shubhamastu* — are
+written in Latin transliteration rather than Telugu script, so every guest can read them and the
+page needs no Indic webfont.
+
+There is deliberately **no Telugu script anywhere**. If you ever add some back, you must also
+restore the `Noto Serif Telugu` `@font-face` rules and the two `assets/fonts/telugu-*.woff2` files —
+without a real Telugu font the browser falls back to a font that shapes conjuncts wrongly, so
+something like `శ్రీ` renders visibly broken.
 
 ## Editing
 
@@ -125,7 +105,7 @@ one `const W = { … }` block near the bottom of `index.html`:
 
 - `phone` — the WhatsApp number the RSVP form falls back to until the Google Form is configured.
   It is not shown anywhere on the page.
-- `countdownTo` — the Muhurtham timestamp the countdown counts down to
+- `countdownTo` — the Muhurtham start (10:00 AM, 21 Oct) that the countdown counts down to
 - `events` — the four calendar entries produced by the "Add to calendar" button
 
 To change a name, date or address, edit the visible text directly in `index.html`
