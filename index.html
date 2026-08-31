@@ -907,7 +907,7 @@ body.locked .music-btn{display:none}
         <div class="cta-row" style="margin-top:8px">
           <button class="btn btn-primary" type="submit">Send RSVP</button>
         </div>
-        <p class="form-note">Opens WhatsApp with your reply ready to send.</p>
+        <p class="form-note">Your reply comes straight to us &mdash; no app, no sign-in needed.</p>
       </form>
 
       <div class="status" id="rsvpStatus"></div>
@@ -962,12 +962,12 @@ const W = {
   // entries : the entry.NNNNNNN id of each question (see README for how to find them)
   // Leave `action` empty and the form falls back to sending the reply over WhatsApp.
   googleForm: {
-    action:    "",
-    name:      "",   // e.g. "entry.1234567890"
-    attending: "",
-    guests:    "",
-    events:    "",
-    message:   ""
+    action:    "https://docs.google.com/forms/d/e/1FAIpQLSddhxROwwf6gTaP7TP2h-wGorTD5r7ts9ZfE9lPKRvSoks2pg/formResponse",
+    name:      "entry.374166117",    // Your name
+    attending: "entry.426617619",    // Will you join us?
+    guests:    "entry.669232451",    // Number of guests (including you)
+    events:    "entry.1665966449",   // Which events will you attend?  (one per ticked box)
+    message:   "entry.248071712"     // A wish for the couple
   }
 };
 

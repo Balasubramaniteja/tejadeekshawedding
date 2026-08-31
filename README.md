@@ -121,7 +121,8 @@ To change a name, date or address, edit the visible text directly in `index.html
 
 The styled form on the page posts straight into a **Google Form**, so every reply lands in a Google
 Sheet you own and Google emails you on each submission. No server, no backend, works on any host.
-Until it is configured the form falls back to opening WhatsApp with the reply pre-written.
+This is **configured and live** — the ids are in section 4 below. If `action` is ever blanked out the
+form falls back to opening WhatsApp with the reply pre-written.
 
 ### 1. Create the form
 
@@ -147,22 +148,29 @@ The option text must match exactly — Google silently drops values it does not 
 Open the form → **⋮ → Get pre-filled link** → type a dummy answer into every question → **Get link**.
 The copied URL contains one `entry.NNNNNNN=` per question, in the same order as above.
 
-### 4. Fill in the config
+### 4. Fill in the config — **done**
 
-In `index.html`, in the `const W = { … }` block:
+This is already wired up. In `index.html`, in the `const W = { … }` block:
 
 ```js
 googleForm: {
-  action:    "https://docs.google.com/forms/d/e/<FORM_ID>/formResponse",
-  name:      "entry.1111111111",
-  attending: "entry.2222222222",
-  guests:    "entry.3333333333",
-  events:    "entry.4444444444",
-  message:   "entry.5555555555"
+  action:    "https://docs.google.com/forms/d/e/1FAIpQLSddhxROwwf6gTaP7TP2h-wGorTD5r7ts9ZfE9lPKRvSoks2pg/formResponse",
+  name:      "entry.374166117",
+  attending: "entry.426617619",
+  guests:    "entry.669232451",
+  events:    "entry.1665966449",
+  message:   "entry.248071712"
 }
 ```
 
-`action` is your form's normal link with the trailing `/viewform` replaced by `/formResponse`.
+`action` is the form's normal link with the trailing `/viewform` replaced by `/formResponse`.
+
+**If you ever rebuild the form from scratch, these ids change** and must be replaced — a stale id means
+that answer silently disappears from the sheet. Re-run the "Get pre-filled link" step to get the new ones.
+
+**Do not make questions required.** The site submits in the background and never sees Google's reply, so
+a rejected submission still shows the guest a success message. A guest who declines sends no events at
+all, and a required events question would throw that RSVP away with nobody the wiser.
 
 The browser posts into a hidden iframe, so the guest never leaves the invitation and never sees a
 Google page. Google returns a cross-origin response the page cannot read, which is why the site
