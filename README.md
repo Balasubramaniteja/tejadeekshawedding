@@ -9,12 +9,19 @@ A single-page, fully static wedding invitation site.
 | Event | Date | Time | Venue |
 |---|---|---|---|
 | Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Nalugu | Tue, 20 October 2026 | 4:00 PM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikuthuru | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
+| Nalugu | Tue, 20 October 2026 | no time published; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
+| Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
 | Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
+Nalugu and Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
+lunch follows. Because of that they go into the downloaded calendar file as **all-day entries**
+(`DTSTART;VALUE=DATE:`), not as timed ones. That is set by `allDay:true` on those two entries in the
+`W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
+stamps in `YYYYMMDDTHHMMSS` form and put the time back on the card, so the page and the calendar
+never disagree.
+
 Event cards are text only — no photographs and no illustrations. The Muhurtham card spans the full
-width of the grid and carries the running order for the day.
+width of the grid and carries the running order for the day. There is no countdown timer.
 
 ## Files
 
@@ -70,8 +77,10 @@ starts from frame zero each time, so it can never appear mid-animation. If autop
 the poster frame stands in and the story carries on.
 
 The animation is held until the guest taps open (the `.playing` class starts the timeline), so it can
-never run out of sync with the music. There is a **Skip** button, and the sequence is bypassed
-entirely for anyone whose device asks for reduced motion.
+never run out of sync with the music. There is **no Skip button** — the sequence closes itself after
+`RUN` milliseconds — and it is bypassed entirely for anyone whose device asks for reduced motion.
+Since a guest cannot dismiss it early, keep `RUN` short; much beyond the current 6.6 s and people
+will think the page has stalled.
 
 Timings live in the `HOW THEY MET` CSS block; the total length is the `RUN` constant in the matching
 script block. Both must be changed together.
@@ -105,7 +114,6 @@ one `const W = { … }` block near the bottom of `index.html`:
 
 - `phone` — the WhatsApp number the RSVP form falls back to until the Google Form is configured.
   It is not shown anywhere on the page.
-- `countdownTo` — the Muhurtham start (10:00 AM, 21 Oct) that the countdown counts down to
 - `events` — the four calendar entries produced by the "Add to calendar" button
 
 To change a name, date or address, edit the visible text directly in `index.html`

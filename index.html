@@ -7,7 +7,7 @@
 <meta name="description" content="With the blessings of our families, Ganaparti Teja and Enukonda Sai Deeksha cordially invite you to their wedding on 21 October 2026 in Shawnee, Kansas.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Teja weds Deeksha — 21 October 2026">
-<meta property="og:description" content="Haldi, Nalugu & Pellikuthuru on 20 October; Muhurtham on 21 October 2026 at 10:00 AM. Kansas.">
+<meta property="og:description" content="Haldi, Nalugu & Pellikuthuru on 20 October; Muhurtham on 21 October 2026, 10:00–11:30 AM. Kansas.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#6d0f24">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='3' font-size='24'>%F0%9F%AA%94</text></svg>">
@@ -93,11 +93,6 @@ section{padding:70px 0;position:relative}
   letter-spacing:.12em;font-size:clamp(.78rem,3.2vw,1.02rem);text-transform:uppercase;
 }
 .hero-date .sep{color:var(--gold)}
-
-.countdown{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:32px}
-.cd-unit{min-width:80px;padding:14px 8px;background:#fffdf8;border:1px solid rgba(201,162,39,.5);box-shadow:0 6px 16px var(--shadow)}
-.cd-num{display:block;font-family:'Marcellus',serif;font-size:1.75rem;color:var(--maroon);line-height:1}
-.cd-lab{display:block;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:7px;font-family:'Marcellus',serif}
 
 .cta-row{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;padding:13px 28px;border-radius:2px;text-decoration:none;cursor:pointer;
@@ -203,14 +198,6 @@ footer .om{color:var(--gold);font-size:1.5rem;display:block;margin-bottom:12px}
 .caption{font-family:'Marcellus',serif;color:#ffe9b0;letter-spacing:.16em;
   text-transform:uppercase;font-size:clamp(.6rem,2.4vw,.8rem);text-align:center;margin:0;opacity:0}
 
-.story-skip{
-  position:absolute;top:18px;right:18px;z-index:5;cursor:pointer;
-  background:rgba(253,247,236,.10);border:1px solid rgba(232,205,124,.55);color:#ffe9b0;
-  font-family:'Marcellus',serif;letter-spacing:.18em;text-transform:uppercase;font-size:.62rem;
-  padding:10px 18px;border-radius:2px;transition:.25s;
-}
-.story-skip:hover{background:rgba(253,247,236,.2)}
-
 .story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* --- the timeline, all of it gated behind .playing --- */
@@ -233,7 +220,6 @@ footer .om{color:var(--gold);font-size:1.5rem;display:block;margin-bottom:12px}
 }
 @media(max-width:640px){
   .story-scene svg{width:100vw;max-height:56vh;border-radius:0}
-  .story-skip{top:12px;right:12px;padding:9px 14px}
 }
 
 /* ================= OPENING GATE ================= */
@@ -314,8 +300,6 @@ body.locked .music-btn{display:none}
   section{padding:52px 0}
   .families{grid-template-columns:1fr;gap:14px}
   .knot svg{transform:rotate(90deg);width:44px;height:44px}
-  .cd-unit{min-width:68px;padding:12px 6px}
-  .cd-num{font-size:1.5rem}
   .rsvp-card{padding:34px 20px}
 }
 </style>
@@ -371,7 +355,6 @@ body.locked .music-btn{display:none}
 
 <!-- ==================== HOW THEY MET ==================== -->
 <div class="story" id="story" role="dialog" aria-label="How Teja and Deeksha met">
-  <button class="story-skip" id="storySkip" type="button">Skip &rsaquo;</button>
 
   <!-- ---------- 1 · the journey ---------- -->
   <section class="story-scene sc-journey">
@@ -419,17 +402,11 @@ body.locked .music-btn{display:none}
     <p class="hero-date">
       <span>Wednesday, 21 October 2026</span>
       <span class="sep">&#10022;</span>
-      <span>Muhurtham 10:00 AM</span>
+      <span>Muhurtham 10:00 &ndash; 11:30 AM</span>
       <span class="sep">&#10022;</span>
       <span>Shawnee, Kansas</span>
     </p>
 
-    <div class="countdown" id="countdown" aria-label="Countdown to the wedding">
-      <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-lab">Days</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-lab">Hours</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-lab">Minutes</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-lab">Seconds</span></div>
-    </div>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="#rsvp">RSVP</a>
@@ -491,7 +468,7 @@ body.locked .music-btn{display:none}
       <article class="event card reveal">
         <p class="sub">Turmeric Ceremony</p>
         <h3>Haldi</h3>
-        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
+        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>9:00 AM onwards</span></p>
         <p class="note">A morning of turmeric, music and blessings. Yellow attire encouraged.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
       </article>
@@ -500,16 +477,17 @@ body.locked .music-btn{display:none}
       <article class="event card reveal">
         <p class="sub">Ritual Bath &amp; Blessings</p>
         <h3>Nalugu</h3>
-        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Afternoon &middot; 4:00 PM onwards</span></p>
+        <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
+        <p class="schedule"><span><b>Followed by</b>Lunch</span></p>
         <p class="note">The traditional Telugu ceremony for the bride and groom, performed by the elders.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
       </article>
 
       <!-- ============ 4. PELLIKUTHURU ============ -->
       <article class="event card reveal">
-        <p class="sub">Morning Rituals</p>
+        <p class="sub">Evening Rituals</p>
         <h3>Pellikuthuru</h3>
-        <p class="when"><strong>Tuesday, 20 October 2026</strong><span>Morning &middot; 9:00 AM onwards</span></p>
+        <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
         <p class="note">The bride is blessed and made ready for the wedding by her family.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
       </article>
@@ -649,13 +627,14 @@ const W = {
   groom: "Ganaparti Teja",
   bride: "Enukonda Sai Deeksha",
   phone: "+19134567891",            // used for the tel: link and WhatsApp RSVP
-  countdownTo: "2026-10-21T10:00:00-05:00",  // Muhurtham start, US Central (CDT)
   events: [
     { uid:"haldi",     title:"Haldi — Teja weds Deeksha",     start:"20261020T090000", end:"20261020T120000",
       loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"nalugu",    title:"Nalugu — Teja weds Deeksha",    start:"20261020T160000", end:"20261020T190000",
+    // no time is published for these two, so they go into the calendar as all-day
+    // entries rather than inventing an hour the invitation does not state
+    { uid:"nalugu",    title:"Nalugu — Teja weds Deeksha",    allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"pelli",     title:"Pellikuthuru — Teja weds Deeksha", start:"20261020T090000", end:"20261020T110000",
+    { uid:"pelli",     title:"Pellikuthuru — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },
     { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T090000", end:"20261021T133000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" }
@@ -677,23 +656,6 @@ const W = {
     message:   "entry.248071712"     // A wish for the couple
   }
 };
-
-/* ================= COUNTDOWN ================= */
-const target = new Date(W.countdownTo).getTime();
-const pad = n => String(n).padStart(2,'0');
-function tick(){
-  const box = document.getElementById('countdown');
-  const diff = target - Date.now();
-  if(diff <= 0){
-    box.innerHTML = '<div class="cd-unit" style="min-width:auto;padding:16px 30px"><span class="cd-num">Today</span><span class="cd-lab">is the day</span></div>';
-    return;
-  }
-  document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
-  document.getElementById('cd-h').textContent = pad(Math.floor(diff/3600000)%24);
-  document.getElementById('cd-m').textContent = pad(Math.floor(diff/60000)%60);
-  document.getElementById('cd-s').textContent = pad(Math.floor(diff/1000)%60);
-}
-tick(); setInterval(tick,1000);
 
 /* ================= TORAN (mango-leaf garland) ================= */
 function drawToran(){
@@ -806,8 +768,8 @@ document.getElementById('icsBtn').addEventListener('click', function(){
       'BEGIN:VEVENT',
       'UID:' + ev.uid + '-teja-deeksha@wedding',
       'DTSTAMP:20260819T000000Z',
-      'DTSTART;TZID=America/Chicago:' + ev.start,
-      'DTEND;TZID=America/Chicago:' + ev.end,
+      ev.allDay ? 'DTSTART;VALUE=DATE:' + ev.start : 'DTSTART;TZID=America/Chicago:' + ev.start,
+      ev.allDay ? 'DTEND;VALUE=DATE:'   + ev.end   : 'DTEND;TZID=America/Chicago:'   + ev.end,
       'SUMMARY:' + ev.title,
       'LOCATION:' + ev.loc.replace(/,/g,'\\,'),
       'DESCRIPTION:' + W.icsDesc,
@@ -823,11 +785,10 @@ document.getElementById('icsBtn').addEventListener('click', function(){
 });
 
 /* ================= HOW THEY MET =================
-   Runs between the opening tap and the invitation. Skippable at any point;
-   skipped entirely for anyone who has asked for reduced motion. */
+   Runs between the opening tap and the invitation, then closes itself after RUN ms.
+   Skipped entirely for anyone who has asked for reduced motion. */
 const story = (function(){
   const el    = document.getElementById('story');
-  const skip  = document.getElementById('storySkip');
   const RUN   = 6600;    // the journey, then the invitation
   const calm  = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null, done = null;
@@ -860,7 +821,6 @@ const story = (function(){
     if(go && go.catch) go.catch(()=>{});      // a blocked autoplay leaves the poster, which is fine
   }
 
-  skip && skip.addEventListener('click', finish);
   return { play, skip: finish };
 })();
 
