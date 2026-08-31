@@ -20,11 +20,25 @@ up blank.
 ## Files
 
 - `index.html` — the entire site (HTML + CSS + JS + SVG illustrations inlined). No build step, no dependencies.
-- `assets/wedding-music.mp3` — background music, supplied by the couple. Re-encoded from the
-  original 256 kbps stereo (5.6 MB) down to 96 kbps (2.0 MB) and set to `preload="none"`, so the
-  file is only fetched when a guest actually taps play. 2:54 long; it fades out at the end and
-  begins quietly, so the loop joins without a click.
-  Replace this file to change the music — the filename is referenced once in `index.html`.
+- `assets/wedding-music.mp3` — background music, supplied by the couple ("Pushpaka Vimanam").
+  Re-encoded from 128 kbps stereo (918 KB) down to 96 kbps (688 KB) and set to `preload="none"`, so
+  the file is only fetched when a guest actually taps play. It plays at 40% volume.
+
+  The clip is **0:57 and set to loop**, so a guest reading the page hears the seam roughly once a
+  minute. The supplied file ran at full level right up to both ends (−0.6 dB in, −1.5 dB out), which
+  would have clicked audibly every time it wrapped, so a 1.2 s fade-in and a 1.8 s fade-out were
+  baked in — both ends now sit around −17 dB and the loop joins softly instead.
+
+  To change the music, drop a new file in under the same name. If it is longer than about a minute
+  the loop matters less, but **always check the first and last second are quiet** or the loop will
+  click:
+
+  ```bash
+  ffmpeg -i new.mp3 -af "afade=t=in:st=0:d=1.2,afade=t=out:st=<duration-1.8>:d=1.8" \
+         -c:a libmp3lame -b:a 96k assets/wedding-music.mp3
+  ```
+
+  The filename is referenced once in `index.html`.
 - `assets/img/journey.webm`, `assets/img/journey.mp4`, `assets/img/journey-poster.jpg` — the
   California-to-Kansas map animation, supplied by the couple as a GIF and re-encoded (47 KB / 56 KB).
 - `assets/img/deities.png` — the artwork that opens the invitation, supplied by the couple. The flat
