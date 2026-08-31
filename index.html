@@ -132,6 +132,12 @@ section{padding:70px 0;position:relative}
   letter-spacing:.06em;font-size:.82rem;white-space:nowrap}
 .event .where{margin:16px 0 0;font-size:.86rem;color:var(--muted);line-height:1.5}
 .event .where b{display:block;font-style:normal;color:var(--ink);font-family:'Marcellus',serif;font-weight:400;font-size:.9rem}
+.event .dir{display:inline-flex;align-items:center;gap:6px;margin:12px auto 0;padding:8px 16px;
+  border:1px solid rgba(201,162,39,.6);border-radius:2px;color:var(--maroon);text-decoration:none;
+  font-family:'Marcellus',serif;letter-spacing:.14em;text-transform:uppercase;font-size:.6rem;transition:.25s}
+.event .dir:hover,.event .dir:focus-visible{background:rgba(201,162,39,.14)}
+.event .dir .pin{width:13px;height:13px;flex:none;color:var(--gold)}
+.event .dir{align-self:center}
 .event.featured{border-color:var(--gold);box-shadow:0 16px 44px rgba(109,15,36,.18)}
 .ribbon{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--maroon);color:var(--gold-lt);
   font-family:'Marcellus',serif;font-size:.53rem;letter-spacing:.24em;text-transform:uppercase;padding:5px 16px}
@@ -471,6 +477,7 @@ body.locked .music-btn{display:none}
         <p class="when"><strong>Tuesday, 20 October 2026</strong><span>9:00 AM onwards</span></p>
         <p class="note">A morning of turmeric, music and blessings. Yellow attire encouraged.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
       <!-- ============ 2. NALUGU ============ -->
@@ -481,6 +488,7 @@ body.locked .music-btn{display:none}
         <p class="schedule"><span><b>Followed by</b>Lunch</span></p>
         <p class="note">The traditional Telugu ceremony for the bride and groom, performed by the elders.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
       <!-- ============ 4. PELLIKUTHURU ============ -->
@@ -490,6 +498,7 @@ body.locked .music-btn{display:none}
         <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
         <p class="note">The bride is blessed and made ready for the wedding by her family.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
       <!-- ============ 5. MUHURTHAM ============ -->
@@ -504,6 +513,7 @@ body.locked .music-btn{display:none}
         </p>
         <p class="note">The sacred vows that bind two souls, two families, and countless memories yet to come.</p>
         <p class="where"><b>Shawnee Venue</b>6330 Lackman Rd, Shawnee, KS 66217</p>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=6330%20Lackman%20Rd%2C%20Shawnee%2C%20KS%2066217" target="_blank" rel="noopener" aria-label="Get directions to the Shawnee venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
     </div>
@@ -524,14 +534,14 @@ body.locked .music-btn{display:none}
         <p class="for">Haldi, Nalugu &amp; Pellikuthuru &middot; 20 October</p>
         <h3>Mission, Kansas</h3>
         <address>4740 West 61st Street<br>Mission, KS 66205</address>
-        <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener">Open in Maps</a></div>
+        <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener">Get Directions</a></div>
       </div>
 
       <div class="venue card reveal">
         <p class="for">Muhurtham &middot; 21 October</p>
         <h3>Shawnee, Kansas</h3>
         <address>6330 Lackman Rd<br>Shawnee, KS 66217</address>
-        <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=6330%20Lackman%20Rd%2C%20Shawnee%2C%20KS%2066217" target="_blank" rel="noopener">Open in Maps</a></div>
+        <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=6330%20Lackman%20Rd%2C%20Shawnee%2C%20KS%2066217" target="_blank" rel="noopener">Get Directions</a></div>
       </div>
     </div>
 

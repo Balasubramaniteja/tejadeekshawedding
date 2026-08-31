@@ -23,6 +23,25 @@ never disagree.
 Event cards are text only — no photographs and no illustrations. The Muhurtham card spans the full
 width of the grid and carries the running order for the day. There is no countdown timer.
 
+## Directions
+
+Every event card carries its own **Get directions** button, and each venue card has one too — six in
+all, pointing at the two addresses. They use the Google Maps *directions* endpoint, not the search
+one:
+
+```
+https://www.google.com/maps/dir/?api=1&destination=<url-encoded address>
+```
+
+The difference matters. `search/?api=1&query=` only drops a pin on the place; `dir/?api=1&destination=`
+opens turn-by-turn navigation **from wherever the guest is standing**, which is what someone tapping
+it on the day actually wants. On a phone the link hands off to the Google Maps app if it is
+installed and falls back to the browser if not; it opens in a new tab, so nobody loses their place
+in the invitation.
+
+If an address ever changes, update it in **three** places for that venue — the event card text, the
+card's `.dir` link, and the venue card's button — and re-encode it (spaces `%20`, commas `%2C`).
+
 ## Files
 
 - `index.html` — the entire site (HTML + CSS + JS + SVG illustrations inlined). No build step, no dependencies.
