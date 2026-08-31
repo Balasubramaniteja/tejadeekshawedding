@@ -45,8 +45,8 @@ bottom-right corner for the rest of the visit.
 ## The journey
 
 After the opening tap, one scene plays before the invitation appears (about 7 seconds): the couple's
-own animated map, dated **March 6**, his avatar travelling the dashed arc from California to Kansas
-and ending "Finally together in Kansas."
+own animated map, his avatar travelling the dashed arc from California to Kansas and ending
+"Finally together in Kansas."
 
 The journey is a real video, not a GIF. The supplied GIF was 6.8 MB; re-encoded it is **47 KB** as
 VP9 WebM and **56 KB** as H.264 MP4 — a hundred times smaller, with no visible loss. Both sources are
@@ -109,7 +109,8 @@ Event names carry their Telugu equivalents (పసుపు, నలుగు, �
 Everything text-based is in the HTML itself. The few values used by scripts live in
 one `const W = { … }` block near the bottom of `index.html`:
 
-- `phone` — used by the RSVP button (WhatsApp) and the footer `tel:` link
+- `phone` — the WhatsApp number the RSVP form falls back to until the Google Form is configured.
+  It is not shown anywhere on the page.
 - `countdownTo` — the Muhurtham timestamp the countdown counts down to
 - `events` — the four calendar entries produced by the "Add to calendar" button
 

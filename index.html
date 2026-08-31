@@ -186,8 +186,6 @@ textarea{min-height:96px;resize:vertical}
 
 footer{text-align:center;padding:46px 20px 60px;font-size:.9rem;color:var(--muted)}
 footer .om{color:var(--gold);font-size:1.5rem;display:block;margin-bottom:12px}
-footer .contact{margin-top:14px}
-footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px solid var(--gold)}
 
 .muggu{display:block;width:150px;height:auto;margin:0 auto;color:var(--gold);opacity:.75}
 
@@ -222,9 +220,6 @@ footer .contact a{color:var(--maroon);text-decoration:none;border-bottom:1px sol
 .story-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
 
 /* --- the timeline, all of it gated behind .playing --- */
-.scene-date{font-family:'Marcellus',serif;color:#e8cd7c;letter-spacing:.26em;text-transform:uppercase;
-  font-size:clamp(.58rem,2.2vw,.72rem);margin:0 0 14px;text-align:center;opacity:0}
-.story.playing .scene-date{animation:capShow 5.6s ease .45s both}
 .vid-wrap{width:min(1000px,96vw);border-radius:6px;overflow:hidden;
   box-shadow:0 24px 60px rgba(0,0,0,.42);background:#fdf7ec}
 .journey{display:block;width:100%;height:auto}
@@ -392,7 +387,6 @@ body.locked .music-btn{display:none}
 
   <!-- ---------- 1 · the journey ---------- -->
   <section class="story-scene sc-journey">
-    <p class="scene-date">March 6 &middot; the journey begins</p>
     <div class="vid-wrap">
       <video id="journeyVid" class="journey" width="1100" height="620" muted playsinline
              preload="metadata" poster="assets/img/journey-poster.jpg">
@@ -940,7 +934,6 @@ body.locked .music-btn{display:none}
 <footer>
   <span class="om">&#2384;</span>
   <p>Teja &amp; Deeksha &middot; 21 October 2026 &middot; Shawnee, Kansas</p>
-  <p class="contact">For any questions, please call <a href="tel:+19134567891">(913) 456-7891</a></p>
 </footer>
 
 <script>
