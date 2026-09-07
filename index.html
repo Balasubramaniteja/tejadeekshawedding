@@ -114,7 +114,7 @@ section{padding:70px 0;position:relative}
 .knot svg{width:56px;height:56px}
 
 /* ================= EVENTS ================= */
-.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px}
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
 .event{padding:26px 22px 28px;text-align:center;display:flex;flex-direction:column}
 .event.featured{padding-top:40px;grid-column:1/-1}
 .event.featured .schedule{max-width:440px;margin-left:auto;margin-right:auto}
@@ -491,27 +491,17 @@ body.locked .music-btn{display:none}
         <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
-      <!-- ============ 4. PELLIKODUKU ============ -->
+      <!-- ============ 4. PELLIKODUKU & PELLIKUTHURU ============ -->
       <article class="event card reveal">
         <p class="sub">Evening Rituals</p>
-        <h3>Pellikoduku</h3>
+        <h3>Pellikoduku &amp; Pellikuthuru</h3>
         <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
-        <p class="note">The groom is blessed and made ready for the wedding by his family.</p>
+        <p class="note">The groom and the bride are each blessed and made ready for the wedding by their families.</p>
         <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
         <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
-      <!-- ============ 5. PELLIKUTHURU ============ -->
-      <article class="event card reveal">
-        <p class="sub">Evening Rituals</p>
-        <h3>Pellikuthuru</h3>
-        <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
-        <p class="note">The bride is blessed and made ready for the wedding by her family.</p>
-        <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
-        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
-      </article>
-
-      <!-- ============ 6. MUHURTHAM ============ -->
+      <!-- ============ 5. MUHURTHAM ============ -->
       <article class="event card featured reveal">
         <span class="ribbon">The Wedding</span>
         <p class="sub">Sacred Vows</p>
@@ -599,8 +589,11 @@ body.locked .music-btn{display:none}
           <div class="choices">
             <label class="choice"><input type="checkbox" name="events" value="Haldi"><span>Haldi</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Nalugu"><span>Nalugu</span></label>
-            <label class="choice"><input type="checkbox" name="events" value="Pellikoduku"><span>Pellikoduku</span></label>
-            <label class="choice"><input type="checkbox" name="events" value="Pellikuthuru"><span>Pellikuthuru</span></label>
+            <!-- The label reads "Pellikoduku & Pellikuthuru" but the posted value stays
+                 "Pellikuthuru" on purpose: that is the option that exists on the live Google
+                 Form, and Google silently discards any value it does not recognise. Do not
+                 "fix" this mismatch without renaming the option on the form at the same time. -->
+            <label class="choice"><input type="checkbox" name="events" value="Pellikuthuru"><span>Pellikoduku &amp; Pellikuthuru</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Muhurtham" checked><span>Muhurtham</span></label>
           </div>
         </div>
@@ -655,9 +648,7 @@ const W = {
     // entries rather than inventing an hour the invitation does not state
     { uid:"nalugu",    title:"Nalugu — Teja weds Deeksha",    allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"pellikoduku", title:"Pellikoduku — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
-      loc:"4740 West 61st Street, Mission, KS 66205" },
-    { uid:"pelli",     title:"Pellikuthuru — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
+    { uid:"pelli",     title:"Pellikoduku & Pellikuthuru — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },
     { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T090000", end:"20261021T133000",
       loc:"6330 Lackman Rd, Shawnee, KS 66217" }

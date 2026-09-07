@@ -10,14 +10,13 @@ A single-page, fully static wedding invitation site.
 |---|---|---|---|
 | Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Nalugu | Tue, 20 October 2026 | no time published; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikoduku | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
+| Pellikoduku & Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
 | Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
-Nalugu, Pellikoduku and Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
+Nalugu and Pellikoduku & Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
 lunch follows. Because of that they go into the downloaded calendar file as **all-day entries**
 (`DTSTART;VALUE=DATE:`), not as timed ones. That is set by `allDay:true` on those two entries in the
-`W.events` config (three of them now). If you later decide on times, replace `allDay:true` with real `start`/`end`
+`W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
 stamps in `YYYYMMDDTHHMMSS` form and put the time back on the card, so the page and the calendar
 never disagree.
 
@@ -157,15 +156,18 @@ New Google Form with these five questions, **in this order**:
 | 1 | Your name | Short answer | — |
 | 2 | Will you join us? | Multiple choice | `Joyfully accepts` · `Regretfully declines` |
 | 3 | Number of guests (including you) | Short answer | — |
-| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikoduku` · `Pellikuthuru` · `Muhurtham` |
+| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikuthuru` · `Muhurtham` |
 | 5 | A wish for the couple | Paragraph | — |
 
 The option text must match exactly — Google silently drops values it does not recognise.
 
-> **`Pellikoduku` must be added to the live form.** The site now offers it as a fifth checkbox. Until
-> that option exists on the Google Form with exactly that spelling, every guest who ticks Pellikoduku
-> has that one answer dropped — the rest of their RSVP still arrives, so nothing looks broken, and the
-> event simply under-counts. Open the form → question 4 → **Add option** → type `Pellikoduku`.
+> **One deliberate label/value mismatch.** The checkbox on the site reads *Pellikoduku &
+> Pellikuthuru*, but the value it posts is plain `Pellikuthuru` — because that is the option that
+> exists on the live Google Form, and Google silently discards values it does not recognise. The
+> sheet therefore shows `Pellikuthuru` for that combined function, which is unambiguous since there
+> is only one. There is an HTML comment beside the input saying so; **do not "correct" the value
+> without renaming the option on the form in the same change**, or every tick of that box vanishes
+> with no visible error.
 
 ### 2. Turn on the sheet and the alerts
 
