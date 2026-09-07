@@ -213,20 +213,25 @@ New Google Form with these five questions, **in this order**:
 
 The option text must match exactly — Google silently drops values it does not recognise.
 
-> **Deliberate label/value mismatches — do not "fix" these.** What a guest reads on the site and
-> what gets posted to Google are decoupled on purpose, because Google silently discards any value
-> its form does not recognise. Three places differ:
+> **Site labels and posted values are now identical**, so the spreadsheet reads the same words the
+> guests saw. That means the form's options must match these strings **character for character**:
 >
-> | Shown on the site | Posted to Google |
-> |---|---|
-> | Yes, I can make it. | `Joyfully accepts` |
-> | Unfortunately, I can't make it. | `Regretfully declines` |
-> | Pellikoduku & Pellikuthuru | `Pellikuthuru` |
-> | Wedding | `Muhurtham` |
+> ```
+> Yes, I can make it.
+> Unfortunately, I can't make it.
+> Haldi
+> Pellikoduku & Pellikuthuru
+> Wedding
+> ```
 >
-> The wording guests see can be changed freely. The **values must not change** unless the matching
-> option is renamed on the live form in the same edit — otherwise that answer disappears from every
-> future RSVP with no error shown to anyone. There are HTML comments beside both inputs saying so.
+> Watch three details. The **full stops** on the first two are part of the value. The apostrophe in
+> *can't* is a **plain ASCII `'`**, not the curly `’` — the visible label uses the curly one because
+> it reads better, but the posted value deliberately uses the straight one, since that is what you
+> get typing into a Google Form. And **`&` is fine**; it is URL-encoded in transit and arrives intact.
+>
+> Changing any of these wordings in future means editing the form option **and** the `value`
+> attribute together. Change only one and that answer silently disappears from every RSVP — the
+> guest still sees a success message, and nothing anywhere reports the loss.
 
 ### 2. Turn on the sheet and the alerts
 

@@ -537,11 +537,14 @@ body.locked .music-btn{display:none}
         <div class="field">
           <label>Will you join us?</label>
           <div class="choices">
-            <!-- As with the events checkbox: the wording a guest reads is free, but the posted
-                 values must stay "Joyfully accepts" / "Regretfully declines" — those are the
-                 options on the live Google Form, and Google silently drops anything else. -->
-            <label class="choice sentence"><input type="radio" name="attending" value="Joyfully accepts" checked><span>Yes, I can make it.</span></label>
-            <label class="choice sentence"><input type="radio" name="attending" value="Regretfully declines"><span>Unfortunately, I can&rsquo;t make it.</span></label>
+            <!-- Each `value` must match an option on the live Google Form CHARACTER FOR
+                 CHARACTER, including the comma and the full stop — Google silently drops any
+                 value it does not recognise, and the site cannot see that it happened.
+                 NOTE the plain ASCII apostrophe in "can't" below. The visible label uses a
+                 curly one (&rsquo;) because it looks better, but the posted value must use the
+                 straight one, since that is what you get typing into a Google Form field. -->
+            <label class="choice sentence"><input type="radio" name="attending" value="Yes, I can make it." checked><span>Yes, I can make it.</span></label>
+            <label class="choice sentence"><input type="radio" name="attending" value="Unfortunately, I can't make it."><span>Unfortunately, I can&rsquo;t make it.</span></label>
           </div>
         </div>
 
@@ -553,13 +556,11 @@ body.locked .music-btn{display:none}
         <div class="field">
           <label>Which events will you attend?</label>
           <div class="choices">
+            <!-- Same rule as above: every `value` must exist verbatim as an option on the
+                 Google Form's events question, or that tick vanishes with no error shown. -->
             <label class="choice"><input type="checkbox" name="events" value="Haldi"><span>Haldi</span></label>
-            <!-- The label reads "Pellikoduku & Pellikuthuru" but the posted value stays
-                 "Pellikuthuru" on purpose: that is the option that exists on the live Google
-                 Form, and Google silently discards any value it does not recognise. Do not
-                 "fix" this mismatch without renaming the option on the form at the same time. -->
-            <label class="choice"><input type="checkbox" name="events" value="Pellikuthuru"><span>Pellikoduku &amp; Pellikuthuru</span></label>
-            <label class="choice"><input type="checkbox" name="events" value="Muhurtham" checked><span>Wedding</span></label>
+            <label class="choice"><input type="checkbox" name="events" value="Pellikoduku &amp; Pellikuthuru"><span>Pellikoduku &amp; Pellikuthuru</span></label>
+            <label class="choice"><input type="checkbox" name="events" value="Wedding" checked><span>Wedding</span></label>
           </div>
         </div>
 
