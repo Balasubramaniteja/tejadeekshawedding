@@ -7,7 +7,7 @@
 <meta name="description" content="With the blessings of our families, Ganaparti Teja and Enukonda Sai Deeksha cordially invite you to their wedding on 21 October 2026 in Shawnee, Kansas.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Teja weds Deeksha — 21 October 2026">
-<meta property="og:description" content="Haldi, Nalugu & Pellikuthuru on 20 October; Muhurtham on 21 October 2026, 10:00–11:30 AM. Kansas.">
+<meta property="og:description" content="Haldi, Nalugu, Pellikoduku & Pellikuthuru on 20 October; Muhurtham on 21 October 2026, 10:00–11:30 AM. Kansas.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#6d0f24">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' x='3' font-size='24'>%F0%9F%AA%94</text></svg>">
@@ -114,7 +114,7 @@ section{padding:70px 0;position:relative}
 .knot svg{width:56px;height:56px}
 
 /* ================= EVENTS ================= */
-.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px}
 .event{padding:26px 22px 28px;text-align:center;display:flex;flex-direction:column}
 .event.featured{padding-top:40px;grid-column:1/-1}
 .event.featured .schedule{max-width:440px;margin-left:auto;margin-right:auto}
@@ -491,7 +491,17 @@ body.locked .music-btn{display:none}
         <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
-      <!-- ============ 4. PELLIKUTHURU ============ -->
+      <!-- ============ 4. PELLIKODUKU ============ -->
+      <article class="event card reveal">
+        <p class="sub">Evening Rituals</p>
+        <h3>Pellikoduku</h3>
+        <p class="when"><strong>Tuesday, 20 October 2026</strong></p>
+        <p class="note">The groom is blessed and made ready for the wedding by his family.</p>
+        <p class="where"><b>Mission Residence</b>4740 West 61st Street, Mission, KS 66205</p>
+        <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
+      </article>
+
+      <!-- ============ 5. PELLIKUTHURU ============ -->
       <article class="event card reveal">
         <p class="sub">Evening Rituals</p>
         <h3>Pellikuthuru</h3>
@@ -501,7 +511,7 @@ body.locked .music-btn{display:none}
         <a class="dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener" aria-label="Get directions to the Mission venue in Google Maps"><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>Get directions</a>
       </article>
 
-      <!-- ============ 5. MUHURTHAM ============ -->
+      <!-- ============ 6. MUHURTHAM ============ -->
       <article class="event card featured reveal">
         <span class="ribbon">The Wedding</span>
         <p class="sub">Sacred Vows</p>
@@ -531,7 +541,7 @@ body.locked .music-btn{display:none}
 
     <div class="venues">
       <div class="venue card reveal">
-        <p class="for">Haldi, Nalugu &amp; Pellikuthuru &middot; 20 October</p>
+        <p class="for">Haldi, Nalugu, Pellikoduku &amp; Pellikuthuru &middot; 20 October</p>
         <h3>Mission, Kansas</h3>
         <address>4740 West 61st Street<br>Mission, KS 66205</address>
         <div class="cta-row"><a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=4740%20West%2061st%20Street%2C%20Mission%2C%20KS%2066205" target="_blank" rel="noopener">Get Directions</a></div>
@@ -589,6 +599,7 @@ body.locked .music-btn{display:none}
           <div class="choices">
             <label class="choice"><input type="checkbox" name="events" value="Haldi"><span>Haldi</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Nalugu"><span>Nalugu</span></label>
+            <label class="choice"><input type="checkbox" name="events" value="Pellikoduku"><span>Pellikoduku</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Pellikuthuru"><span>Pellikuthuru</span></label>
             <label class="choice"><input type="checkbox" name="events" value="Muhurtham" checked><span>Muhurtham</span></label>
           </div>
@@ -643,6 +654,8 @@ const W = {
     // no time is published for these two, so they go into the calendar as all-day
     // entries rather than inventing an hour the invitation does not state
     { uid:"nalugu",    title:"Nalugu — Teja weds Deeksha",    allDay:true, start:"20261020", end:"20261021",
+      loc:"4740 West 61st Street, Mission, KS 66205" },
+    { uid:"pellikoduku", title:"Pellikoduku — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },
     { uid:"pelli",     title:"Pellikuthuru — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
       loc:"4740 West 61st Street, Mission, KS 66205" },

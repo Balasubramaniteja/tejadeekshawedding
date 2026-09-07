@@ -10,13 +10,14 @@ A single-page, fully static wedding invitation site.
 |---|---|---|---|
 | Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Nalugu | Tue, 20 October 2026 | no time published; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
+| Pellikoduku | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
 | Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
 | Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
-Nalugu and Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
+Nalugu, Pellikoduku and Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
 lunch follows. Because of that they go into the downloaded calendar file as **all-day entries**
 (`DTSTART;VALUE=DATE:`), not as timed ones. That is set by `allDay:true` on those two entries in the
-`W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
+`W.events` config (three of them now). If you later decide on times, replace `allDay:true` with real `start`/`end`
 stamps in `YYYYMMDDTHHMMSS` form and put the time back on the card, so the page and the calendar
 never disagree.
 
@@ -45,14 +46,16 @@ card's `.dir` link, and the venue card's button — and re-encode it (spaces `%2
 ## Files
 
 - `index.html` — the entire site (HTML + CSS + JS + SVG illustrations inlined). No build step, no dependencies.
-- `assets/wedding-music.mp3` — background music, supplied by the couple ("Pushpaka Vimanam").
-  Re-encoded from 128 kbps stereo (918 KB) down to 96 kbps (688 KB) and set to `preload="none"`, so
-  the file is only fetched when a guest actually taps play. It plays at 40% volume.
+- `assets/wedding-music.mp3` — background music, supplied by the couple ("Radha Ramanam", *Thipparaa Meesam*).
+  Re-encoded from the supplied 136 kbps Opus/WebM (1.0 MB) to 96 kbps MP3 (718 KB) and set to
+  `preload="none"`, so the file is only fetched when a guest actually taps play. MP3 rather than the
+  original WebM because Safari and older iOS will not decode Opus in a bare `<audio>` element.
+  It plays at 40% volume.
 
-  The clip is **0:57 and set to loop**, so a guest reading the page hears the seam roughly once a
-  minute. The supplied file ran at full level right up to both ends (−0.6 dB in, −1.5 dB out), which
-  would have clicked audibly every time it wrapped, so a 1.2 s fade-in and a 1.8 s fade-out were
-  baked in — both ends now sit around −17 dB and the loop joins softly instead.
+  The clip is **1:01 and set to loop**, so a guest reading the page hears the seam roughly once a
+  minute. The supplied file ran near full level at both ends (−6.5 dB in, −3.1 dB out), which would
+  have clicked audibly every time it wrapped, so a 1.2 s fade-in and a 1.8 s fade-out were baked in —
+  both ends now sit below −19 dB and the loop joins softly instead.
 
   To change the music, drop a new file in under the same name. If it is longer than about a minute
   the loop matters less, but **always check the first and last second are quiet** or the loop will
@@ -154,10 +157,15 @@ New Google Form with these five questions, **in this order**:
 | 1 | Your name | Short answer | — |
 | 2 | Will you join us? | Multiple choice | `Joyfully accepts` · `Regretfully declines` |
 | 3 | Number of guests (including you) | Short answer | — |
-| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikuthuru` · `Muhurtham` |
+| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikoduku` · `Pellikuthuru` · `Muhurtham` |
 | 5 | A wish for the couple | Paragraph | — |
 
 The option text must match exactly — Google silently drops values it does not recognise.
+
+> **`Pellikoduku` must be added to the live form.** The site now offers it as a fifth checkbox. Until
+> that option exists on the Google Form with exactly that spelling, every guest who ticks Pellikoduku
+> has that one answer dropped — the rest of their RSVP still arrives, so nothing looks broken, and the
+> event simply under-counts. Open the form → question 4 → **Add option** → type `Pellikoduku`.
 
 ### 2. Turn on the sheet and the alerts
 
