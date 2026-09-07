@@ -206,13 +206,19 @@ New Google Form with these five questions, **in this order**:
 
 The option text must match exactly — Google silently drops values it does not recognise.
 
-> **One deliberate label/value mismatch.** The checkbox on the site reads *Pellikoduku &
-> Pellikuthuru*, but the value it posts is plain `Pellikuthuru` — because that is the option that
-> exists on the live Google Form, and Google silently discards values it does not recognise. The
-> sheet therefore shows `Pellikuthuru` for that combined function, which is unambiguous since there
-> is only one. There is an HTML comment beside the input saying so; **do not "correct" the value
-> without renaming the option on the form in the same change**, or every tick of that box vanishes
-> with no visible error.
+> **Deliberate label/value mismatches — do not "fix" these.** What a guest reads on the site and
+> what gets posted to Google are decoupled on purpose, because Google silently discards any value
+> its form does not recognise. Three places differ:
+>
+> | Shown on the site | Posted to Google |
+> |---|---|
+> | Yes, I can make it. | `Joyfully accepts` |
+> | Unfortunately, I can't make it. | `Regretfully declines` |
+> | Pellikoduku & Pellikuthuru | `Pellikuthuru` |
+>
+> The wording guests see can be changed freely. The **values must not change** unless the matching
+> option is renamed on the live form in the same edit — otherwise that answer disappears from every
+> future RSVP with no error shown to anyone. There are HTML comments beside both inputs saying so.
 
 ### 2. Turn on the sheet and the alerts
 

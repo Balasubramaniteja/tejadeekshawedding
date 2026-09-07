@@ -164,6 +164,10 @@ textarea{min-height:96px;resize:vertical}
 .choice input{position:absolute;opacity:0;pointer-events:none}
 .choice span{display:block;text-align:center;padding:11px 10px;border:1px solid rgba(201,162,39,.55);cursor:pointer;
   font-family:'Marcellus',serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;transition:.2s;background:#fffdf8}
+.choice.sentence{flex:1 1 220px}
+/* text-wrap:balance stops "Unfortunately, I can't make it." dropping a lone "it."
+   onto a second line once these stack on a narrow phone. */
+.choice.sentence span{text-transform:none;letter-spacing:.015em;font-size:.98rem;padding:12px 14px;text-wrap:balance}
 .choice input:checked + span{background:var(--maroon);color:var(--cream);border-color:var(--maroon)}
 .choice input:focus-visible + span{box-shadow:0 0 0 3px rgba(109,15,36,.15)}
 .form-note{font-size:.86rem;color:var(--muted);font-style:italic;text-align:center;margin-top:16px}
@@ -536,8 +540,11 @@ body.locked .music-btn{display:none}
         <div class="field">
           <label>Will you join us?</label>
           <div class="choices">
-            <label class="choice"><input type="radio" name="attending" value="Joyfully accepts" checked><span>Joyfully accept</span></label>
-            <label class="choice"><input type="radio" name="attending" value="Regretfully declines"><span>Regretfully decline</span></label>
+            <!-- As with the events checkbox: the wording a guest reads is free, but the posted
+                 values must stay "Joyfully accepts" / "Regretfully declines" — those are the
+                 options on the live Google Form, and Google silently drops anything else. -->
+            <label class="choice sentence"><input type="radio" name="attending" value="Joyfully accepts" checked><span>Yes, I can make it.</span></label>
+            <label class="choice sentence"><input type="radio" name="attending" value="Regretfully declines"><span>Unfortunately, I can&rsquo;t make it.</span></label>
           </div>
         </div>
 
