@@ -10,14 +10,17 @@ A single-page, fully static wedding invitation site.
 |---|---|---|---|
 | Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
 | Pellikoduku & Pellikuthuru | Tue, 20 October 2026 | 11:00 AM onwards, then lunch | 4740 West 61st Street, Mission, KS 66205 |
-| Wedding | Wed, 21 October 2026 | From 9:00 AM; ceremony 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
+| Wedding | Wed, 21 October 2026 | 9:00 AM onwards; muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
 Every event now publishes a time, so there are **no all-day calendar entries left** — the `allDay`
 flag is still supported by the `.ics` builder if one is ever needed again.
 
-**The muhurtham is labelled "Wedding" everywhere a guest can see it** — the card heading, the running
-order, the hero line, the RSVP checkbox and the calendar entry. The word "Muhurtham" survives only as
-the RSVP's posted *value* and the `uid`, both of which must not change (see the RSVP section).
+**The day is labelled "Wedding"; the ceremony inside it is still "Muhurtham".** The card heading, the
+hero line, the RSVP checkbox and the calendar entry all say *Wedding* — the whole 21 October
+programme. Only the running-order row on that card names the muhurtham itself, at 10:00–11:30 AM.
+That distinction is intentional; do not "tidy" the two into one word.
+
+The hero line reads *9:00 AM onwards* (when the day begins), not the muhurtham slot.
 
 **Nalugu was removed** — the couple treat it as the same function as Haldi.
 
