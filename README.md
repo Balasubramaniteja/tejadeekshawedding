@@ -8,25 +8,34 @@ A single-page, fully static wedding invitation site.
 
 | Event | Date | Time | Venue |
 |---|---|---|---|
-| Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
-| Nalugu | Tue, 20 October 2026 | no time published; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
+| Haldi | Tue, 20 October 2026 | 9:00 AM onwards; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
 | Pellikoduku & Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
 | Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
-Nalugu and Pellikoduku & Pellikuthuru deliberately show **no clock time** — only the date and, for Nalugu, that
-lunch follows. Because of that they go into the downloaded calendar file as **all-day entries**
-(`DTSTART;VALUE=DATE:`), not as timed ones. That is set by `allDay:true` on those two entries in the
-`W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
+Pellikoduku & Pellikuthuru deliberately shows **no clock time** — only the date. Because of that it
+goes into the downloaded calendar file as an **all-day entry** (`DTSTART;VALUE=DATE:`), not a timed
+one. That is set by `allDay:true` on that entry in the `W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
 stamps in `YYYYMMDDTHHMMSS` form and put the time back on the card, so the page and the calendar
 never disagree.
+
+**Nalugu was removed** — the couple treat it as the same function as Haldi, so it folded into the
+Haldi card (which now carries the "Followed by lunch" line Nalugu used to hold).
+
+**There is no separate Venues section.** Both addresses appear on the event cards themselves, each
+with its own directions button, so a standalone venue list only repeated them. The muggu divider that
+used to close that section now closes the events section instead.
 
 Event cards are text only — no photographs and no illustrations. The Muhurtham card spans the full
 width of the grid and carries the running order for the day. There is no countdown timer.
 
+The events grid is **not** `auto-fit`: the featured Muhurtham card spans `1/-1`, which keeps every
+track alive, so `auto-fit` would leave an empty third column beside the two day-one cards. It is one
+column on a phone and an explicit two above 760px.
+
 ## Directions
 
-Every event card carries its own **Get directions** button, and each venue card has one too — six in
-all, pointing at the two addresses. They use the Google Maps *directions* endpoint, not the search
+Every event card carries its own **Get directions** button — three in all, pointing at the two
+addresses. This is the only place the venues appear now. They use the Google Maps *directions* endpoint, not the search
 one:
 
 ```
@@ -39,8 +48,8 @@ it on the day actually wants. On a phone the link hands off to the Google Maps a
 installed and falls back to the browser if not; it opens in a new tab, so nobody loses their place
 in the invitation.
 
-If an address ever changes, update it in **three** places for that venue — the event card text, the
-card's `.dir` link, and the venue card's button — and re-encode it (spaces `%20`, commas `%2C`).
+If an address ever changes, update it in **two** places on each card that uses it — the visible
+`.where` text and the `.dir` link — and re-encode it for the link (spaces `%20`, commas `%2C`).
 
 ## Files
 
@@ -156,7 +165,7 @@ New Google Form with these five questions, **in this order**:
 | 1 | Your name | Short answer | — |
 | 2 | Will you join us? | Multiple choice | `Joyfully accepts` · `Regretfully declines` |
 | 3 | Number of guests (including you) | Short answer | — |
-| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Nalugu` · `Pellikuthuru` · `Muhurtham` |
+| 4 | Which events will you attend? | Checkboxes | `Haldi` · `Pellikuthuru` · `Muhurtham` |
 | 5 | A wish for the couple | Paragraph | — |
 
 The option text must match exactly — Google silently drops values it does not recognise.
