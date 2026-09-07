@@ -95,6 +95,7 @@ section{padding:70px 0;position:relative}
 .hero-date .sep{color:var(--gold)}
 
 .cta-row{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta-note{margin:14px auto 0;max-width:430px;font-size:.86rem;font-style:italic;color:var(--muted);text-align:center}
 .btn{display:inline-block;padding:13px 28px;border-radius:2px;text-decoration:none;cursor:pointer;
   font-family:'Marcellus',serif;letter-spacing:.16em;text-transform:uppercase;font-size:.68rem;transition:.25s;border:1px solid transparent}
 .btn-primary{background:var(--maroon);color:var(--cream);border-color:var(--maroon)}
@@ -416,6 +417,7 @@ body.locked .music-btn{display:none}
       <a class="btn btn-ghost" href="#events">Events</a>
       <button class="btn btn-ghost" id="icsBtn" type="button">Add to calendar</button>
     </div>
+    <p class="cta-note">Saves all three events to your phone, and reminds you a week, a day and two hours before.</p>
   </div>
 </header>
 
@@ -600,15 +602,23 @@ const W = {
   groom: "Ganaparti Teja",
   bride: "Enukonda Sai Deeksha",
   phone: "+19134567891",            // used for the tel: link and WhatsApp RSVP
+  // `alarms` are ISO-8601 durations before the event start, written into the .ics as
+  // VALARM blocks. The guest's own calendar app fires them — no server, no push
+  // permission, and it keeps working if this site ever goes offline.
+  // For an all-day entry DTSTART is midnight, so -PT15H means 9:00 AM the day before;
+  // -P1D would fire at midnight, which nobody wants.
   events: [
     { uid:"haldi",     title:"Haldi — Teja weds Deeksha",     start:"20261020T090000", end:"20261020T120000",
-      loc:"4740 West 61st Street, Mission, KS 66205" },
+      loc:"4740 West 61st Street, Mission, KS 66205",
+      alarms:["-P1D","-PT2H"] },
     // no time is published for this one, so it goes into the calendar as an all-day
     // entry rather than inventing an hour the invitation does not state
     { uid:"pelli",     title:"Pellikoduku & Pellikuthuru — Teja weds Deeksha", allDay:true, start:"20261020", end:"20261021",
-      loc:"4740 West 61st Street, Mission, KS 66205" },
+      loc:"4740 West 61st Street, Mission, KS 66205",
+      alarms:["-PT15H"] },
     { uid:"muhurtham", title:"Muhurtham — Teja weds Deeksha", start:"20261021T090000", end:"20261021T133000",
-      loc:"6330 Lackman Rd, Shawnee, KS 66217" }
+      loc:"6330 Lackman Rd, Shawnee, KS 66217",
+      alarms:["-P7D","-P1D","-PT2H"] }
   ],
   icsDesc: "The wedding of Ganaparti Teja and Enukonda Sai Deeksha.",
 
@@ -726,6 +736,13 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e){
 });
 
 /* ================= ADD TO CALENDAR ================= */
+// Wording shown in the reminder itself, keyed by the trigger duration.
+const ALARM_TEXT = {
+  '-P7D':  'one week to go',
+  '-P1D':  'tomorrow',
+  '-PT15H':'tomorrow',
+  '-PT2H': 'starts in 2 hours'
+};
 document.getElementById('icsBtn').addEventListener('click', function(){
   const ics = [
     'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//tejadeeksha//wedding//EN','CALSCALE:GREGORIAN',
@@ -744,6 +761,13 @@ document.getElementById('icsBtn').addEventListener('click', function(){
       'SUMMARY:' + ev.title,
       'LOCATION:' + ev.loc.replace(/,/g,'\\,'),
       'DESCRIPTION:' + W.icsDesc,
+      ...(ev.alarms || []).flatMap(t => ([
+        'BEGIN:VALARM',
+        'ACTION:DISPLAY',
+        'TRIGGER;RELATED=START:' + t,
+        'DESCRIPTION:' + ev.title.split(' — ')[0] + ' — ' + ALARM_TEXT[t],
+        'END:VALARM'
+      ])),
       'END:VEVENT'
     ]))
   ).concat(['END:VCALENDAR']).join('\r\n');

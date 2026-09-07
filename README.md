@@ -32,6 +32,42 @@ The events grid is **not** `auto-fit`: the featured Muhurtham card spans `1/-1`,
 track alive, so `auto-fit` would leave an empty third column beside the two day-one cards. It is one
 column on a phone and an explicit two above 760px.
 
+## Reminders
+
+**"Add to calendar" is the reminder system.** The downloaded `.ics` carries `VALARM` blocks, so the
+guest's own phone fires the notifications — no push permission prompt, no service worker, no backend,
+and it keeps working even if this site is never opened again.
+
+| Event | Reminders |
+|---|---|
+| Haldi | 1 day before · 2 hours before |
+| Pellikoduku & Pellikuthuru | 9:00 AM the day before |
+| Muhurtham | 1 week before · 1 day before · 2 hours before |
+
+Edit them with the `alarms` array on each entry in `W.events` — ISO-8601 durations before the start
+(`-P7D`, `-P1D`, `-PT2H`). The wording each one shows comes from the `ALARM_TEXT` map just above the
+calendar handler, keyed by the same string, so a **new duration needs an entry in both places** or the
+reminder reads "undefined".
+
+For the all-day entry, `DTSTART` is midnight, so `-PT15H` means 9:00 AM the previous day. Do not use
+`-P1D` there — it fires at midnight.
+
+**Coverage.** Apple Calendar (iPhone, iPad, Mac) and Outlook honour these reliably. Google Calendar
+sometimes discards imported alarms and applies the account's own default notification instead, so a
+Google Calendar guest still gets *a* reminder, just possibly not at these exact offsets. That is
+worth knowing but not worth engineering around.
+
+### What was deliberately not built
+
+Web push notifications (the kind a website asks permission for) would need a service worker plus a
+server holding subscriptions and sending them — impossible on static hosting — and on iPhone they
+only work if the guest first adds the site to their home screen. For a wedding audience that is a lot
+of machinery for worse reach than a calendar entry.
+
+If you later want **email reminders** instead, the path is: add an optional email field to both the
+site form and the Google Form, then attach a time-driven Apps Script to the responses sheet that
+mails everyone who accepted. That needs the email field first — the form does not collect one today.
+
 ## Directions
 
 Every event card carries its own **Get directions** button — three in all, pointing at the two
