@@ -8,27 +8,31 @@ A single-page, fully static wedding invitation site.
 
 | Event | Date | Time | Venue |
 |---|---|---|---|
-| Haldi | Tue, 20 October 2026 | 9:00 AM onwards; followed by lunch | 4740 West 61st Street, Mission, KS 66205 |
-| Pellikoduku & Pellikuthuru | Tue, 20 October 2026 | evening; no time published | 4740 West 61st Street, Mission, KS 66205 |
-| Muhurtham | Wed, 21 October 2026 | From 9:00 AM; Muhurtham 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
+| Haldi | Tue, 20 October 2026 | 9:00 AM onwards | 4740 West 61st Street, Mission, KS 66205 |
+| Pellikoduku & Pellikuthuru | Tue, 20 October 2026 | 11:00 AM onwards, then lunch | 4740 West 61st Street, Mission, KS 66205 |
+| Wedding | Wed, 21 October 2026 | From 9:00 AM; ceremony 10:00–11:30 AM, then lunch | 6330 Lackman Rd, Shawnee, KS 66217 |
 
-Pellikoduku & Pellikuthuru deliberately shows **no clock time** — only the date. Because of that it
-goes into the downloaded calendar file as an **all-day entry** (`DTSTART;VALUE=DATE:`), not a timed
-one. That is set by `allDay:true` on that entry in the `W.events` config. If you later decide on times, replace `allDay:true` with real `start`/`end`
-stamps in `YYYYMMDDTHHMMSS` form and put the time back on the card, so the page and the calendar
-never disagree.
+Every event now publishes a time, so there are **no all-day calendar entries left** — the `allDay`
+flag is still supported by the `.ics` builder if one is ever needed again.
 
-**Nalugu was removed** — the couple treat it as the same function as Haldi, so it folded into the
-Haldi card (which now carries the "Followed by lunch" line Nalugu used to hold).
+**The muhurtham is labelled "Wedding" everywhere a guest can see it** — the card heading, the running
+order, the hero line, the RSVP checkbox and the calendar entry. The word "Muhurtham" survives only as
+the RSVP's posted *value* and the `uid`, both of which must not change (see the RSVP section).
+
+**Nalugu was removed** — the couple treat it as the same function as Haldi.
+
+Lunch on 20 October follows **Pellikoduku & Pellikuthuru**, not Haldi.
 
 **There is no separate Venues section.** Both addresses appear on the event cards themselves, each
 with its own directions button, so a standalone venue list only repeated them. The muggu divider that
 used to close that section now closes the events section instead.
 
-Event cards are text only — no photographs and no illustrations. The Muhurtham card spans the full
-width of the grid and carries the running order for the day. There is no countdown timer.
+Event cards are text only — no photographs and no illustrations. The Wedding card spans the full
+width of the grid and carries the running order for the day. There is no countdown timer. The
+"The Wedding" ribbon that used to sit on it was removed once the heading itself read *Wedding*; the
+gold border, deeper shadow and full width already mark it out.
 
-The events grid is **not** `auto-fit`: the featured Muhurtham card spans `1/-1`, which keeps every
+The events grid is **not** `auto-fit`: the featured Wedding card spans `1/-1`, which keeps every
 track alive, so `auto-fit` would leave an empty third column beside the two day-one cards. It is one
 column on a phone and an explicit two above 760px.
 
@@ -41,16 +45,16 @@ and it keeps working even if this site is never opened again.
 | Event | Reminders |
 |---|---|
 | Haldi | 1 day before · 2 hours before |
-| Pellikoduku & Pellikuthuru | 9:00 AM the day before |
-| Muhurtham | 1 week before · 1 day before · 2 hours before |
+| Pellikoduku & Pellikuthuru | 1 day before · 2 hours before |
+| Wedding | 1 week before · 1 day before · 2 hours before |
 
 Edit them with the `alarms` array on each entry in `W.events` — ISO-8601 durations before the start
 (`-P7D`, `-P1D`, `-PT2H`). The wording each one shows comes from the `ALARM_TEXT` map just above the
 calendar handler, keyed by the same string, so a **new duration needs an entry in both places** or the
 reminder reads "undefined".
 
-For the all-day entry, `DTSTART` is midnight, so `-PT15H` means 9:00 AM the previous day. Do not use
-`-P1D` there — it fires at midnight.
+If an event is ever switched back to `allDay:true`, remember its `DTSTART` is midnight — use
+`-PT15H` (9:00 AM the previous day) rather than `-P1D`, which would fire at midnight.
 
 **Coverage.** Apple Calendar (iPhone, iPad, Mac) and Outlook honour these reliably. Google Calendar
 sometimes discards imported alarms and applies the account's own default notification instead, so a
@@ -215,6 +219,7 @@ The option text must match exactly — Google silently drops values it does not 
 > | Yes, I can make it. | `Joyfully accepts` |
 > | Unfortunately, I can't make it. | `Regretfully declines` |
 > | Pellikoduku & Pellikuthuru | `Pellikuthuru` |
+> | Wedding | `Muhurtham` |
 >
 > The wording guests see can be changed freely. The **values must not change** unless the matching
 > option is renamed on the live form in the same edit — otherwise that answer disappears from every
