@@ -699,8 +699,16 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e){
   if(g.action){
     // Post straight into the couple's Google Form (and therefore their Sheet).
     // Submitting into a hidden iframe avoids the cross-origin response entirely.
+    //
+    // DEBUG MODE: add ?rsvpdebug=1 to the page URL and the reply is posted into a
+    // visible new tab instead, so you can read Google's actual response. Use it when
+    // a test RSVP never reaches the sheet — normally this failure is completely silent,
+    // because the page cannot see across origins into the hidden iframe.
+    const debug = new URLSearchParams(location.search).has('rsvpdebug');
     const f = document.createElement('form');
-    f.action = g.action; f.method = 'POST'; f.target = 'gformSink'; f.style.display = 'none';
+    f.action = g.action; f.method = 'POST';
+    f.target = debug ? '_blank' : 'gformSink';
+    f.style.display = 'none';
     const add = (k, v) => {
       if(!k) return;
       const i = document.createElement('input');
@@ -717,7 +725,9 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e){
     setTimeout(() => f.remove(), 3000);
 
     this.reset();
-    status.innerHTML = 'Thank you, ' + safe + '. Your RSVP has been received &mdash; we are so glad you wrote back.';
+    status.innerHTML = debug
+      ? 'Debug mode: the reply was posted in a new tab. Read what Google says there, then check your sheet.'
+      : 'Thank you, ' + safe + '. Your RSVP has been received &mdash; we are so glad you wrote back.';
     status.classList.add('show');
     return;
   }

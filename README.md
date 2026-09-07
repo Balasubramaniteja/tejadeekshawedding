@@ -271,6 +271,35 @@ The browser posts into a hidden iframe, so the guest never leaves the invitation
 Google page. Google returns a cross-origin response the page cannot read, which is why the site
 shows its own confirmation message rather than waiting for one.
 
+### When an RSVP never reaches the sheet
+
+The page submits into a hidden iframe and **cannot read Google's reply** — that is what keeps the
+guest on the invitation instead of bouncing them to a Google page, but it also means a rejected
+submission looks exactly like a successful one. The guest sees the thank-you message either way.
+
+**Debug mode makes the failure visible.** Add `?rsvpdebug=1` to the page URL:
+
+```
+https://balasubramaniteja.github.io/tejadeekshawedding/?rsvpdebug=1
+```
+
+Submit the form and the reply is posted into a **visible new tab** instead of the hidden iframe, so
+you can read Google's actual response. A success page means the row is in the sheet; an error page
+names the question it rejected.
+
+Causes, most common first:
+
+1. **An option's text does not match**, and the question it belongs to is **Required** — Google then
+   treats the question as unanswered and rejects the *whole* submission, so no row appears at all.
+   This is the failure mode to suspect first when nothing arrives.
+2. An option's text does not match on a question that is *not* required — the row appears, but that
+   one cell is blank.
+3. **Collect email addresses** is on, which forces a sign-in the background post cannot do.
+4. The form is closed to responses, or the responses sheet was unlinked.
+
+Keeping every question except *Your name* **not required** turns the first case into the second: a
+mismatch then costs you one cell instead of the entire reply.
+
 ### What actually gets sent
 
 The event checkboxes are a single Google Forms checkbox question, so each ticked event is posted as a
